@@ -6,12 +6,10 @@
         "npm": "6.10.3"
     },
     "description": "",
-    "main": "./",
+    "main": "/",
     "scripts": {
         "dev": "cross-env NODE_ENV=development nodemon server/server.js",
-        "start": "cross-env NODE_ENV=production nodemon server/server.js",
-        "build": "ng build --prod --base-href=/metrolinea/",
-        "postinstall": "ng build --prod --aot --base-href=/metrolinea/ --target=production"
+        "start": "cross-env NODE_ENV=production nodemon server/server.js"
     },
     "keywords": [],
     "license": "ISC",
