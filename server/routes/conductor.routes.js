@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const conductorCtrl = require('../controllers/Conductor.controller')
+const conductorCtrl = require('../controllers/conductor.controller')
 
 router.get('/', conductorCtrl.getConductores);
 router.post('/', conductorCtrl.createConductor);
