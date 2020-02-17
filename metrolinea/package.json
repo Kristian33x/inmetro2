@@ -1,6 +1,10 @@
 {
     "name": "metrolinea",
     "version": "0.0.0",
+    "engines": {
+        "node": "12.10.0",
+        "npm": "6.10.3"
+    },
     "scripts": {
         "ng": "ng",
         "start": "ng serve",

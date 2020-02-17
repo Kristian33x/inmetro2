@@ -20,7 +20,6 @@ const APP_ROUTES: Routes = [
 {path: 'bus/:termino', component: BusComponent},
 {path: 'search/:termino', component: SearchComponent},
 {path: '', pathMatch: 'full', redirectTo: '/home'},  // regresa a la home
-{path: 'auth', loadChildren: './components/usuario/auth.module#AuthModule'}
 
 ];
 
