@@ -1853,7 +1853,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                 };
                 LoginComponent.prototype.onLogin = function (form) {
                     var _this = this;
-                    console.log('login', form.value);
+                    console.log('login1', form.value);
                     this.authService.login(form.value).subscribe(function (res) {
                         _this.authService.administrador();
                         _this.router.navigateByUrl('/home');
@@ -2407,7 +2407,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                 // Oculta las diferentes funciones dependiendo del tipo de usuario logueado o invitado
                 AuthService.prototype.administrador = function () {
                     if (this.estaAutenticadoUnAdministrador()) {
-                        console.log(document.getElementById('ocultar1').style.display);
+                        console.log(document.getElementById('ocultar1').style.display, 'hola');
                         document.getElementById('ocultar1').style.display = 'inline';
                         document.getElementById('ocultar2').style.display = 'inline';
                         document.getElementById('ocultar3').style.display = 'inline';

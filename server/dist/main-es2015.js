@@ -1885,7 +1885,7 @@ let LoginComponent = class LoginComponent {
     ngOnInit() {
     }
     onLogin(form) {
-        console.log('login', form.value);
+        console.log('login1', form.value);
         this.authService.login(form.value).subscribe(res => {
             this.authService.administrador();
             this.router.navigateByUrl('/home');
@@ -2456,7 +2456,7 @@ let AuthService = class AuthService {
     // Oculta las diferentes funciones dependiendo del tipo de usuario logueado o invitado
     administrador() {
         if (this.estaAutenticadoUnAdministrador()) {
-            console.log(document.getElementById('ocultar1').style.display);
+            console.log(document.getElementById('ocultar1').style.display, 'hola');
             document.getElementById('ocultar1').style.display = 'inline';
             document.getElementById('ocultar2').style.display = 'inline';
             document.getElementById('ocultar3').style.display = 'inline';
