@@ -11,6 +11,7 @@ const express = require('express');
 const properties = require('./config/properties');
 const DB = require('./config/db')
 const morgan = require('morgan');
+const path = require('path');
 // const { mongoose } = require('./database');
 
 DB();
@@ -50,7 +51,8 @@ app.use('/api/conductores', require('./routes/conductor.routes'));
 
 // fin index.js
 
-
+// Static files
+app.use(express.static(path.join(__dirname, 'dist')));
 
 app.use(router);
 app.listen(properties.PORT, () => console.log(`Server runing on port ${properties.PORT}`));
