@@ -1885,7 +1885,7 @@ let LoginComponent = class LoginComponent {
     ngOnInit() {
     }
     onLogin(form) {
-        console.log('login1', form.value);
+        // console.log('login1', form.value);
         this.authService.login(form.value).subscribe(res => {
             this.authService.administrador();
             this.router.navigateByUrl('/home');
@@ -2336,7 +2336,7 @@ let AuthService = class AuthService {
             if (res) {
                 user = this.getUserConductorbyEmail(user.email);
                 user.estado = true; // Conectado
-                console.log(user, 'Auth User login');
+                // console.log(user, 'Auth User login');
                 this.selectedUser = user;
                 this.actualizarConductorEnBuses(this.selectedUser);
                 this.putEstadoUser(this.selectedUser).subscribe(res2 => {
@@ -2411,11 +2411,11 @@ let AuthService = class AuthService {
     }
     // Obterner un usuario por el email (Tambien es usado para administradores)
     getUserConductorbyEmail(termino) {
-        console.log(this.Users, 'users getUserConductorbyEmail');
+        // console.log(this.Users, 'users getUserConductorbyEmail');
         for (let userConductor of this.Users) {
             userConductor = userConductor;
             if (userConductor.email === termino) {
-                console.log(userConductor, 'userConductor a devolver en getUserConductorbyEmail');
+                // console.log(userConductor, 'userConductor a devolver en getUserConductorbyEmail');
                 return userConductor;
             }
         }
@@ -2427,10 +2427,10 @@ let AuthService = class AuthService {
         //   return this.token.length > 2;
         // } else { return false; }
         let esAdmin = false;
-        console.log(localStorage.getItem('EMAIL'), 'email localstoracge');
+        // console.log(localStorage.getItem('EMAIL') , 'email localstoracge');
         if (localStorage.getItem('EMAIL')) {
             // this.getSelectedUserByEmail();
-            console.log(this.selectedUser, 'selectedUser');
+            // console.log(this.selectedUser, 'selectedUser');
             if (this.getUserConductorbyEmail(this.selectedUser.email)) {
                 for (const conductor of this.userConductores) {
                     if (conductor.email === this.selectedUser.email) {
@@ -2442,7 +2442,7 @@ let AuthService = class AuthService {
                 }
             }
         }
-        console.log(esAdmin, 'es administrador?');
+        // console.log(esAdmin, 'es administrador?');
         return esAdmin;
     }
     estaAutenticadoUnConductor() {
@@ -2463,7 +2463,7 @@ let AuthService = class AuthService {
     // Oculta las diferentes funciones dependiendo del tipo de usuario logueado o invitado
     administrador() {
         if (this.estaAutenticadoUnAdministrador()) {
-            console.log(document.getElementById('ocultar1').style.display, 'hola');
+            // console.log(document.getElementById('ocultar1').style.display, 'hola');
             document.getElementById('ocultar1').style.display = 'inline';
             document.getElementById('ocultar2').style.display = 'inline';
             document.getElementById('ocultar3').style.display = 'inline';

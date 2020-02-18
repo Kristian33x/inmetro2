@@ -1853,7 +1853,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                 };
                 LoginComponent.prototype.onLogin = function (form) {
                     var _this = this;
-                    console.log('login1', form.value);
+                    // console.log('login1', form.value);
                     this.authService.login(form.value).subscribe(function (res) {
                         _this.authService.administrador();
                         _this.router.navigateByUrl('/home');
@@ -2282,7 +2282,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                         if (res) {
                             user = _this.getUserConductorbyEmail(user.email);
                             user.estado = true; // Conectado
-                            console.log(user, 'Auth User login');
+                            // console.log(user, 'Auth User login');
                             _this.selectedUser = user;
                             _this.actualizarConductorEnBuses(_this.selectedUser);
                             _this.putEstadoUser(_this.selectedUser).subscribe(function (res2) {
@@ -2359,12 +2359,12 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                 };
                 // Obterner un usuario por el email (Tambien es usado para administradores)
                 AuthService.prototype.getUserConductorbyEmail = function (termino) {
-                    console.log(this.Users, 'users getUserConductorbyEmail');
+                    // console.log(this.Users, 'users getUserConductorbyEmail');
                     for (var _i = 0, _a = this.Users; _i < _a.length; _i++) {
                         var userConductor = _a[_i];
                         userConductor = userConductor;
                         if (userConductor.email === termino) {
-                            console.log(userConductor, 'userConductor a devolver en getUserConductorbyEmail');
+                            // console.log(userConductor, 'userConductor a devolver en getUserConductorbyEmail');
                             return userConductor;
                         }
                     }
@@ -2376,10 +2376,10 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                     //   return this.token.length > 2;
                     // } else { return false; }
                     var esAdmin = false;
-                    console.log(localStorage.getItem('EMAIL'), 'email localstoracge');
+                    // console.log(localStorage.getItem('EMAIL') , 'email localstoracge');
                     if (localStorage.getItem('EMAIL')) {
                         // this.getSelectedUserByEmail();
-                        console.log(this.selectedUser, 'selectedUser');
+                        // console.log(this.selectedUser, 'selectedUser');
                         if (this.getUserConductorbyEmail(this.selectedUser.email)) {
                             for (var _i = 0, _a = this.userConductores; _i < _a.length; _i++) {
                                 var conductor = _a[_i];
@@ -2392,7 +2392,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                             }
                         }
                     }
-                    console.log(esAdmin, 'es administrador?');
+                    // console.log(esAdmin, 'es administrador?');
                     return esAdmin;
                 };
                 AuthService.prototype.estaAutenticadoUnConductor = function () {
@@ -2414,7 +2414,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                 // Oculta las diferentes funciones dependiendo del tipo de usuario logueado o invitado
                 AuthService.prototype.administrador = function () {
                     if (this.estaAutenticadoUnAdministrador()) {
-                        console.log(document.getElementById('ocultar1').style.display, 'hola');
+                        // console.log(document.getElementById('ocultar1').style.display, 'hola');
                         document.getElementById('ocultar1').style.display = 'inline';
                         document.getElementById('ocultar2').style.display = 'inline';
                         document.getElementById('ocultar3').style.display = 'inline';
