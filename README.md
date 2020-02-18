@@ -1,3 +1,9 @@
+# Important commands mongo
+## Export DB
+
+
+-----------------------------------------------
+
 # Important commands GIT
 ## Configuración global de Git
 git config --global user.name "Cristian Fraija"
