@@ -257,6 +257,7 @@ export class AuthService {
   // Oculta las diferentes funciones dependiendo del tipo de usuario logueado o invitado
   administrador() {
     if ( this.estaAutenticadoUnAdministrador() ) {
+      console.log(document.getElementById('ocultar1').style.display, 'hola');
       document.getElementById('ocultar1').style.display = 'inline';
       document.getElementById('ocultar2').style.display = 'inline';
       document.getElementById('ocultar3').style.display = 'inline';
