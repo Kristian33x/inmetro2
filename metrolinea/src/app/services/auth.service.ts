@@ -130,11 +130,13 @@ export class AuthService {
         if (res) {
           user = this.getUserConductorbyEmail(user.email);
           user.estado = true; // Conectado
+          console.log(user, 'Auth User login');
           this.selectedUser = user;
           this.actualizarConductorEnBuses(this.selectedUser);
           this.putEstadoUser(this.selectedUser).subscribe( res2 => {
             // console.log(res2, 'Usuario Activo');
           });
+          this.administrador();
           // Guardar Token
           this.saveToken(res.dataUser.accessToken, res.dataUser.expiresIn, this.selectedUser.email);
         }
@@ -212,9 +214,11 @@ export class AuthService {
 
   // Obterner un usuario por el email (Tambien es usado para administradores)
   private getUserConductorbyEmail(termino: string) {
+    console.log(this.Users, 'users getUserConductorbyEmail');
     for (let userConductor of this.Users) {
       userConductor = userConductor;
       if (userConductor.email === termino) {
+        console.log(userConductor, 'userConductor a devolver en getUserConductorbyEmail');
         return userConductor;
       }
     }
@@ -227,8 +231,10 @@ export class AuthService {
     //   return this.token.length > 2;
     // } else { return false; }
     let esAdmin = false;
+    console.log(localStorage.getItem('EMAIL') , 'email localstoracge');
     if (localStorage.getItem('EMAIL')) {
     // this.getSelectedUserByEmail();
+    console.log(this.selectedUser, 'selectedUser');
     if (this.getUserConductorbyEmail(this.selectedUser.email)) {
       for (const conductor of this.userConductores) {
         if (conductor.email === this.selectedUser.email) {
@@ -237,6 +243,7 @@ export class AuthService {
       }
     }
   }
+    console.log(esAdmin, 'es administrador?');
     return esAdmin;
   }
 
