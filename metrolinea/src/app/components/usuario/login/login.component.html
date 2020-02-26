@@ -3,22 +3,42 @@
         <div class="row">
             <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                 <div class="card card-signin my-5">
+
+                    <div class="alert-danger" id="errorEmail" style="margin-bottom:5px; display: none;" role="alert">
+                        <div class="container-error-message">
+                            Email y/o Contrasena <b>Incorrecta</b>!
+                        </div>
+                    </div>
+
                     <div class="card-body">
                         <h5 class="card-title text-center">Inicio de Sesion</h5>
-
                         <form #frmLogin="ngForm" class="form-signin" (ngSubmit)="onLogin(frmLogin)">
                             <div class="form-label-group">
-                                <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Correo Electronico" ngModel required autofocus>
+                                <input type="email" name="email" id="email" class="form-control" placeholder="Correo Electronico" ngModel required minlength=5 pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" autofocus>
                                 <label for="inputEmail">Correo Electronico</label>
                             </div>
 
-                            <div class="form-label-group">
-                                <input type="password" name="contrasena" class="form-control" placeholder="Contrasena" ngModel required>
-                                <label for="inputPassword">Contrasena</label>
+                            <div *ngIf="!frmLogin.valid">
+                                <div class="alert-danger" *ngIf="this.frmLogin.controls.email.invalid && (this.frmLogin.controls.email.dirty || this.frmLogin.controls.email.touched)" style="margin-bottom:5px" role="alert">
+                                    <div class="container-error-message">
+                                        Ingrese un email <b>valido</b>!
+                                    </div>
+                                </div>
                             </div>
-
-                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" value="Send">Ingresar</button>
+                            <div class="form-label-group">
+                                <input type="password" name="contrasena" id="contrasena" class="form-control" placeholder="Contraseña" ngModel required>
+                                <label for="inputPassword">Contraseña</label>
+                            </div>
+                            <div *ngIf="!frmLogin.valid">
+                                <div class="alert-danger" *ngIf="frmLogin.controls.contrasena.invalid && (frmLogin.controls.contrasena.dirty || frmLogin.controls.contrasena.touched)" style="margin-bottom:5px" role="alert">
+                                    <div class="container-error-message">
+                                        Ingresar <b>Contraseña</b>!
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-lg btn-primary btn-block text-uppercase" data-toggle="tooltip" data-placement="top" title="Ingresar" type="submit" value="Send">Ingresar</button>
                             <hr class="my-4">
+
                         </form>
                     </div>
                 </div>

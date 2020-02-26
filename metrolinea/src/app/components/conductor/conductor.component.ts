@@ -16,6 +16,12 @@ export class ConductorComponent implements OnInit {
   id: any;
   constructor(public auth: AuthService, public busService: BusService) {}
 
+  // hay que hacer que el boton No mostrar posicion se mantenga si se esta mostrando la posicion
+  // y que si el conductor no tiene bus asociado estos botones se deshabiliten
+  // implementar el NgOnDestroy para que cuando el Conductor salga de la pestana se ejecute el metodo
+  // reiniciarPosicion
+  // recordar cuando esta funcionando el watchposition
+
   ngOnInit() {
     document.getElementById('noMostrarPosicion').style.display = 'none';
     document.getElementById('mostrarPosicion').style.display = 'inline';
@@ -71,6 +77,7 @@ export class ConductorComponent implements OnInit {
       if (navigator.geolocation) {
         this.id = navigator.geolocation.watchPosition(datos => {
           this.eliminarPosicion();
+          console.log('watchPosition');
           if (this.busAsociadoConductor.latitud !==  datos.coords.latitude || this.busAsociadoConductor.longitud !==  datos.coords.longitude
            || this.busAsociadoConductor.sentido !== datos.coords.heading) {
 

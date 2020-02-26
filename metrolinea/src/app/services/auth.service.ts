@@ -139,8 +139,10 @@ export class AuthService {
           this.administrador();
           // Guardar Token
           this.saveToken(res.dataUser.accessToken, res.dataUser.expiresIn, this.selectedUser.email);
+
         }
-      }
+      },
+      error => { console.log(error, 'Email o Contrasena incorrecta'); }
     ));
     }
 

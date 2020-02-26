@@ -52,7 +52,15 @@ app.use('/api/conductores', require('./routes/conductor.routes'));
 // fin index.js
 
 // Static files
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use('/', express.static(path.join(__dirname, 'dist')));
+// app.use('**', express.static(path.join(__dirname, 'dist')));
+// app.use('*', express.static(path.join(__dirname, 'dist')));
+app.use('/home', express.static(path.join(__dirname, 'dist')));
+app.use('/buses', express.static(path.join(__dirname, 'dist')));
+app.use('/login', express.static(path.join(__dirname, 'dist')));
+app.use('/about', express.static(path.join(__dirname, 'dist')));
+app.use('/registrar', express.static(path.join(__dirname, 'dist')));
+
 
 app.use(router);
 app.listen(properties.PORT, () => console.log(`Server runing on port ${properties.PORT}`));

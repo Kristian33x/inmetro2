@@ -389,7 +389,7 @@ addRuta2(bus: Ruta) {
     // Elimina un conductor
     let sePuedeEliminar = false;
     for (const conductor of this.conductoresSinBus) {
-      if (conductor._id === _id) { sePuedeEliminar = true; }
+      if (conductor._id === _id) { sePuedeEliminar = true; } // verifica si el conductor esta asocidado a un bus
     }
     if (sePuedeEliminar) {
       this.authService.deleteUser(_id)

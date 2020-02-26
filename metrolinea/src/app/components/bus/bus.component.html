@@ -45,7 +45,7 @@
                     <td> {{bus.latitud}}, {{bus.longitud}}, {{bus.sentido}}</td>
 
                     <td>
-                        <button (click)="UbicarEnMapa(bus.latitud,bus.longitud,bus.sentido);" type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modalAsignarRutaBus">
+                        <button (click)="UbicarEnMapa(bus.latitud,bus.longitud,bus.sentido);" type="button" title="Ubicar en Mapa este Bus" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modalAsignarRutaBus">
                         <i class="material-icons">directions_bus</i>
                     </button>&nbsp;
                     </td>
@@ -66,7 +66,7 @@
     <!-- (centerChange)= (zoomChange) -->
 
     <mat-card-content>
-        <agm-map [latitude]="latCentroMapa" [longitude]="lngCentroMapa" [zoom]="16">
+        <agm-map [latitude]="latCentroMapa" [longitude]="lngCentroMapa" [zoom]="15">
             <!-- <agm-circle [latitude]="lat" [longitude]="lng" [radius]="30" [fillColor]="'red'" [circleDraggable]="true" [editable]="true">></agm-circle> -->
             <agm-marker *ngFor="let marcador of marcadores; let i = index" [iconUrl]="'assets/carro.bmp'" [label]="marcador.placa" [latitude]="marcador.latitud" [longitude]="marcador.longitud">
 

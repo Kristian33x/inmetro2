@@ -1,9 +1,15 @@
 <div class="jumbotron jumbotron-fluid animated fadeIn ">
     <div class="container">
-        <h1 class="display-4">Compartir Ubicacion GPS Para Conductores</h1>
+        <h1 class="display-4">Compartir Ubicación GPS Para Conductores</h1>
+        <br>
 
-        <h2>La ruta Asignado es: {{busAsociadoConductor.RutaAsociada.nombre}} </h2>
-        <h2>La Placa del Bus Asignado es: {{busAsociadoConductor.placa}} </h2>
+        <h2 *ngIf="busAsociadoConductor.RutaAsociada.nombre !== null">La Ruta Asignada es: {{busAsociadoConductor.RutaAsociada.nombre}} </h2>
+        <h2 *ngIf="busAsociadoConductor.placa !== null">La Placa del Bus Asignado es: {{busAsociadoConductor.placa}} </h2>
+
+        <h2 *ngIf="busAsociadoConductor.RutaAsociada.nombre === null">Aún no tiene ruta Asignada</h2>
+        <h2 *ngIf="busAsociadoConductor.placa === null">Aún no tiene Bus Asignado</h2>
+
+
     </div>
 
     <!-- <div class="main-container">
@@ -27,9 +33,9 @@
 
         <br><br><br><br>
         <label class="col-md-4 form-control-label" for="text-input"></label>
-        <button id="mostrarPosicion" mat-raised-button class="col-lg-3" (click)="mostrarPosicion()" color="accent">Mostrar Posicion</button>
+        <button id="mostrarPosicion" mat-raised-button class="col-lg-3" (click)="mostrarPosicion()" color="accent">Mostrar Posición</button>
         <!-- <label class="col-md-2 form-control-label" for="text-input"></label> -->
-        <button id="noMostrarPosicion" mat-raised-button class="col-lg-3" (click)="noMostrarPosicion()" color="warn">No Mostrar Posicion</button>
+        <button id="noMostrarPosicion" mat-raised-button class="col-lg-3" (click)="noMostrarPosicion()" color="warn">No Mostrar Posición</button>
         <br><br><br><br>
         <div class="form-group row">
             <label class="col-md-3 form-control-label" for="text-input"></label>

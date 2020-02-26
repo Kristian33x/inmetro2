@@ -46,12 +46,14 @@ export class BusComponent implements OnDestroy {
 
   UbicarEnMapa(latitud: number, longitud: number, sentido: number) {
     console.log(latitud, ',', longitud, ',', sentido);
+    this.latCentroMapa = latitud;
+    this.lngCentroMapa = longitud;
   }
 
-  // Se encarga de actualizar cada 3 segundos la posicion de los buses en todos los usuarios
+  // Se encarga de actualizar cada 3 segundos la posicion de los buses en todos los usuarios (en base de datos)
   Watcher() {
     this.MysetInterval = setInterval( () => {
-      console.log(2);
+      // console.log(2);
       this.BusesAsociadosRuta = this.busService.busesPorRuta(this.ruta.nombre);
       this.crearMarcadoresPorRuta();
     }, 3000);
