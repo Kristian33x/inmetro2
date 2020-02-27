@@ -10,7 +10,7 @@ export class AdminGuard implements CanActivate {
   constructor(private auth: AuthService) { }
   canActivate(): boolean {
     // console.log('guard');
-    return true;
+    // return true;
     return this.auth.estaAutenticadoUnAdministrador();
   }
 }

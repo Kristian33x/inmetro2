@@ -201,7 +201,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<body>\n    <div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col-sm-9 col-md-7 col-lg-5 mx-auto\">\n                <div class=\"card card-signin my-5\">\n                    <div class=\"card-body\">\n                        <h5 class=\"card-title text-center\">Crear un Usuario</h5>\n\n                        <form #frmRegister=\"ngForm\" class=\"form-signin\" (ngSubmit)=\"onRegister(frmRegister)\">\n\n                            {{frmRegister.valid}}\n                            <div class=\"form-label-group\">\n                                <input type=\"text\" name=\"nombre\" id=\"nombre\" class=\"form-control\" placeholder=\"Nombre\" ngModel required minlength=5 autofocus>\n                                <label for=\"inputEmail\">Nombre</label>\n                            </div>\n\n                            <div *ngIf=\"!frmRegister.valid\">\n                                <div class=\"alert-danger\" *ngIf=\"this.frmRegister.controls.nombre.invalid && (this.frmRegister.controls.nombre.dirty || this.frmRegister.controls.nombre.touched)\" style=\"margin-bottom:5px\" role=\"alert\">\n                                    <div class=\"container-error-message\">\n                                        Ingrese un Nombre <b>valido</b>!\n                                    </div>\n                                </div>\n                            </div>\n\n                            <div class=\"form-label-group\">\n                                <input type=\"email\" name=\"email\" id=\"email\" class=\"form-control\" placeholder=\"Correo Electronico\" ngModel minlength=5 pattern=\"^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$\" required>\n                                <label for=\"inputEmail\">Correo Electronico</label>\n                            </div>\n\n                            <div *ngIf=\"!frmRegister.valid\">\n                                <div class=\"alert-danger\" *ngIf=\"this.frmRegister.controls.email.invalid && (this.frmRegister.controls.email.dirty || this.frmRegister.controls.email.touched)\" style=\"margin-bottom:5px\" role=\"alert\">\n                                    <div class=\"container-error-message\">\n                                        Ingrese un Email <b>valido</b>!\n                                    </div>\n                                </div>\n                            </div>\n\n                            <div class=\"form-label-group\">\n                                <input type=\"password\" name=\"contrasena\" id=\"contrasena\" class=\"form-control\" placeholder=\"Contrasena\" ngModel required>\n                                <label for=\"inputPassword\">Contrasena</label>\n                            </div>\n\n                            <div *ngIf=\"!frmRegister.valid\">\n                                <div class=\"alert-danger\" *ngIf=\"this.frmRegister.controls.contrasena.invalid && (this.frmRegister.controls.contrasena.dirty || this.frmRegister.controls.contrasena.touched)\" style=\"margin-bottom:5px\" role=\"alert\">\n                                    <div class=\"container-error-message\">\n                                        Ingrese una Contrasena <b>valida</b>!\n                                    </div>\n                                </div>\n                            </div>\n\n                            <div class=\"form-label-group\">\n                                <input type=\"radio\" name=\"tipoUsuario\" id=\"tipoUsuario\" value=\"Conductor\" ngModel required> Conductor\n                                <input type=\"radio\" name=\"tipoUsuario\" id=\"tipoUsuario\" value=\"Administrador\" ngModel required> Administrador\n                            </div>\n                            <label for=\"tipoUsuario\">Tipo de Usuario</label>\n\n                            <div *ngIf=\"!frmRegister.valid\">\n                                <div class=\"alert-danger\" *ngIf=\"this.frmRegister.controls.tipoUsuario.invalid && (this.frmRegister.submitted && this.frmRegister.controls.tipoUsuario.untouched)\" style=\"margin-bottom:5px\" role=\"alert\">\n                                    <div class=\"container-error-message\">\n                                        Seleccione un TipoUsuario!\n                                    </div>\n                                </div>\n                            </div>\n\n                            <div class=\"form-label-group\">\n                                <input type=\"hidden\" name=\"estado\" value=\"false\" class=\"form-control\" ngModel>\n                            </div>\n\n                            <button class=\"btn btn-lg btn-primary btn-block text-uppercase\" type=\"submit\" value=\"Register\">Registrar</button>\n                            <hr class=\"my-4\">\n                        </form>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</body>");
+/* harmony default export */ __webpack_exports__["default"] = ("<body>\n    <div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col-sm-9 col-md-7 col-lg-5 mx-auto\">\n                <div class=\"card card-signin my-5\">\n                    <div class=\"alert-success\" id=\"UsuarioAgg\" style=\"margin-bottom:5px; display: none;\" role=\"alert\">\n                        <div class=\"container-error-message\">\n                            Usuario Registrado <b>Correctamente</b>!\n                        </div>\n                    </div>\n                    <div class=\"card-body\">\n\n                        <h5 class=\"card-title text-center\">Crear un Usuario</h5>\n\n                        <form #frmRegister=\"ngForm\" class=\"form-signin\" (ngSubmit)=\"onRegister(frmRegister)\">\n\n                            <div class=\"form-label-group\">\n                                <input type=\"text\" name=\"nombre\" id=\"nombre\" class=\"form-control\" placeholder=\"Nombre\" ngModel required minlength=5 autofocus>\n                                <label for=\"inputEmail\">Nombre</label>\n                            </div>\n\n                            <div *ngIf=\"!frmRegister.valid\">\n                                <div class=\"alert-danger\" *ngIf=\"this.frmRegister.controls.nombre.invalid && (this.frmRegister.controls.nombre.dirty || this.frmRegister.controls.nombre.touched)\" style=\"margin-bottom:5px\" role=\"alert\">\n                                    <div class=\"container-error-message\">\n                                        Ingrese un Nombre <b>valido</b>!\n                                    </div>\n                                </div>\n                            </div>\n\n                            <div class=\"form-label-group\">\n                                <input type=\"email\" name=\"email\" id=\"email\" class=\"form-control\" placeholder=\"Correo Electronico\" ngModel minlength=5 pattern=\"^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$\" required>\n                                <label for=\"inputEmail\">Correo Electronico</label>\n                            </div>\n\n                            <div *ngIf=\"!frmRegister.valid\">\n                                <div class=\"alert-danger\" *ngIf=\"this.frmRegister.controls.email.invalid && (this.frmRegister.controls.email.dirty || this.frmRegister.controls.email.touched)\" style=\"margin-bottom:5px\" role=\"alert\">\n                                    <div class=\"container-error-message\">\n                                        Ingrese un Email <b>valido</b>!\n                                    </div>\n                                </div>\n                            </div>\n\n                            <div class=\"form-label-group\">\n                                <input type=\"password\" name=\"contrasena\" id=\"contrasena\" class=\"form-control\" placeholder=\"Contrasena\" ngModel required>\n                                <label for=\"inputPassword\">Contrasena</label>\n                            </div>\n\n                            <div *ngIf=\"!frmRegister.valid\">\n                                <div class=\"alert-danger\" *ngIf=\"this.frmRegister.controls.contrasena.invalid && (this.frmRegister.controls.contrasena.dirty || this.frmRegister.controls.contrasena.touched)\" style=\"margin-bottom:5px\" role=\"alert\">\n                                    <div class=\"container-error-message\">\n                                        Ingrese una Contrasena <b>valida</b>!\n                                    </div>\n                                </div>\n                            </div>\n\n                            <div class=\"form-label-group\">\n                                <input type=\"radio\" name=\"tipoUsuario\" id=\"tipoUsuario\" value=\"Conductor\" ngModel required> Conductor\n                                <input type=\"radio\" name=\"tipoUsuario\" id=\"tipoUsuario\" value=\"Administrador\" ngModel required> Administrador\n                            </div>\n                            <label for=\"tipoUsuario\">Tipo de Usuario</label>\n\n                            <div *ngIf=\"!frmRegister.valid\">\n                                <div class=\"alert-danger\" *ngIf=\"this.frmRegister.controls.tipoUsuario.invalid && (this.frmRegister.submitted && this.frmRegister.controls.tipoUsuario.untouched)\" style=\"margin-bottom:5px\" role=\"alert\">\n                                    <div class=\"container-error-message\">\n                                        Seleccione un TipoUsuario!\n                                    </div>\n                                </div>\n                            </div>\n\n                            <div class=\"form-label-group\">\n                                <input type=\"hidden\" name=\"estado\" value=\"false\" class=\"form-control\" ngModel>\n                            </div>\n\n                            <button class=\"btn btn-lg btn-primary btn-block text-uppercase\" type=\"submit\" value=\"Register\">Registrar</button>\n                            <hr class=\"my-4\">\n                        </form>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</body>");
 
 /***/ }),
 
@@ -1906,7 +1906,7 @@ let LoginComponent = class LoginComponent {
                 console.log(error, 'Ultimo error');
                 document.getElementById('errorEmail').style.display = 'inline';
                 setTimeout(() => {
-                    this.erroeEmail();
+                    this.errorEmail();
                 }, 3000);
             });
         }
@@ -1916,7 +1916,7 @@ let LoginComponent = class LoginComponent {
         }
     }
     // Oculta el mensaje que aparece al escribir una direccion de correo y/o contrasena equivocada
-    erroeEmail() {
+    errorEmail() {
         document.getElementById('errorEmail').style.display = 'none';
         return 's';
     }
@@ -1969,12 +1969,25 @@ let RegisterComponent = class RegisterComponent {
             form.value.estado = false;
             this.authService.register(form.value).subscribe(res => {
                 // this.router.navigateByUrl('/');
-                console.log('Registrado', form.value);
+                console.log('Registrado', form);
+                // form.controls.tipoUsuario.untouched = false;
+                form.reset();
+                form.submitted = false;
+                console.log(form.submitted, '123');
+                console.log('Registrado', form);
+                document.getElementById('UsuarioAgg').style.display = 'inline';
+                setTimeout(() => {
+                    this.usuarioAgg();
+                }, 3000);
             }, error => { console.log(error, 'error U.u'); });
         }
         else {
             console.log('No valido');
         }
+    }
+    usuarioAgg() {
+        document.getElementById('UsuarioAgg').style.display = 'none';
+        return 's';
     }
 };
 RegisterComponent.ctorParameters = () => [
@@ -2014,7 +2027,7 @@ let AdminGuard = class AdminGuard {
     }
     canActivate() {
         // console.log('guard');
-        return true;
+        // return true;
         return this.auth.estaAutenticadoUnAdministrador();
     }
 };

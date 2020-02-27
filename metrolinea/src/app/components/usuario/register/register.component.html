@@ -3,12 +3,17 @@
         <div class="row">
             <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                 <div class="card card-signin my-5">
+                    <div class="alert-success" id="UsuarioAgg" style="margin-bottom:5px; display: none;" role="alert">
+                        <div class="container-error-message">
+                            Usuario Registrado <b>Correctamente</b>!
+                        </div>
+                    </div>
                     <div class="card-body">
+
                         <h5 class="card-title text-center">Crear un Usuario</h5>
 
                         <form #frmRegister="ngForm" class="form-signin" (ngSubmit)="onRegister(frmRegister)">
 
-                            {{frmRegister.valid}}
                             <div class="form-label-group">
                                 <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre" ngModel required minlength=5 autofocus>
                                 <label for="inputEmail">Nombre</label>

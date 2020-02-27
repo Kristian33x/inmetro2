@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
       console.log(error, 'Ultimo error');
       document.getElementById('errorEmail').style.display = 'inline';
       setTimeout(() => {
-        this.erroeEmail();
+        this.errorEmail();
       }, 3000);
        }
     );
@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
   }
 
   // Oculta el mensaje que aparece al escribir una direccion de correo y/o contrasena equivocada
-  erroeEmail(): string {
+  errorEmail(): string {
     document.getElementById('errorEmail').style.display = 'none';
     return 's';
   }
