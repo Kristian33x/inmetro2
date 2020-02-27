@@ -201,7 +201,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<body>\n    <div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col-sm-9 col-md-7 col-lg-5 mx-auto\">\n                <div class=\"card card-signin my-5\">\n                    <div class=\"card-body\">\n                        <h5 class=\"card-title text-center\">Crear un Usuario</h5>\n\n                        <form #frmRegister=\"ngForm\" class=\"form-signin\" (ngSubmit)=\"onRegister(frmRegister)\">\n\n                            <div class=\"form-label-group\">\n                                <input type=\"text\" name=\"nombre\" class=\"form-control\" placeholder=\"Nombre\" ngModel required autofocus>\n                                <label for=\"inputEmail\">Nombre</label>\n                            </div>\n\n                            <div class=\"form-label-group\">\n                                <input type=\"email\" name=\"email\" id=\"inputEmail\" class=\"form-control\" placeholder=\"Correo Electronico\" ngModel required>\n                                <label for=\"inputEmail\">Correo Electronico</label>\n                            </div>\n\n                            <div class=\"form-label-group\">\n                                <input type=\"password\" name=\"contrasena\" class=\"form-control\" placeholder=\"Contrasena\" ngModel required>\n                                <label for=\"inputPassword\">Contrasena</label>\n                            </div>\n\n                            <div class=\"form-label-group\">\n                                <input type=\"radio\" name=\"tipoUsuario\" value=\"Conductor\" ngModel required> Conductor\n                                <input type=\"radio\" name=\"tipoUsuario\" value=\"Administrador\" ngModel required> Administrador\n                            </div>\n                            <label for=\"tipoUsuario\">Tipo de Usuario</label>\n                            <div class=\"form-label-group\">\n                                <input type=\"hidden\" name=\"estado\" value=\"false\" class=\"form-control\" ngModel>\n                            </div>\n\n                            <button class=\"btn btn-lg btn-primary btn-block text-uppercase\" type=\"submit\" value=\"Register\">Registrar</button>\n                            <hr class=\"my-4\">\n                        </form>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</body>");
+/* harmony default export */ __webpack_exports__["default"] = ("<body>\n    <div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col-sm-9 col-md-7 col-lg-5 mx-auto\">\n                <div class=\"card card-signin my-5\">\n                    <div class=\"card-body\">\n                        <h5 class=\"card-title text-center\">Crear un Usuario</h5>\n\n                        <form #frmRegister=\"ngForm\" class=\"form-signin\" (ngSubmit)=\"onRegister(frmRegister)\">\n\n                            {{frmRegister.valid}}\n                            <div class=\"form-label-group\">\n                                <input type=\"text\" name=\"nombre\" id=\"nombre\" class=\"form-control\" placeholder=\"Nombre\" ngModel required minlength=5 autofocus>\n                                <label for=\"inputEmail\">Nombre</label>\n                            </div>\n\n                            <div *ngIf=\"!frmRegister.valid\">\n                                <div class=\"alert-danger\" *ngIf=\"this.frmRegister.controls.nombre.invalid && (this.frmRegister.controls.nombre.dirty || this.frmRegister.controls.nombre.touched)\" style=\"margin-bottom:5px\" role=\"alert\">\n                                    <div class=\"container-error-message\">\n                                        Ingrese un Nombre <b>valido</b>!\n                                    </div>\n                                </div>\n                            </div>\n\n                            <div class=\"form-label-group\">\n                                <input type=\"email\" name=\"email\" id=\"email\" class=\"form-control\" placeholder=\"Correo Electronico\" ngModel minlength=5 pattern=\"^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$\" required>\n                                <label for=\"inputEmail\">Correo Electronico</label>\n                            </div>\n\n                            <div *ngIf=\"!frmRegister.valid\">\n                                <div class=\"alert-danger\" *ngIf=\"this.frmRegister.controls.email.invalid && (this.frmRegister.controls.email.dirty || this.frmRegister.controls.email.touched)\" style=\"margin-bottom:5px\" role=\"alert\">\n                                    <div class=\"container-error-message\">\n                                        Ingrese un Email <b>valido</b>!\n                                    </div>\n                                </div>\n                            </div>\n\n                            <div class=\"form-label-group\">\n                                <input type=\"password\" name=\"contrasena\" id=\"contrasena\" class=\"form-control\" placeholder=\"Contrasena\" ngModel required>\n                                <label for=\"inputPassword\">Contrasena</label>\n                            </div>\n\n                            <div *ngIf=\"!frmRegister.valid\">\n                                <div class=\"alert-danger\" *ngIf=\"this.frmRegister.controls.contrasena.invalid && (this.frmRegister.controls.contrasena.dirty || this.frmRegister.controls.contrasena.touched)\" style=\"margin-bottom:5px\" role=\"alert\">\n                                    <div class=\"container-error-message\">\n                                        Ingrese una Contrasena <b>valida</b>!\n                                    </div>\n                                </div>\n                            </div>\n\n                            <div class=\"form-label-group\">\n                                <input type=\"radio\" name=\"tipoUsuario\" id=\"tipoUsuario\" value=\"Conductor\" ngModel required> Conductor\n                                <input type=\"radio\" name=\"tipoUsuario\" id=\"tipoUsuario\" value=\"Administrador\" ngModel required> Administrador\n                            </div>\n                            <label for=\"tipoUsuario\">Tipo de Usuario</label>\n\n                            <div *ngIf=\"!frmRegister.valid\">\n                                <div class=\"alert-danger\" *ngIf=\"this.frmRegister.controls.tipoUsuario.invalid && (this.frmRegister.submitted && this.frmRegister.controls.tipoUsuario.untouched)\" style=\"margin-bottom:5px\" role=\"alert\">\n                                    <div class=\"container-error-message\">\n                                        Seleccione un TipoUsuario!\n                                    </div>\n                                </div>\n                            </div>\n\n                            <div class=\"form-label-group\">\n                                <input type=\"hidden\" name=\"estado\" value=\"false\" class=\"form-control\" ngModel>\n                            </div>\n\n                            <button class=\"btn btn-lg btn-primary btn-block text-uppercase\" type=\"submit\" value=\"Register\">Registrar</button>\n                            <hr class=\"my-4\">\n                        </form>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</body>");
 
 /***/ }),
 
@@ -1867,19 +1867,6 @@ TarjetaBusComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
-/***/ "./src/app/components/usuario/login/login.component.scss":
-/*!***************************************************************!*\
-  !*** ./src/app/components/usuario/login/login.component.scss ***!
-  \***************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvdXN1YXJpby9sb2dpbi9sb2dpbi5jb21wb25lbnQuc2NzcyJ9 */");
-
-/***/ }),
-
 /***/ "./src/app/components/usuario/login/login.component.ts":
 /*!*************************************************************!*\
   !*** ./src/app/components/usuario/login/login.component.ts ***!
@@ -1916,7 +1903,7 @@ let LoginComponent = class LoginComponent {
                 this.authService.administrador();
                 this.router.navigateByUrl('/home');
             }, error => {
-                // console.log(error, 'Ultimo error');
+                console.log(error, 'Ultimo error');
                 document.getElementById('errorEmail').style.display = 'inline';
                 setTimeout(() => {
                     this.erroeEmail();
@@ -1941,8 +1928,7 @@ LoginComponent.ctorParameters = () => [
 LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-login',
-        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./login.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/usuario/login/login.component.html")).default,
-        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./login.component.scss */ "./src/app/components/usuario/login/login.component.scss")).default]
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./login.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/usuario/login/login.component.html")).default
     })
 ], LoginComponent);
 
@@ -1972,15 +1958,23 @@ let RegisterComponent = class RegisterComponent {
     constructor(authService, router) {
         this.authService = authService;
         this.router = router;
+        // tslint:disable-next-line:max-line-length
+        this.emailPattern = '/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/';
     }
     ngOnInit() {
     }
     onRegister(form) {
-        form.value.estado = false;
-        this.authService.register(form.value).subscribe(res => {
-            // this.router.navigateByUrl('/');
-            console.log('Registrado', form.value);
-        });
+        if (form.valid) {
+            console.log('Valido');
+            form.value.estado = false;
+            this.authService.register(form.value).subscribe(res => {
+                // this.router.navigateByUrl('/');
+                console.log('Registrado', form.value);
+            }, error => { console.log(error, 'error U.u'); });
+        }
+        else {
+            console.log('No valido');
+        }
     }
 };
 RegisterComponent.ctorParameters = () => [
@@ -2020,6 +2014,7 @@ let AdminGuard = class AdminGuard {
     }
     canActivate() {
         // console.log('guard');
+        return true;
         return this.auth.estaAutenticadoUnAdministrador();
     }
 };

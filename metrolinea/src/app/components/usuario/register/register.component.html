@@ -8,26 +8,60 @@
 
                         <form #frmRegister="ngForm" class="form-signin" (ngSubmit)="onRegister(frmRegister)">
 
+                            {{frmRegister.valid}}
                             <div class="form-label-group">
-                                <input type="text" name="nombre" class="form-control" placeholder="Nombre" ngModel required autofocus>
+                                <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre" ngModel required minlength=5 autofocus>
                                 <label for="inputEmail">Nombre</label>
                             </div>
 
+                            <div *ngIf="!frmRegister.valid">
+                                <div class="alert-danger" *ngIf="this.frmRegister.controls.nombre.invalid && (this.frmRegister.controls.nombre.dirty || this.frmRegister.controls.nombre.touched)" style="margin-bottom:5px" role="alert">
+                                    <div class="container-error-message">
+                                        Ingrese un Nombre <b>valido</b>!
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="form-label-group">
-                                <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Correo Electronico" ngModel required>
+                                <input type="email" name="email" id="email" class="form-control" placeholder="Correo Electronico" ngModel minlength=5 pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
                                 <label for="inputEmail">Correo Electronico</label>
                             </div>
 
-                            <div class="form-label-group">
-                                <input type="password" name="contrasena" class="form-control" placeholder="Contrasena" ngModel required>
-                                <label for="inputPassword">Contrasena</label>
+                            <div *ngIf="!frmRegister.valid">
+                                <div class="alert-danger" *ngIf="this.frmRegister.controls.email.invalid && (this.frmRegister.controls.email.dirty || this.frmRegister.controls.email.touched)" style="margin-bottom:5px" role="alert">
+                                    <div class="container-error-message">
+                                        Ingrese un Email <b>valido</b>!
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="form-label-group">
-                                <input type="radio" name="tipoUsuario" value="Conductor" ngModel required> Conductor
-                                <input type="radio" name="tipoUsuario" value="Administrador" ngModel required> Administrador
+                                <input type="password" name="contrasena" id="contrasena" class="form-control" placeholder="Contrasena" ngModel required>
+                                <label for="inputPassword">Contrasena</label>
+                            </div>
+
+                            <div *ngIf="!frmRegister.valid">
+                                <div class="alert-danger" *ngIf="this.frmRegister.controls.contrasena.invalid && (this.frmRegister.controls.contrasena.dirty || this.frmRegister.controls.contrasena.touched)" style="margin-bottom:5px" role="alert">
+                                    <div class="container-error-message">
+                                        Ingrese una Contrasena <b>valida</b>!
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-label-group">
+                                <input type="radio" name="tipoUsuario" id="tipoUsuario" value="Conductor" ngModel required> Conductor
+                                <input type="radio" name="tipoUsuario" id="tipoUsuario" value="Administrador" ngModel required> Administrador
                             </div>
                             <label for="tipoUsuario">Tipo de Usuario</label>
+
+                            <div *ngIf="!frmRegister.valid">
+                                <div class="alert-danger" *ngIf="this.frmRegister.controls.tipoUsuario.invalid && (this.frmRegister.submitted && this.frmRegister.controls.tipoUsuario.untouched)" style="margin-bottom:5px" role="alert">
+                                    <div class="container-error-message">
+                                        Seleccione un TipoUsuario!
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="form-label-group">
                                 <input type="hidden" name="estado" value="false" class="form-control" ngModel>
                             </div>

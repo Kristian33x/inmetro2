@@ -6,8 +6,7 @@ declare var M: any;
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  templateUrl: './login.component.html'
 
 })
 export class LoginComponent implements OnInit {
@@ -35,7 +34,7 @@ export class LoginComponent implements OnInit {
       this.router.navigateByUrl('/home');
     },
     error => {
-      // console.log(error, 'Ultimo error');
+      console.log(error, 'Ultimo error');
       document.getElementById('errorEmail').style.display = 'inline';
       setTimeout(() => {
         this.erroeEmail();
