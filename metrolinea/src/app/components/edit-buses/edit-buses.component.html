@@ -41,7 +41,7 @@
                             <th># De Buses</th>
                             <th>Fecha</th>
                             <th>Tipo Bus</th>
-                            <th>Operaciones</th>
+                            <th width="15%">Operaciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -50,7 +50,7 @@
                         <tr *ngFor="let ruta of selectedRutas1">
 
                             <td>{{ruta.nombre}}</td>
-                            <td>{{ruta.descripcion}}</td>
+                            <td>{{ruta.descripcion.substring(0,32)}}</td>
                             <td width="20%">
                                 <!-- {{bus.imagenBus}} -->
                                 <img src="{{ruta.imagenBus}}" height="30%">
@@ -68,7 +68,6 @@
                                 <a (click)="deleteBus(bus._id)">
                                     <i class="material-icons">delete</i>
                                 </a> -->
-                                &nbsp;
                                 <button (click)="editRuta(ruta)" type="button" title="Editar Ruta" class="btn btn-warning btn-sm " data-toggle="modal" data-target="#modalActualizarRutas">
                                         <i class="material-icons">edit</i>
                                       </button> &nbsp;
@@ -342,12 +341,12 @@
                 <table class="table table-hover table-bordered table-striped table-sm table-responsive">
                     <thead>
                         <tr>
-                            <th>Placa</th>
-                            <th>Tipo Bus</th>
-                            <th>Ruta Asociada</th>
-                            <th>Conductor Asociado</th>
-                            <th>Coordenadas</th>
-                            <th>Operaciones</th>
+                            <th width="10%">Placa</th>
+                            <th width="10%">Tipo Bus</th>
+                            <th width="12%">Ruta Asociada</th>
+                            <th width="20%">Conductor Asociado</th>
+                            <th width="10%">Coordenadas</th>
+                            <th width="25%">Operaciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -373,7 +372,7 @@
                                 <a (click)="deleteBus(conductor._id)">
                                     <i class="material-icons">delete</i>
                                 </a> -->
-                                &nbsp;
+
                                 <button (click)="editBus(bus); getRutasByTipoBus(bus.tipoBus); resetForm2(asignarRutaBusForm);" type="button" title="Asignar Ruta" class="btn btn-success btn-sm mce-btn-group" data-toggle="modal" data-target="#modalAsignarRutaBus">
                                     <i class="material-icons">directions_bus</i>
                                 </button>&nbsp;
@@ -533,22 +532,22 @@
     <div class="modal-dialog modal-danger" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Asignar una Ruta para el Bus: <b>{{selectedBus1.placa}}</b>.</h4>
-                <h4 class="modal-title">Ruta Actual: <b>{{selectedBus1.RutaAsociada.nombre}} </b>.</h4>
+                <h5 class="modal-title">Asignar una Ruta para el Bus: <b>{{selectedBus1.placa}}</b>.</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">×</span>
                 </button>
             </div>
             <div class="modal-body">
-                <p>Seleccione la ruta que va ser asignada. </p>
+                <h4 class="modal-dialog" *ngIf="selectedBus1.RutaAsociada.nombre != ''">Ruta Actual: <b>{{selectedBus1.RutaAsociada.nombre}} </b>.</h4>
+                <h4 class="modal-dialog" *ngIf="selectedBus1.RutaAsociada.nombre == ''"><b>Sin Ruta Asociada</b>.</h4>
+
+                <h4 class="modal-dialog">Seleccione la ruta que va ser asignada. </h4>
 
                 <form class="user" #asignarRutaBusForm="ngForm">
                     <div class="form-group row">
-                        <!-- <div class="col-1"></div>
-                    <div class="col-11"> -->
                         <select class="modal-body" name="ruta" ngModel> 
                             <option value="" selected disabled>Seleccione una ruta</option>
-                            <option value="">Quitar Ruta </option>
+                            <option *ngIf="selectedBus1.RutaAsociada.nombre != ''" value="">Quitar Ruta Actual</option>
                             <!-- <option *ngFor="let ruta of selectedRutas1" [ngValue]="ruta" >{{ruta.nombre}}</option> -->
                             <option *ngFor="let ruta of selectedRutas2" [ngValue]="ruta" >{{ruta.nombre}}</option>
                         </select>
@@ -571,21 +570,23 @@
     <div class="modal-dialog modal-danger" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Asignar un Conductor para el Bus: <b>{{selectedBus1.placa}}</b>.</h4>
+                <h5 class="modal-title">Asignar un Conductor para el Bus: <b>{{selectedBus1.placa}}</b>.</h5>
                 <!-- // **ngIf="selectedBus1.ConductorAsociado != ''"  -->
-                <h4 class="modal-title">Conductor Actual: <b>{{selectedBus1.ConductorAsociado.nombre}} </b>.</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">×</span>
                 </button>
             </div>
             <div class="modal-body">
-                <p>Seleccione el Conductor que va ser asignado. </p>
+                <h4 class="modal-dialog" *ngIf="selectedBus1.ConductorAsociado.nombre != ''">Conductor Actual: <b>{{selectedBus1.ConductorAsociado.nombre}} </b>.</h4>
+                <h4 class="modal-dialog" *ngIf="selectedBus1.ConductorAsociado.nombre == ''"><b> Sin Conductor Asociado</b>.</h4>
+
+                <h4 class="modal-dialog">Seleccione el Conductor que va ser asignado. </h4>
 
                 <form class="user" #asignarconductorBusForm="ngForm">
                     <div class="form-group row">
                         <select class="modal-body" name="conductor" ngModel> 
                             <option value="" disabled selected>Seleccione un Conductor</option>
-                            <option value="">Quitar Conductor : </option>
+                            <option *ngIf="selectedBus1.ConductorAsociado.nombre != ''" value="">Quitar Conductor Actual</option>
                             <option *ngFor="let conductor of conductoresSinBus" [ngValue]="conductor" >{{conductor.nombre}}</option>
                         </select>
                     </div>
@@ -632,13 +633,12 @@
                 </div>
                 <table class="table table-hover table-bordered table-striped table-sm table-responsive">
                     <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Email</th>
-                            <th>Contrasena</th>
-                            <th>Tipo</th>
-                            <th>Activo</th>
-                            <th>Operaciones</th>
+                        <tr width="100%">
+                            <th style="width: 25%;">Nombre</th>
+                            <th style="width: 25%;">Email</th>
+                            <th style="width: 20%;">Tipo</th>
+                            <th style="width: 20%;">Activo</th>
+                            <th style="width: 20%;">Operaciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -648,7 +648,6 @@
 
                             <td>{{conductor.nombre}}</td>
                             <td>{{conductor.email}}</td>
-                            <td>{{conductor.contrasena}}</td>
                             <td>{{conductor.tipoUsuario}}</td>
                             <td>{{conductor.estado}}</td>
                             <td>

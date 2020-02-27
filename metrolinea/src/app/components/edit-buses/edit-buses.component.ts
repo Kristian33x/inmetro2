@@ -425,7 +425,7 @@ addRuta2(bus: Ruta) {
 
   CuadroDialogo1(): void {
     const dialogRef = this.dialog.open(MapaEditarComponent, {
-      width: '450px',
+      width: '650px',
       data: {placa: this.selectedBus1.placa, ruta: this.selectedBus1.RutaAsociada}
     });
     dialogRef.afterClosed().subscribe(result => {
