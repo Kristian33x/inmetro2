@@ -9,7 +9,7 @@
         <agm-map (mapClick)="agregarMarcador( $event )" (boundsChange)="moverMapa( $event);" [latitude]="lat" [longitude]="lng" [zoom]="16">
             <!-- <agm-circle [latitude]="lat" [longitude]="lng" [radius]="30" [fillColor]="'red'" [circleDraggable]="true" [editable]="true">></agm-circle> -->
 
-            <agm-direction [origin]="this.origin" [destination]="this.destination" [waypoints]="this.waypoints"> </agm-direction>
+            <!-- <agm-direction [origin]="this.origin" [destination]="this.destination" [waypoints]="this.waypoints"> </agm-direction> -->
 
 
             <!-- <agm-marker *ngFor="let marcador of marcadores; let i = index" [iconUrl]="'assets/carro.bmp'" [label]="marcador.placa" [latitude]="marcador.latitud" [longitude]="marcador.longitud">

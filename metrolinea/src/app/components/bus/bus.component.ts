@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RutasService } from '../../services/rutas.service';
 import { BusService } from '../../services/bus.service';
@@ -6,6 +6,8 @@ import { Bus } from 'src/app/models/bus';
 import { MatDialog } from '@angular/material/dialog';
 import { Marcador } from '../../Class/marcador.class';
 import { MapaEditarComponent } from '../mapa/mapa-editar.component';
+import { ParadasService } from '../../services/parada.service';
+import { Parada } from 'src/app/models/parada';
 
 
 @Component({
@@ -13,10 +15,12 @@ import { MapaEditarComponent } from '../mapa/mapa-editar.component';
   templateUrl: './bus.component.html',
   styleUrls: ['./bus.component.css']
 })
-export class BusComponent implements OnDestroy {
+export class BusComponent implements OnDestroy, OnInit {
 
   ruta: any = {};
   MysetInterval: any;
+
+  paradasRuta: Parada[] = [];
 
   BusesAsociadosRuta: Bus[];
 
@@ -24,15 +28,13 @@ export class BusComponent implements OnDestroy {
   latCentroMapa = 7.11392;
   lngCentroMapa = -73.1198;
 
-  public lat = 24.799448;
-  public lng = 120.979021;
+  // Datos utilizados para dibujar la 'ruta' de la ruta seleccionada en el mapa
+  origin: any;
+  destination: any;
+  waypoints: any;
 
-  public origin: any;
-  public destination: any;
-
-  constructor( private activatedRoute: ActivatedRoute,
-               private rutasService: RutasService, private busService: BusService,
-               public dialog: MatDialog) {
+  constructor( private activatedRoute: ActivatedRoute, private rutasService: RutasService, private busService: BusService,
+               public dialog: MatDialog, public paradasService: ParadasService) {
                 this.getDirection();
                 if (navigator.geolocation) {
                        navigator.geolocation.getCurrentPosition( async ( datos ) => {
@@ -41,22 +43,22 @@ export class BusComponent implements OnDestroy {
                        },
                         () => { console.log('No esta activado el gps'); });
                 }
-
                 this.activatedRoute.params.subscribe(params => {
                     this.ruta = this.rutasService.getRuta( params.termino);
                 });
                 this.busService.getBuses();
+                // this.paradasService.getParadas();
                 this.BusesAsociadosRuta = this.busService.busesPorRuta(this.ruta.nombre);
                 this.Watcher();
   }
 
-
-  getDirection() {
-    this.origin = { lat: 7.11392, lng: -73.1198 } ;
-    this.destination = { lat: 7.11392, lng: -73.1298 } ;
-
-    // this.origin = 'Taipei Main Station'
-    // this.destination = 'Taiwan Presidential Office'
+  ngOnInit() {
+    this.paradasService.getParadas();
+    this.paradasService.getParada()
+    .subscribe( () => {
+      this.obtenerParadasdeRuta();
+      // this.getDirection();
+    });
   }
 
   ngOnDestroy(): void {
@@ -102,6 +104,36 @@ export class BusComponent implements OnDestroy {
       // aqui podemos actuliazar la posicion del bus cada vez que sea cerrado el dialogo
       // this.snackBar.open(' Marcador actualizado ', 'Cerrar', {duration: 3000});
     });
+  }
+
+  // Obtiene las paradas asociadas a la ruta seleccionada
+  obtenerParadasdeRuta() {
+    // console.log(this.paradasService.paradas, 'WWW');
+    this.paradasRuta = this.paradasService.getParadaByRuta(this.ruta.nombre);
+    // console.log(this.paradasRuta, 'XXX');
+    this.getDirection();
+  }
+
+  getDirection() {
+
+    this.origin = { lat: 7.137089498267445 , lng: -73.11899185180664 }; // A
+    this.destination = { lat: 7.137089498267445, lng: -73.11899185180664 }; // D
+    let index = 1;
+    this.waypoints = [];
+    console.log(this.paradasRuta.length);
+    for (const parada of this.paradasRuta) {
+      if (index === 1) {
+        this.origin = { lat: parada.latitud , lng: parada.longitud }; // A
+      } else {
+              if (this.paradasRuta.length === index) {
+                this.destination = { lat: parada.latitud, lng: parada.longitud }; // D
+              } else {
+                      this.waypoints.push({location: { lat: parada.latitud, lng: parada.longitud }});
+                     }
+      }
+      index++;
+    }
+    console.log(this.waypoints, 'CC', this.origin, 'origin', this.destination, 'destination' );
   }
 
 }

@@ -56,7 +56,7 @@ export class MapaComponent implements OnInit {
     this.waypoints = [
      {location: { lat: 7.13392, lng: -73.1398 }}, // C
      {location: { lat: 7.14392, lng: -73.1498 }} // B
-  ];
+    ];
   }
 
   moverMapa(evento) {

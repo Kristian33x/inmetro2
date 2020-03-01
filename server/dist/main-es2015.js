@@ -45,7 +45,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h1 class=\"animated fadeIn\">{{ruta.nombre | uppercase}} <small>({{ ruta.Fecha | date:'y' }})</small></h1>\n<hr>\n\n<div class=\"row animated fadeIn fast\">\n\n    <div class=\"col-md-4\">\n\n        <img [src]=\"ruta.imagenBus\" [alt]=\"ruta.nombre\" class=\"img-fluid\">\n        <br><br>\n        <a [routerLink]=\"['/buses']\" class=\" btn btn-outline-danger btn-block \"> Regresar..</a>\n    </div>\n\n    <div class=\"col-md-8 \">\n        <h3>{{ruta.nombre}}</h3>\n        <hr>\n        <p>\n            {{ruta.descripcion}}\n        </p>\n        <img [src]=\"ruta.imagenTipoBus \" [alt]=\"ruta.imagenTipoBus\" class=\"img-fluid\">\n    </div>\n\n</div>\n\n<div class=\"row animated fadeIn fast\">\n\n    <div class=\"col-md-4\">\n\n    </div>\n\n    <div class=\"col-md-8 \">\n        <h3>Numero de buses asociados a la ruta: {{ruta.NumBusesAsociados}}</h3>\n        <h3>Buses asociados a la ruta:</h3>\n\n        <table class=\"table table-bordered table-striped table-sm\">\n            <thead>\n                <tr>\n                    <th>Placa</th>\n                    <th>coordenadas</th>\n                    <th>Operaciones</th>\n                </tr>\n            </thead>\n            <tbody>\n                <tr *ngFor=\"let bus of BusesAsociadosRuta\">\n                    <td>{{bus.placa}}</td>\n                    <!-- GPS Celular -->\n                    <td *ngIf=\"bus.latitud != 0 && bus.sentido != null\"> {{bus.latitud}}, {{bus.longitud}}, {{bus.sentido}}</td>\n\n                    <!-- GPS Desactivado -->\n                    <td *ngIf=\"bus.latitud == 0 && bus.sentido != null\"> - , - , -</td>\n\n                    <!-- GPS por WIFI -->\n                    <td *ngIf=\"bus.latitud != 0 && bus.sentido == null\"> {{bus.latitud}}, {{bus.longitud}}, -</td>\n\n                    <td>\n                        <button (click)=\"UbicarEnMapa(bus.latitud,bus.longitud,bus.sentido);\" type=\"button\" title=\"Ubicar en Mapa este Bus\" class=\"btn btn-success btn-sm\" data-toggle=\"modal\" data-target=\"#modalAsignarRutaBus\">\n                        <i class=\"material-icons\">directions_bus</i>\n                    </button>&nbsp;\n                    </td>\n\n                </tr>\n            </tbody>\n        </table>\n    </div>\n\n</div>\n\n<mat-card>\n\n    <mat-card-title>\n        Mapa\n    </mat-card-title>\n\n    <!-- (centerChange)= (zoomChange) -->\n\n    <mat-card-content>\n        <agm-map [latitude]=\"latCentroMapa\" [longitude]=\"lngCentroMapa\" [zoom]=\"15\">\n            <!-- <agm-circle [latitude]=\"lat\" [longitude]=\"lng\" [radius]=\"30\" [fillColor]=\"'red'\" [circleDraggable]=\"true\" [editable]=\"true\">></agm-circle> -->\n\n            <agm-direction [origin]=\"origin\" [destination]=\"destination\"> </agm-direction>\n\n\n            <agm-marker *ngFor=\"let marcador of marcadores; let i = index\" [iconUrl]=\"'assets/img/location.png'\" [label]=\"marcador.placa\" [latitude]=\"marcador.latitud\" [longitude]=\"marcador.longitud\">\n\n                <agm-info-window>\n                    <strong>{{marcador.placa}}</strong>\n                    <p>\n                        {{marcador.ruta.nombre}} , {{marcador.ruta.descripcion}}\n                    </p>\n                    <div>\n                        <button (click)=\"CuadroDialogo(marcador)\" mat-raised-button color=\"primary\">Ver mas...</button>\n                    </div>\n                </agm-info-window>\n\n            </agm-marker>\n\n        </agm-map>\n    </mat-card-content>\n\n</mat-card>");
+/* harmony default export */ __webpack_exports__["default"] = ("<h1 class=\"animated fadeIn\">{{ruta.nombre | uppercase}} <small>({{ ruta.Fecha | date:'y' }})</small></h1>\n<hr>\n\n<div class=\"row animated fadeIn fast\">\n\n    <div class=\"col-md-4\">\n\n        <img [src]=\"ruta.imagenBus\" [alt]=\"ruta.nombre\" class=\"img-fluid\">\n        <br><br>\n        <a [routerLink]=\"['/buses']\" class=\" btn btn-outline-danger btn-block \"> Regresar..</a>\n    </div>\n\n    <div class=\"col-md-8 \">\n        <h3>{{ruta.nombre}}</h3>\n        <hr>\n        <p>\n            {{ruta.descripcion}}\n        </p>\n        <img [src]=\"ruta.imagenTipoBus \" [alt]=\"ruta.imagenTipoBus\" class=\"img-fluid\">\n    </div>\n\n</div>\n\n<div class=\"row animated fadeIn fast\">\n\n    <div class=\"col-md-4\">\n\n    </div>\n\n    <div class=\"col-md-8 \">\n        <h3>Numero de buses asociados a la ruta: {{ruta.NumBusesAsociados}}</h3>\n        <h3>Buses asociados a la ruta:</h3>\n\n        <table class=\"table table-bordered table-striped table-sm\">\n            <thead>\n                <tr>\n                    <th>Placa</th>\n                    <th>coordenadas</th>\n                    <th>Operaciones</th>\n                </tr>\n            </thead>\n            <tbody>\n                <tr *ngFor=\"let bus of BusesAsociadosRuta\">\n                    <td>{{bus.placa}}</td>\n                    <!-- GPS Celular -->\n                    <td *ngIf=\"bus.latitud != 0 && bus.sentido != null\"> {{bus.latitud}}, {{bus.longitud}}, {{bus.sentido}}</td>\n\n                    <!-- GPS Desactivado -->\n                    <td *ngIf=\"bus.latitud == 0 && bus.sentido != null\"> - , - , -</td>\n\n                    <!-- GPS por WIFI -->\n                    <td *ngIf=\"bus.latitud != 0 && bus.sentido == null\"> {{bus.latitud}}, {{bus.longitud}}, -</td>\n\n                    <td>\n                        <button (click)=\"UbicarEnMapa(bus.latitud,bus.longitud,bus.sentido);\" type=\"button\" title=\"Ubicar en Mapa este Bus\" class=\"btn btn-success btn-sm\" data-toggle=\"modal\" data-target=\"#modalAsignarRutaBus\">\n                        <i class=\"material-icons\">directions_bus</i>\n                    </button>&nbsp;\n                    </td>\n\n                </tr>\n            </tbody>\n        </table>\n    </div>\n\n</div>\n\n<mat-card>\n\n    <mat-card-title>\n        Mapa\n    </mat-card-title>\n\n    <!-- (centerChange)= (zoomChange) -->\n\n    <mat-card-content>\n        <agm-map [latitude]=\"latCentroMapa\" [longitude]=\"lngCentroMapa\" [zoom]=\"15\">\n            <!-- <agm-circle [latitude]=\"lat\" [longitude]=\"lng\" [radius]=\"30\" [fillColor]=\"'red'\" [circleDraggable]=\"true\" [editable]=\"true\">></agm-circle> -->\n\n            <agm-direction [travelMode]=\"'DRIVING'\" [origin]=\"this.origin\" [destination]=\"this.destination\" [waypoints]=\"this.waypoints\"> </agm-direction>\n\n\n            <agm-marker *ngFor=\"let marcador of marcadores; let i = index\" [iconUrl]=\"'assets/img/location.png'\" [label]=\"marcador.placa\" [latitude]=\"marcador.latitud\" [longitude]=\"marcador.longitud\">\n\n                <agm-info-window>\n                    <strong>{{marcador.placa}}</strong>\n                    <p>\n                        {{marcador.ruta.nombre}} , {{marcador.ruta.descripcion}}\n                    </p>\n                    <div>\n                        <button (click)=\"CuadroDialogo(marcador)\" mat-raised-button color=\"primary\">Ver mas...</button>\n                    </div>\n                </agm-info-window>\n\n            </agm-marker>\n\n        </agm-map>\n    </mat-card-content>\n\n</mat-card>");
 
 /***/ }),
 
@@ -123,7 +123,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<mat-card>\n\n    <mat-card-title>\n        Mapa\n    </mat-card-title>\n\n    <!-- (centerChange)= (zoomChange) -->\n    <mat-card-content>\n        <agm-map (mapClick)=\"agregarMarcador( $event )\" (boundsChange)=\"moverMapa( $event);\" [latitude]=\"lat\" [longitude]=\"lng\" [zoom]=\"16\">\n            <!-- <agm-circle [latitude]=\"lat\" [longitude]=\"lng\" [radius]=\"30\" [fillColor]=\"'red'\" [circleDraggable]=\"true\" [editable]=\"true\">></agm-circle> -->\n\n            <agm-direction [origin]=\"this.origin\" [destination]=\"this.destination\" [waypoints]=\"this.waypoints\"> </agm-direction>\n\n\n            <!-- <agm-marker *ngFor=\"let marcador of marcadores; let i = index\" [iconUrl]=\"'assets/carro.bmp'\" [label]=\"marcador.placa\" [latitude]=\"marcador.latitud\" [longitude]=\"marcador.longitud\">\n\n                <agm-info-window>\n                    <strong>{{marcador.placa}}</strong>\n                    <p>\n                        {{marcador.ruta}}\n                    </p>\n                    <div>\n                        <button (click)=\"editarMarcador(marcador)\" mat-raised-button color=\"primary\">Editar</button>\n                        <button (click)=\"borrarMarcador(i)\" mat-raised-button color=\"warn\">Borrar</button>\n                    </div>\n                </agm-info-window>\n            </agm-marker> -->\n        </agm-map>\n    </mat-card-content>\n\n</mat-card>");
+/* harmony default export */ __webpack_exports__["default"] = ("<mat-card>\n\n    <mat-card-title>\n        Mapa\n    </mat-card-title>\n\n    <!-- (centerChange)= (zoomChange) -->\n    <mat-card-content>\n        <agm-map (mapClick)=\"agregarMarcador( $event )\" (boundsChange)=\"moverMapa( $event);\" [latitude]=\"lat\" [longitude]=\"lng\" [zoom]=\"16\">\n            <!-- <agm-circle [latitude]=\"lat\" [longitude]=\"lng\" [radius]=\"30\" [fillColor]=\"'red'\" [circleDraggable]=\"true\" [editable]=\"true\">></agm-circle> -->\n\n            <!-- <agm-direction [origin]=\"this.origin\" [destination]=\"this.destination\" [waypoints]=\"this.waypoints\"> </agm-direction> -->\n\n\n            <!-- <agm-marker *ngFor=\"let marcador of marcadores; let i = index\" [iconUrl]=\"'assets/carro.bmp'\" [label]=\"marcador.placa\" [latitude]=\"marcador.latitud\" [longitude]=\"marcador.longitud\">\n\n                <agm-info-window>\n                    <strong>{{marcador.placa}}</strong>\n                    <p>\n                        {{marcador.ruta}}\n                    </p>\n                    <div>\n                        <button (click)=\"editarMarcador(marcador)\" mat-raised-button color=\"primary\">Editar</button>\n                        <button (click)=\"borrarMarcador(i)\" mat-raised-button color=\"warn\">Borrar</button>\n                    </div>\n                </agm-info-window>\n            </agm-marker> -->\n        </agm-map>\n    </mat-card-content>\n\n</mat-card>");
 
 /***/ }),
 
@@ -721,6 +721,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material_dialog__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material/dialog */ "./node_modules/@angular/material/esm2015/dialog.js");
 /* harmony import */ var _Class_marcador_class__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../Class/marcador.class */ "./src/app/Class/marcador.class.ts");
 /* harmony import */ var _mapa_mapa_editar_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../mapa/mapa-editar.component */ "./src/app/components/mapa/mapa-editar.component.ts");
+/* harmony import */ var _services_parada_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../services/parada.service */ "./src/app/services/parada.service.ts");
+
 
 
 
@@ -730,17 +732,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let BusComponent = class BusComponent {
-    constructor(activatedRoute, rutasService, busService, dialog) {
+    constructor(activatedRoute, rutasService, busService, dialog, paradasService) {
         this.activatedRoute = activatedRoute;
         this.rutasService = rutasService;
         this.busService = busService;
         this.dialog = dialog;
+        this.paradasService = paradasService;
         this.ruta = {};
+        this.paradasRuta = [];
         this.marcadores = [];
         this.latCentroMapa = 7.11392;
         this.lngCentroMapa = -73.1198;
-        this.lat = 24.799448;
-        this.lng = 120.979021;
         this.getDirection();
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((datos) => tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
@@ -752,14 +754,17 @@ let BusComponent = class BusComponent {
             this.ruta = this.rutasService.getRuta(params.termino);
         });
         this.busService.getBuses();
+        // this.paradasService.getParadas();
         this.BusesAsociadosRuta = this.busService.busesPorRuta(this.ruta.nombre);
         this.Watcher();
     }
-    getDirection() {
-        this.origin = { lat: 7.11392, lng: -73.1198 };
-        this.destination = { lat: 7.11392, lng: -73.1298 };
-        // this.origin = 'Taipei Main Station'
-        // this.destination = 'Taiwan Presidential Office'
+    ngOnInit() {
+        this.paradasService.getParadas();
+        this.paradasService.getParada()
+            .subscribe(() => {
+            this.obtenerParadasdeRuta();
+            // this.getDirection();
+        });
     }
     ngOnDestroy() {
         if (this.MysetInterval) {
@@ -801,12 +806,42 @@ let BusComponent = class BusComponent {
             // this.snackBar.open(' Marcador actualizado ', 'Cerrar', {duration: 3000});
         });
     }
+    // Obtiene las paradas asociadas a la ruta seleccionada
+    obtenerParadasdeRuta() {
+        // console.log(this.paradasService.paradas, 'WWW');
+        this.paradasRuta = this.paradasService.getParadaByRuta(this.ruta.nombre);
+        // console.log(this.paradasRuta, 'XXX');
+        this.getDirection();
+    }
+    getDirection() {
+        this.origin = { lat: 7.137089498267445, lng: -73.11899185180664 }; // A
+        this.destination = { lat: 7.137089498267445, lng: -73.11899185180664 }; // D
+        let index = 1;
+        this.waypoints = [];
+        console.log(this.paradasRuta.length);
+        for (const parada of this.paradasRuta) {
+            if (index === 1) {
+                this.origin = { lat: parada.latitud, lng: parada.longitud }; // A
+            }
+            else {
+                if (this.paradasRuta.length === index) {
+                    this.destination = { lat: parada.latitud, lng: parada.longitud }; // D
+                }
+                else {
+                    this.waypoints.push({ location: { lat: parada.latitud, lng: parada.longitud } });
+                }
+            }
+            index++;
+        }
+        console.log(this.waypoints, 'CC', this.origin, 'origin', this.destination, 'destination');
+    }
 };
 BusComponent.ctorParameters = () => [
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
     { type: _services_rutas_service__WEBPACK_IMPORTED_MODULE_3__["RutasService"] },
     { type: _services_bus_service__WEBPACK_IMPORTED_MODULE_4__["BusService"] },
-    { type: _angular_material_dialog__WEBPACK_IMPORTED_MODULE_5__["MatDialog"] }
+    { type: _angular_material_dialog__WEBPACK_IMPORTED_MODULE_5__["MatDialog"] },
+    { type: _services_parada_service__WEBPACK_IMPORTED_MODULE_8__["ParadasService"] }
 ];
 BusComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -2905,6 +2940,19 @@ let ParadasService = class ParadasService {
                 return parada;
             }
         }
+    }
+    // Obtiene todas las paradas que tengan a 'nombreRuta' como una de sus Rutas
+    getParadaByRuta(nombreRuta) {
+        const array = [];
+        for (const parada of this.paradas) {
+            for (const nombreParada of parada.rutasAsociadas) {
+                if (nombreParada === nombreRuta) {
+                    array.push(parada);
+                    break;
+                }
+            }
+        }
+        return array;
     }
     // obtiene un array con las paradas que tengan el termino en su nombre
     buscarParadas(termino) {

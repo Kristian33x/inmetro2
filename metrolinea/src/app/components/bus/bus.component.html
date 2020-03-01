@@ -76,7 +76,7 @@
         <agm-map [latitude]="latCentroMapa" [longitude]="lngCentroMapa" [zoom]="15">
             <!-- <agm-circle [latitude]="lat" [longitude]="lng" [radius]="30" [fillColor]="'red'" [circleDraggable]="true" [editable]="true">></agm-circle> -->
 
-            <agm-direction [origin]="origin" [destination]="destination"> </agm-direction>
+            <agm-direction [travelMode]="'DRIVING'" [origin]="this.origin" [destination]="this.destination" [waypoints]="this.waypoints"> </agm-direction>
 
 
             <agm-marker *ngFor="let marcador of marcadores; let i = index" [iconUrl]="'assets/img/location.png'" [label]="marcador.placa" [latitude]="marcador.latitud" [longitude]="marcador.longitud">

@@ -74,6 +74,20 @@ export class ParadasService {
       }
   }
 
+  // Obtiene todas las paradas que tengan a 'nombreRuta' como una de sus Rutas
+  getParadaByRuta(nombreRuta: string): Parada[] {
+    const array: Parada[] = [];
+    for (const parada of this.paradas) {
+      for (const nombreParada of parada.rutasAsociadas) {
+        if (nombreParada === nombreRuta) {
+          array.push(parada);
+          break;
+        }
+      }
+    }
+    return array;
+  }
+
   // obtiene un array con las paradas que tengan el termino en su nombre
   buscarParadas( termino: string) {
 
