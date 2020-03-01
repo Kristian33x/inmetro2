@@ -17,19 +17,18 @@ export class ParadasComponent implements OnInit {
   Rutas: Ruta[];
   RutasSinParada: string[] = [];
 
-  constructor(public paradaServices: ParadasService, public rutasService: RutasService) { }
+  constructor(public paradaServices: ParadasService, public rutasService: RutasService) {
+   }
 
   ngOnInit() {
     this.cargarBaseDatos();
   }
 
-  cargarBaseDatos() {
+
+  async cargarBaseDatos() {
     this.rutasService.getRutas();
     this.paradaServices.getParadas();
-    // console.log(this.paradaServices.paradas);
-
     this.Rutas = this.rutasService.getRutas2();
-    // console.log(this.RutasSinParada);
   }
 
   obtenerRutasSinParada() {
@@ -49,12 +48,11 @@ export class ParadasComponent implements OnInit {
     }
   }
 
-  resetForm(form?: NgForm) {
-    if (form) {
-      form.reset();
-      this.paradaServices.selectedParada = new Parada();
-    }
+  resetForm() {
+
+    this.paradaServices.selectedParada = new Parada();
     this.paradaServices.getParadas();
+    // this.cargarBaseDatos();
   }
 
   asignarRutaParada(form: NgForm) {

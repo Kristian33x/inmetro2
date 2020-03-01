@@ -9,6 +9,7 @@ import { NgForm } from '@angular/forms';
 })
 export class ParadasService {
 
+  busquedaParadas: Parada[] = [];
   selectedParada: Parada;
   // parada: Parada[];
   public paradas: Parada[];
@@ -40,16 +41,17 @@ export class ParadasService {
   // ************************************************************
 
   // devuelve un array de paradas
-  // getParadas2(): Parada[] {
-  //   this.getParadas();
-  //   return this.paradas;
-  // }
+  getParadas2(): Parada[] {
+    this.getParadas();
+    return this.paradas;
+  }
 
   // Actualiza la variable local paradas con las paradas de la base de datos
   getParadas() {
     this.getParada()
     .subscribe(res => {
       this.paradas = res as Parada[];
+      this.busquedaParadas = res as Parada[];
     });
   }
 
@@ -74,14 +76,16 @@ export class ParadasService {
 
   // obtiene un array con las paradas que tengan el termino en su nombre
   buscarParadas( termino: string) {
+
   const paradasArr: Parada[] = [];
   termino = termino.toLowerCase();
-  for ( const parada of this.paradas) {
+  for ( const parada of this.paradas ) {
     const placa: string = parada.nombre.toLowerCase();
     if (placa.indexOf(termino) >= 0) {
         paradasArr.push(parada);
     }
   }
+  this.busquedaParadas = paradasArr;
   return paradasArr;
   }
 

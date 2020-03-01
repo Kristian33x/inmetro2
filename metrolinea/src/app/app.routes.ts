@@ -18,7 +18,7 @@ const APP_ROUTES: Routes = [
 {path: 'login', component: LoginComponent} ,
 {path: 'conductor', component: ConductorComponent, canActivate: [ ConductorGuard ]} ,
 {path: 'registrar', component: RegisterComponent, canActivate: [ AdminGuard ]},
-{path: 'paradas', component: ParadasComponent, canActivate: [ AdminGuard ]},
+{path: 'paradas', component: ParadasComponent},
 {path: 'bus/:termino', component: BusComponent},
 {path: 'search/:termino', component: SearchComponent},
 {path: '', pathMatch: 'full', redirectTo: '/home'},  // regresa a la home
