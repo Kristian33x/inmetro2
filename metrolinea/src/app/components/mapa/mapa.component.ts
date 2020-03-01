@@ -17,7 +17,13 @@ export class MapaComponent implements OnInit {
  lat1;
  lng1;
 
+
+  public origin: any;
+  public destination: any;
+  waypoints: any;
+
   constructor(private snackBar: MatSnackBar, public dialog: MatDialog) {
+    this.getDirection();
 
     // const nuevoMarcador = new Marcador(this.lat, this.lng);
     // this.marcadores.push(nuevoMarcador);
@@ -41,7 +47,16 @@ export class MapaComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.lat, 'DDDDD');
+    this.getDirection();
+  }
+
+  getDirection() {
+    this.origin = { lat: 7.11392, lng: -73.1198 }; // A
+    this.destination = { lat: 7.12392, lng: -73.1298 }; // D
+    this.waypoints = [
+     {location: { lat: 7.13392, lng: -73.1398 }}, // C
+     {location: { lat: 7.14392, lng: -73.1498 }} // B
+  ];
   }
 
   moverMapa(evento) {

@@ -45,7 +45,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h1 class=\"animated fadeIn\">{{ruta.nombre | uppercase}} <small>({{ ruta.Fecha | date:'y' }})</small></h1>\n<hr>\n\n<div class=\"row animated fadeIn fast\">\n\n    <div class=\"col-md-4\">\n\n        <img [src]=\"ruta.imagenBus\" [alt]=\"ruta.nombre\" class=\"img-fluid\">\n        <br><br>\n        <a [routerLink]=\"['/buses']\" class=\" btn btn-outline-danger btn-block \"> Regresar..</a>\n    </div>\n\n    <div class=\"col-md-8 \">\n        <h3>{{ruta.nombre}}</h3>\n        <hr>\n        <p>\n            {{ruta.descripcion}}\n        </p>\n        <img [src]=\"ruta.imagenTipoBus \" [alt]=\"ruta.imagenTipoBus\" class=\"img-fluid\">\n    </div>\n\n</div>\n\n<div class=\"row animated fadeIn fast\">\n\n    <div class=\"col-md-4\">\n\n    </div>\n\n    <div class=\"col-md-8 \">\n        <h3>Numero de buses asociados a la ruta: {{ruta.NumBusesAsociados}}</h3>\n        <h3>Buses asociados a la ruta:</h3>\n\n        <table class=\"table table-bordered table-striped table-sm\">\n            <thead>\n                <tr>\n                    <th>Placa</th>\n                    <th>coordenadas</th>\n                    <th>Operaciones</th>\n                </tr>\n            </thead>\n            <tbody>\n                <tr *ngFor=\"let bus of BusesAsociadosRuta\">\n                    <td>{{bus.placa}}</td>\n                    <td> {{bus.latitud}}, {{bus.longitud}}, {{bus.sentido}}</td>\n\n                    <td>\n                        <button (click)=\"UbicarEnMapa(bus.latitud,bus.longitud,bus.sentido);\" type=\"button\" title=\"Ubicar en Mapa este Bus\" class=\"btn btn-success btn-sm\" data-toggle=\"modal\" data-target=\"#modalAsignarRutaBus\">\n                        <i class=\"material-icons\">directions_bus</i>\n                    </button>&nbsp;\n                    </td>\n\n                </tr>\n            </tbody>\n        </table>\n    </div>\n\n</div>\n\n<mat-card>\n\n    <mat-card-title>\n        Mapa\n    </mat-card-title>\n\n    <!-- (centerChange)= (zoomChange) -->\n\n    <mat-card-content>\n        <agm-map [latitude]=\"latCentroMapa\" [longitude]=\"lngCentroMapa\" [zoom]=\"15\">\n            <!-- <agm-circle [latitude]=\"lat\" [longitude]=\"lng\" [radius]=\"30\" [fillColor]=\"'red'\" [circleDraggable]=\"true\" [editable]=\"true\">></agm-circle> -->\n            <agm-marker *ngFor=\"let marcador of marcadores; let i = index\" [iconUrl]=\"'assets/carro.bmp'\" [label]=\"marcador.placa\" [latitude]=\"marcador.latitud\" [longitude]=\"marcador.longitud\">\n\n                <agm-info-window>\n                    <strong>{{marcador.placa}}</strong>\n                    <p>\n                        {{marcador.ruta.nombre}} , {{marcador.ruta.descripcion}}\n                    </p>\n                    <div>\n                        <button (click)=\"CuadroDialogo(marcador)\" mat-raised-button color=\"primary\">Ver mas...</button>\n                    </div>\n                </agm-info-window>\n\n            </agm-marker>\n        </agm-map>\n    </mat-card-content>\n\n</mat-card>");
+/* harmony default export */ __webpack_exports__["default"] = ("<h1 class=\"animated fadeIn\">{{ruta.nombre | uppercase}} <small>({{ ruta.Fecha | date:'y' }})</small></h1>\n<hr>\n\n<div class=\"row animated fadeIn fast\">\n\n    <div class=\"col-md-4\">\n\n        <img [src]=\"ruta.imagenBus\" [alt]=\"ruta.nombre\" class=\"img-fluid\">\n        <br><br>\n        <a [routerLink]=\"['/buses']\" class=\" btn btn-outline-danger btn-block \"> Regresar..</a>\n    </div>\n\n    <div class=\"col-md-8 \">\n        <h3>{{ruta.nombre}}</h3>\n        <hr>\n        <p>\n            {{ruta.descripcion}}\n        </p>\n        <img [src]=\"ruta.imagenTipoBus \" [alt]=\"ruta.imagenTipoBus\" class=\"img-fluid\">\n    </div>\n\n</div>\n\n<div class=\"row animated fadeIn fast\">\n\n    <div class=\"col-md-4\">\n\n    </div>\n\n    <div class=\"col-md-8 \">\n        <h3>Numero de buses asociados a la ruta: {{ruta.NumBusesAsociados}}</h3>\n        <h3>Buses asociados a la ruta:</h3>\n\n        <table class=\"table table-bordered table-striped table-sm\">\n            <thead>\n                <tr>\n                    <th>Placa</th>\n                    <th>coordenadas</th>\n                    <th>Operaciones</th>\n                </tr>\n            </thead>\n            <tbody>\n                <tr *ngFor=\"let bus of BusesAsociadosRuta\">\n                    <td>{{bus.placa}}</td>\n                    <!-- GPS Celular -->\n                    <td *ngIf=\"bus.latitud != 0 && bus.sentido != null\"> {{bus.latitud}}, {{bus.longitud}}, {{bus.sentido}}</td>\n\n                    <!-- GPS Desactivado -->\n                    <td *ngIf=\"bus.latitud == 0 && bus.sentido != null\"> - , - , -</td>\n\n                    <!-- GPS por WIFI -->\n                    <td *ngIf=\"bus.latitud != 0 && bus.sentido == null\"> {{bus.latitud}}, {{bus.longitud}}, -</td>\n\n                    <td>\n                        <button (click)=\"UbicarEnMapa(bus.latitud,bus.longitud,bus.sentido);\" type=\"button\" title=\"Ubicar en Mapa este Bus\" class=\"btn btn-success btn-sm\" data-toggle=\"modal\" data-target=\"#modalAsignarRutaBus\">\n                        <i class=\"material-icons\">directions_bus</i>\n                    </button>&nbsp;\n                    </td>\n\n                </tr>\n            </tbody>\n        </table>\n    </div>\n\n</div>\n\n<mat-card>\n\n    <mat-card-title>\n        Mapa\n    </mat-card-title>\n\n    <!-- (centerChange)= (zoomChange) -->\n\n    <mat-card-content>\n        <agm-map [latitude]=\"latCentroMapa\" [longitude]=\"lngCentroMapa\" [zoom]=\"15\">\n            <!-- <agm-circle [latitude]=\"lat\" [longitude]=\"lng\" [radius]=\"30\" [fillColor]=\"'red'\" [circleDraggable]=\"true\" [editable]=\"true\">></agm-circle> -->\n\n            <agm-direction [origin]=\"origin\" [destination]=\"destination\"> </agm-direction>\n\n\n            <agm-marker *ngFor=\"let marcador of marcadores; let i = index\" [iconUrl]=\"'assets/img/location.png'\" [label]=\"marcador.placa\" [latitude]=\"marcador.latitud\" [longitude]=\"marcador.longitud\">\n\n                <agm-info-window>\n                    <strong>{{marcador.placa}}</strong>\n                    <p>\n                        {{marcador.ruta.nombre}} , {{marcador.ruta.descripcion}}\n                    </p>\n                    <div>\n                        <button (click)=\"CuadroDialogo(marcador)\" mat-raised-button color=\"primary\">Ver mas...</button>\n                    </div>\n                </agm-info-window>\n\n            </agm-marker>\n\n        </agm-map>\n    </mat-card-content>\n\n</mat-card>");
 
 /***/ }),
 
@@ -58,7 +58,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h1 class=\"my-5\">RUTAS DE LOS DIFERENTES BUSES DE METROLINEA</h1>\n<hr>\n<div class=\"card-columns\">\n\n    <!-- *ngFor=\"let bus of buses ; let i=index\" -->\n\n    <app-tarjeta-bus [termino]=\"ruta.nombre\" [ruta]=\"ruta\" *ngFor=\"let ruta of rutas ;\"></app-tarjeta-bus>\n    <!-- <app-tarjeta-bus [termino]=\"bus.nombre\" [bus]=\"bus\" *ngFor=\"let bus of busService.buses\"></app-tarjeta-bus> -->\n\n\n\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<h1 class=\"my-5\">RUTAS DE LOS DIFERENTES BUSES DE METROLINEA</h1>\n<hr>\n<div class=\"card-columns\">\n\n    <!-- *ngFor=\"let bus of buses ; let i=index\" -->\n\n    <app-tarjeta-bus [termino]=\"ruta.nombre\" [ruta]=\"ruta\" *ngFor=\"let ruta of rutas ;\"></app-tarjeta-bus>\n    <!-- <app-tarjeta-bus [termino]=\"bus.nombre\" [bus]=\"bus\" *ngFor=\"let bus of busService.buses\"></app-tarjeta-bus> -->\n\n\n</div>");
 
 /***/ }),
 
@@ -71,7 +71,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"jumbotron jumbotron-fluid animated fadeIn \">\n    <div class=\"container\">\n        <h1 class=\"display-4\">Compartir Ubicación GPS Para Conductores</h1>\n        <br>\n\n        <h2 *ngIf=\"busAsociadoConductor.RutaAsociada.nombre !== null\">La Ruta Asignada es: {{busAsociadoConductor.RutaAsociada.nombre}} </h2>\n        <h2 *ngIf=\"busAsociadoConductor.placa !== null\">La Placa del Bus Asignado es: {{busAsociadoConductor.placa}} </h2>\n\n        <h2 *ngIf=\"busAsociadoConductor.RutaAsociada.nombre === null\">Aún no tiene ruta Asignada</h2>\n        <h2 *ngIf=\"busAsociadoConductor.placa === null\">Aún no tiene Bus Asignado</h2>\n\n\n    </div>\n\n    <!-- <div class=\"main-container\">\n        <h3>Raised Buttons</h3>\n        <div class=\"example-button-row\">\n            <button mat-raised-button>Basic</button>\n            <button mat-raised-button color=\"primary\">Primary</button>\n            <button mat-raised-button color=\"accent\">Accent</button>\n            <button mat-raised-button color=\"warn\">Warn</button>\n            <button mat-raised-button disabled>Disabled</button>\n            <a mat-raised-button routerLink=\".\">Link</a>\n        </div>\n\n        <mat-progress-bar mode=\"indeterminate\"></mat-progress-bar>\n\n    </div> -->\n\n\n\n    <form class=\"user\" #posicionForm=\"ngForm\">\n\n        <br><br><br><br>\n        <label class=\"col-md-4 form-control-label\" for=\"text-input\"></label>\n        <button id=\"mostrarPosicion\" mat-raised-button class=\"col-lg-3\" (click)=\"mostrarPosicion()\" color=\"accent\">Mostrar Posición</button>\n        <!-- <label class=\"col-md-2 form-control-label\" for=\"text-input\"></label> -->\n        <button id=\"noMostrarPosicion\" mat-raised-button class=\"col-lg-3\" (click)=\"noMostrarPosicion()\" color=\"warn\">No Mostrar Posición</button>\n        <br><br><br><br>\n        <div class=\"form-group row\">\n            <label class=\"col-md-3 form-control-label\" for=\"text-input\"></label>\n            <label class=\"col-md-3 form-control-label\" for=\"text-input\">Longitud</label>\n            <div class=\"col-md-3\">\n                <input class=\"form-control form-control-user\" type=\"text\" name=\"longitud\" #longitud=\"ngModel\" [(ngModel)]=\"busAsociadoConductor.longitud\" placeholder=\"Longitud\">\n            </div>\n        </div>\n\n        <div class=\"form-group row\">\n            <label class=\"col-md-3 form-control-label\" for=\"text-input\"></label>\n            <label class=\"col-md-3 form-control-label\" for=\"text-input\">Latitud</label>\n            <div class=\"col-md-3\">\n                <input class=\"form-control form-control-user\" type=\"text\" name=\"latitud\" #latitud=\"ngModel\" [(ngModel)]=\"busAsociadoConductor.latitud\" placeholder=\"Latitud\">\n            </div>\n        </div>\n        <div class=\"form-group row\">\n            <label class=\"col-md-3 form-control-label\" for=\"text-input\"></label>\n            <label class=\"col-md-3 form-control-label\" for=\"text-input\">Sentido</label>\n            <div class=\"col-md-3\">\n                <input class=\"form-control form-control-user\" type=\"text\" name=\"sentido\" #sentido=\"ngModel\" [(ngModel)]=\"busAsociadoConductor.sentido\" placeholder=\"Sentido\">\n            </div>\n        </div>\n    </form>\n\n\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"jumbotron jumbotron-fluid animated fadeIn \">\n    <div class=\"container\">\n        <h1 class=\"display-4\">Compartir Ubicación GPS Para Conductores</h1>\n        <br>\n\n        <h2 *ngIf=\"busAsociadoConductor.RutaAsociada.nombre != null && busAsociadoConductor.RutaAsociada.nombre != ''\">La Ruta Asignada es: {{busAsociadoConductor.RutaAsociada.nombre}} </h2>\n        <h2 *ngIf=\"busAsociadoConductor.placa != null && busAsociadoConductor.placa != ''\">La Placa del Bus Asignado es: {{busAsociadoConductor.placa}} </h2>\n\n        <h2 *ngIf=\"busAsociadoConductor.RutaAsociada.nombre == null || busAsociadoConductor.RutaAsociada.nombre == ''\">Aún no tiene ruta Asignada</h2>\n        <h2 *ngIf=\"busAsociadoConductor.placa == null || busAsociadoConductor.placa == ''\">Aún no tiene Bus Asignado</h2>\n\n\n    </div>\n\n    <!-- <div class=\"main-container\">\n        <h3>Raised Buttons</h3>\n        <div class=\"example-button-row\">\n            <button mat-raised-button>Basic</button>\n            <button mat-raised-button color=\"primary\">Primary</button>\n            <button mat-raised-button color=\"accent\">Accent</button>\n            <button mat-raised-button color=\"warn\">Warn</button>\n            <button mat-raised-button disabled>Disabled</button>\n            <a mat-raised-button routerLink=\".\">Link</a>\n        </div>\n\n        <mat-progress-bar mode=\"indeterminate\"></mat-progress-bar>\n\n    </div> -->\n\n\n\n    <form class=\"user\" #posicionForm=\"ngForm\">\n\n        <br><br><br><br>\n        <label class=\"col-md-4 form-control-label\" for=\"text-input\"></label>\n        <button id=\"mostrarPosicion\" mat-raised-button class=\"col-lg-3\" (click)=\"mostrarPosicion()\" color=\"accent\">Mostrar Posición</button>\n        <!-- <label class=\"col-md-2 form-control-label\" for=\"text-input\"></label> -->\n        <button id=\"noMostrarPosicion\" mat-raised-button class=\"col-lg-3\" (click)=\"noMostrarPosicion()\" color=\"warn\">No Mostrar Posición</button>\n        <br><br><br><br>\n        <div class=\"form-group row\">\n            <label class=\"col-md-3 form-control-label\" for=\"text-input\"></label>\n            <label class=\"col-md-3 form-control-label\" for=\"text-input\">Longitud</label>\n            <div class=\"col-md-3\">\n                <input class=\"form-control form-control-user\" type=\"text\" name=\"longitud\" #longitud=\"ngModel\" [(ngModel)]=\"busAsociadoConductor.longitud\" placeholder=\"Longitud\">\n            </div>\n        </div>\n\n        <div class=\"form-group row\">\n            <label class=\"col-md-3 form-control-label\" for=\"text-input\"></label>\n            <label class=\"col-md-3 form-control-label\" for=\"text-input\">Latitud</label>\n            <div class=\"col-md-3\">\n                <input class=\"form-control form-control-user\" type=\"text\" name=\"latitud\" #latitud=\"ngModel\" [(ngModel)]=\"busAsociadoConductor.latitud\" placeholder=\"Latitud\">\n            </div>\n        </div>\n        <div class=\"form-group row\">\n            <label class=\"col-md-3 form-control-label\" for=\"text-input\"></label>\n            <label class=\"col-md-3 form-control-label\" for=\"text-input\">Sentido</label>\n            <div class=\"col-md-3\">\n                <input class=\"form-control form-control-user\" type=\"text\" name=\"sentido\" #sentido=\"ngModel\" [(ngModel)]=\"busAsociadoConductor.sentido\" placeholder=\"Sentido\">\n            </div>\n        </div>\n    </form>\n\n\n</div>");
 
 /***/ }),
 
@@ -97,7 +97,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"jumbotron jumbotron-fluid animated fadeIn \">\n    <div class=\"container\">\n        <h1 class=\"display-4\">INMETRO App</h1>\n        <mat-toolbar color=\"primary\">\n            <span>Rastreo de Buses Mediante GPS</span>\n        </mat-toolbar>\n\n        <!-- <p class=\"lead\">Esta es la aplicacion para rastrear buses de metrolinea</p> -->\n    </div>\n    <img src='assets/img/A-64.png' alt=\"123\" class=\"img-fluid\">\n    <!-- <div #map style=\"width:100%;height:400px\"></div> -->\n    <!-- <app-mapa></app-mapa> -->\n</div>\n\n\n<div class=\"main-container\">\n    <!-- <h3>Raised Buttons</h3>\n    <div class=\"example-button-row\">\n        <button mat-raised-button>Basic</button>\n        <button mat-raised-button color=\"primary\">Primary</button>\n        <button mat-raised-button color=\"accent\">Accent</button>\n        <button mat-raised-button color=\"warn\">Warn</button>\n        <button mat-raised-button disabled>Disabled</button>\n        <a mat-raised-button routerLink=\".\">Link</a>\n    </div>\n\n    <mat-progress-bar mode=\"indeterminate\"></mat-progress-bar> -->\n\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"jumbotron jumbotron-fluid animated fadeIn \">\n    <div class=\"container\">\n        <h1 class=\"display-4\">INMETRO App</h1>\n        <mat-toolbar color=\"primary\">\n            <span>Rastreo de Buses Mediante GPS</span>\n        </mat-toolbar>\n\n        <!-- <p class=\"lead\">Esta es la aplicacion para rastrear buses de metrolinea</p> -->\n    </div>\n    <img src='assets/img/A-64.png' alt=\"123\" class=\"img-fluid\">\n    <!-- <div #map style=\"width:100%;height:400px\"></div> -->\n    <!-- <app-mapa></app-mapa> -->\n</div>\n\n\n<div class=\"main-container\">\n    <!-- <h3>Raised Buttons</h3>\n    <div class=\"example-button-row\">\n        <button mat-raised-button>Basic</button>\n        <button mat-raised-button color=\"primary\">Primary</button>\n        <button mat-raised-button color=\"accent\">Accent</button>\n        <button mat-raised-button color=\"warn\">Warn</button>\n        <button mat-raised-button disabled>Disabled</button>\n        <a mat-raised-button routerLink=\".\">Link</a>\n    </div>\n\n    <mat-progress-bar mode=\"indeterminate\"></mat-progress-bar> -->\n    <app-mapa></app-mapa>\n    <br><br><br>\n</div>");
 
 /***/ }),
 
@@ -123,7 +123,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<mat-card>\n\n    <mat-card-title>\n        Mapa\n    </mat-card-title>\n\n    <!-- (centerChange)= (zoomChange) -->\n\n    <mat-card-content>\n        <agm-map (mapClick)=\"agregarMarcador( $event )\" (boundsChange)=\"moverMapa( $event);\" [latitude]=\"lat\" [longitude]=\"lng\" [zoom]=\"16\">\n            <!-- <agm-circle [latitude]=\"lat\" [longitude]=\"lng\" [radius]=\"30\" [fillColor]=\"'red'\" [circleDraggable]=\"true\" [editable]=\"true\">></agm-circle> -->\n            <agm-marker *ngFor=\"let marcador of marcadores; let i = index\" [iconUrl]=\"'assets/carro.bmp'\" [label]=\"marcador.placa\" [latitude]=\"marcador.latitud\" [longitude]=\"marcador.longitud\">\n\n                <agm-info-window>\n                    <strong>{{marcador.placa}}</strong>\n                    <p>\n                        {{marcador.ruta}}\n                    </p>\n                    <div>\n                        <button (click)=\"editarMarcador(marcador)\" mat-raised-button color=\"primary\">Editar</button>\n                        <button (click)=\"borrarMarcador(i)\" mat-raised-button color=\"warn\">Borrar</button>\n                    </div>\n                </agm-info-window>\n\n            </agm-marker>\n        </agm-map>\n    </mat-card-content>\n\n</mat-card>");
+/* harmony default export */ __webpack_exports__["default"] = ("<mat-card>\n\n    <mat-card-title>\n        Mapa\n    </mat-card-title>\n\n    <!-- (centerChange)= (zoomChange) -->\n    <mat-card-content>\n        <agm-map (mapClick)=\"agregarMarcador( $event )\" (boundsChange)=\"moverMapa( $event);\" [latitude]=\"lat\" [longitude]=\"lng\" [zoom]=\"16\">\n            <!-- <agm-circle [latitude]=\"lat\" [longitude]=\"lng\" [radius]=\"30\" [fillColor]=\"'red'\" [circleDraggable]=\"true\" [editable]=\"true\">></agm-circle> -->\n\n            <agm-direction [origin]=\"this.origin\" [destination]=\"this.destination\" [waypoints]=\"this.waypoints\"> </agm-direction>\n\n\n            <!-- <agm-marker *ngFor=\"let marcador of marcadores; let i = index\" [iconUrl]=\"'assets/carro.bmp'\" [label]=\"marcador.placa\" [latitude]=\"marcador.latitud\" [longitude]=\"marcador.longitud\">\n\n                <agm-info-window>\n                    <strong>{{marcador.placa}}</strong>\n                    <p>\n                        {{marcador.ruta}}\n                    </p>\n                    <div>\n                        <button (click)=\"editarMarcador(marcador)\" mat-raised-button color=\"primary\">Editar</button>\n                        <button (click)=\"borrarMarcador(i)\" mat-raised-button color=\"warn\">Borrar</button>\n                    </div>\n                </agm-info-window>\n            </agm-marker> -->\n        </agm-map>\n    </mat-card-content>\n\n</mat-card>");
 
 /***/ }),
 
@@ -137,6 +137,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("<!-- <div id=\"map\"></div>\nReplace the value of the key parameter with your own API key.\n<script async defer src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyCkUOdZ5y7hMm0yrcCQoCvLwzdM6M8s5qk&callback=initMap\">\n    navigator.geolocation.getCurrentPosition(\n        function(datos) {\n            console.log(\"lat: \" + datos.coords.latitude);\n        }\n    )\n</script> -->\n\n<div #map style=\"width:100%;height:400px\"></div>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/paradas/paradas.component.html":
+/*!*************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/paradas/paradas.component.html ***!
+  \*************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<h1 class=\"my-5\">PARADAS DE LAS DIFERENTES RUTAS</h1>\n<hr>\n<div class=\"row\">\n    <div class=\"col-md-3 my-2\" *ngFor=\"let parada of this.paradaServices.paradas\">\n        <mat-card class=\"example-card\">\n\n            <mat-card-header>\n                <div mat-card-avatar><img src=\"{{parada.tipoParada}}\" style=\"width: 120%; height: 120%; border-radius:30px;\"></div>\n                <mat-card-title>{{parada.nombre}}</mat-card-title>\n                <mat-card-subtitle *ngIf=\"parada.tipoParada === 'assets/img/station_stop.png'\"> Estacion</mat-card-subtitle>\n                <mat-card-subtitle *ngIf=\"parada.tipoParada === 'assets/img/bus_stop.png'\"> Parada </mat-card-subtitle>\n            </mat-card-header>\n            <img mat-card-image style=\"width: min-content; height: min-content;\" src=\"{{parada.tipoParada}} \">\n\n            <mat-card-content>\n                <b>{{parada.rutasAsociadas}}</b>\n            </mat-card-content>\n\n            <mat-card-actions style=\"text-align: center;\">\n\n                <button (click)=\"this.paradaServices.editParada(parada); this.cargarBaseDatos(); obtenerRutasSinParada();\" class=\"btn btn-outline-primary btn-sm \" type=\"button\" title=\"Agregar Ruta\" data-toggle=\"modal\" data-target=\"#modalAsignarRutaParada\">\n                        <i class=\"material-icons\">call_split</i>\n                    </button> &nbsp;\n\n                <button (click)=\"this.paradaServices.editParada(parada)\" type=\"button\" title=\"Editar Parada\" class=\"btn btn-outline-warning btn-sm \" data-toggle=\"modal\" data-target=\"#modalActualizarParadas\">\n                        <i class=\"material-icons\">edit</i>\n                    </button> &nbsp;\n\n                <button (click)=\"this.paradaServices.editParada(parada)\" type=\"button\" title=\"Eliminar Parada\" class=\"btn btn-outline-danger btn-sm\" data-toggle=\"modal\" data-target=\"#modalEliminarParadas\">\n                         <i class=\"material-icons\">delete</i>\n                    </button>\n\n            </mat-card-actions>\n\n        </mat-card>\n    </div>\n    <div class=\"col-1\">\n\n    </div>\n\n</div>\n\n\n<!--Inicio del modal agregar/actualizar Paradas--->\n<div class=\"modal fade\" id=\"modalActualizarParadas\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" style=\"display: none;\" aria-hidden=\"true\">\n    <div class=\"modal-dialog modal-primary modal-lg\" role=\"document\">\n        <div class=\"modal-content\">\n            <div class=\"modal-header\">\n                <h4 class=\"modal-title\">Agregar/Actualizar Parada</h4>\n                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                      <span aria-hidden=\"true\">×</span>\n                    </button>\n            </div>\n            <div class=\"modal-body\">\n\n                <form class=\"user\" #paradaForm=\"ngForm\" (ngSubmit)=\"this.paradaServices.addParada(paradaForm)\">\n\n                    <div class=\"form-group row\">\n                        <div class=\"col-md-9\">\n                            <input type=\"hidden\" name=\"_id\" #_id=\"ngModel\" [(ngModel)]=\"this.paradaServices.selectedParada._id\">\n                        </div>\n                    </div>\n\n                    <div class=\"form-group row\">\n                        <label class=\"col-md-3 form-control-label\" for=\"text-input\">Nombre de Parada</label>\n                        <div class=\"col-md-9\">\n                            <input class=\"form-control form-control-user\" type=\"text\" name=\"nombre\" #nombre=\"ngModel\" [(ngModel)]=\"this.paradaServices.selectedParada.nombre\" placeholder=\"Nombre\">\n                        </div>\n                    </div>\n                    <div class=\"form-group row\">\n                        <label class=\"col-md-3 form-control-label\" for=\"text-input\">Direccion</label>\n                        <div class=\"col-md-9\">\n                            <input class=\"form-control form-control-user\" type=\"text\" name=\"direccion\" #direccion=\"ngModel\" [(ngModel)]=\"this.paradaServices.selectedParada.direccion\" placeholder=\"direccion\">\n                        </div>\n                    </div>\n                    <div class=\"form-group row\">\n                        <label class=\"col-md-3 form-control-label\" for=\"text-input\">Latitud</label>\n                        <div class=\"col-md-9\">\n                            <input class=\"form-control form-control-user\" type=\"number\" name=\"latitud\" #latitud=\"ngModel\" [(ngModel)]=\"this.paradaServices.selectedParada.latitud\" placeholder=\"Latitud\">\n                        </div>\n                    </div>\n                    <div class=\"form-group row\">\n                        <label class=\"col-md-3 form-control-label\" for=\"text-input\">Longitud</label>\n                        <div class=\"col-md-9\">\n                            <input class=\"form-control form-control-user\" type=\"number\" name=\"longitud\" #longitud=\"ngModel\" [(ngModel)]=\"this.paradaServices.selectedParada.longitud\" placeholder=\"Longitud\">\n                        </div>\n                    </div>\n                    <div class=\"form-group row\">\n                        <label class=\"col-md-3 form-control-label\" for=\"text-input\">Tipo de Parada</label>\n                        <div class=\"col-md-9\">\n                            <input type=\"radio\" name=\"tipoParada\" #tipoParada=\"ngModel\" [(ngModel)]=\"this.paradaServices.selectedParada.tipoParada\" value=\"assets/img/bus_stop.png\" checked> Parada Bus\n                            <input type=\"radio\" name=\"tipoParada\" #tipoParada=\"ngModel\" [(ngModel)]=\"this.paradaServices.selectedParada.tipoParada\" value=\"assets/img/station_stop.png\"> Parada Estacion\n                        </div>\n                    </div>\n\n                    <div class=\"form-group row\">\n                        <div class=\"col-md-9\">\n                            <input type=\"hidden\" name=\"rutasAsociadas\" #rutasAsociadas=\"ngModel\" [(ngModel)]=\"this.paradaServices.selectedParada.rutasAsociadas\">\n                        </div>\n                    </div>\n\n                    <div class=\"modal-footer\">\n                        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Cerrar</button>\n                        <div class=\"card-action\">\n                            <div class=\"input-field\">\n                                <button class=\"btn btn-primary btn-user mce-btn-group\" style=\"margin-right: 7.5px;\" (click)=\"resetForm(paradaForm)\">\n                                                        Limpiar</button>\n                                <button class=\"btn btn-success btn-user mce-btn-group\" (click)=\"this.paradaServices.addParada(paradaForm)\" data-dismiss=\"modal\">\n                                                        Guardar</button>\n                            </div>\n\n                        </div>\n\n                    </div>\n\n                </form>\n            </div>\n\n        </div>\n    </div>\n</div>\n<!--Fin del modal agregar/actualizar Paradas--->\n\n<!-- Inicio del modal Eliminar Parada -->\n<div class=\"modal fade\" id=\"modalEliminarParadas\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" style=\"display: none;\" aria-hidden=\"true\">\n    <div class=\"modal-dialog modal-danger\" role=\"document\">\n        <div class=\"modal-content\">\n            <div class=\"modal-header\">\n                <h4 class=\"modal-title\">Eliminar Parada de {{this.paradaServices.selectedParada.nombre}}</h4>\n                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                      <span aria-hidden=\"true\">×</span>\n                    </button>\n            </div>\n            <div class=\"modal-body\">\n                <p>Estas seguro de eliminar la Parada?</p>\n            </div>\n            <div class=\"modal-footer\">\n                <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Cerrar</button>\n                <button (click)=\"this.paradaServices.borrarParada(this.paradaServices.selectedParada._id)\" type=\"button\" class=\"btn btn-danger\" data-dismiss=\"modal\">Eliminar</button>\n            </div>\n        </div>\n    </div>\n</div>\n<!-- Fin del modal Eliminar Parada -->\n\n<!-- Inicio del modal Asignar Ruta al array de rutas de una Parada -->\n<div class=\"modal fade\" id=\"modalAsignarRutaParada\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" style=\"display: none;\" aria-hidden=\"true\">\n    <div class=\"modal-dialog modal-danger\" role=\"document\">\n        <div class=\"modal-content\">\n            <div class=\"modal-header\">\n                <h5 class=\"modal-title\">Agregar/Eliminar Ruta a: <b>{{this.paradaServices.selectedParada.nombre}}</b>.</h5>\n                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                      <span aria-hidden=\"true\">×</span>\n                </button>\n            </div>\n            <div class=\"modal-body\">\n\n                <h4 class=\"modal-dialog my-0\">Agregar Ruta. </h4>\n                <br>\n\n                <div *ngIf=\"this.RutasSinParada != undefined\">\n                    <div class=\"row my-2\" *ngFor=\"let rutaNombre of this.RutasSinParada;\">\n                        <div class=\"col-4\">\n                            {{rutaNombre}}\n                        </div>\n                        <div class=\"col-6\">\n\n                        </div>\n                        <div class=\"col-2\">\n                            <button type=\"button\" (click)=\"asignarRutaParada2(rutaNombre)\" title=\"Agregar Parada\" class=\"btn btn-success btn-sm\">\n                                <i class=\"material-icons\">local_hospital</i>\n                            </button>\n                        </div>\n                    </div>\n                </div>\n                <div *ngIf=\"this.RutasSinParada.length == 0\">\n                    <b>No hay Rutas para agregar</b>\n                </div>\n\n                <br>\n\n                <hr>\n                <h4 class=\"modal-dialog my-0\">Eliminar Ruta. </h4> <br>\n                <div *ngIf=\"this.paradaServices.selectedParada.rutasAsociadas.length != 0\">\n                    <div class=\"row my-2\" *ngFor=\"let nombreRuta of this.paradaServices.selectedParada.rutasAsociadas;\">\n                        <div class=\"col-4\">\n                            {{nombreRuta}}\n                        </div>\n                        <div class=\"col-6\">\n\n                        </div>\n                        <div class=\"col-2\">\n                            <button type=\"button\" (click)=\"removerRutaParada(nombreRuta)\" title=\"Eliminar Parada\" class=\"btn btn-danger btn-sm\">\n                                <i class=\"material-icons\">cancel</i>\n                            </button>\n                        </div>\n                    </div>\n                </div>\n                <div *ngIf=\"this.paradaServices.selectedParada.rutasAsociadas.length == 0\">\n                    <b>Sin Rutas Asociadas.</b>\n                </div>\n\n            </div>\n            <div class=\"modal-footer\">\n                <button type=\"button\" style=\"text-align: center;\" class=\"btn btn-primary\" data-dismiss=\"modal\">Cerrar</button>\n            </div>\n        </div>\n    </div>\n</div>\n<!-- Fin del modal Asignar Ruta a Bus -->\n<!-- remove_circle_outline -->\n<!-- highlight_off -->\n<!-- local_hospital es un mas -->\n<!-- clear cancel -->");
 
 /***/ }),
 
@@ -162,7 +175,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\n\n    <div class=\"col-1\">\n        <a class=\"navbar-brand\" href=\"#\">\n            <img src=\"assets/img/A-64.png\" width=\"130%\" height=\"130%\" alt=\"\">\n        </a>\n    </div>\n\n\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarTogglerDemo02\" aria-controls=\"navbarTogglerDemo02\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n\n\n    <div class=\"collapse navbar-collapse\" id=\"navbarTogglerDemo02\">\n\n        <ul class=\"navbar-nav mr-auto mt-2 mt-lg-0\">\n            <li class=\"nav-item \" routerLinkActive=\"active\" id=\"ocultar6\">\n                <!-- <a class=\"nav-link\">{{UsuarioActivo.tipoUsuario}} : {{ UsuarioActivo.nombre }}   .</a> -->\n                <a *ngIf=\"auth.getUserLogueado().tipoUsuario != '' \" class=\"nav-link\">{{auth.getUserLogueado().tipoUsuario}} : {{ auth.getUserLogueado().nombre }}   </a>\n            </li>\n        </ul>\n\n        <ul class=\"navbar-nav mr-auto mt-2 mt-lg-0\">\n            <li class=\"nav-item\" routerLinkActive=\"active\">\n                <a class=\"nav-link \" [routerLink]=\"[ 'home'] \"><i class=\"material-icons\">home</i>Inicio </a>\n            </li>\n            <li class=\"nav-item \" routerLinkActive=\"active\">\n                <a class=\"nav-link \" [routerLink]=\"[ 'buses'] \"><i class=\"material-icons\">commute</i>Rutas</a>\n            </li>\n            <li class=\"nav-item \" routerLinkActive=\"active\" id=\"ocultar1\">\n                <a class=\"nav-link \" [routerLink]=\"[ 'about'] \"><i class=\"material-icons\">build</i>Administrador</a>\n            </li>\n            <li class=\"nav-item \" routerLinkActive=\"active\" id=\"ocultar2\">\n                <a class=\"nav-link \" [routerLink]=\"[ 'registrar'] \"><i class=\"material-icons\">supervised_user_circle</i>Registrar</a>\n            </li>\n            <li class=\"nav-item \" routerLinkActive=\"active\" id=\"ocultar4\">\n                <a class=\"nav-link \" [routerLink]=\"[ 'login'] \"><i class=\"material-icons\">account_box</i>Inicio Sesion</a>\n            </li>\n            <li class=\"nav-item \" routerLinkActive=\"active\" id=\"ocultar5\">\n                <a class=\"nav-link \" [routerLink]=\"[ 'conductor'] \"><i class=\"material-icons\">directions_bus</i>Conductor</a>\n            </li>\n\n        </ul>\n\n\n        <form class=\"form-inline my-2 my-lg-0 \">\n            <input class=\"form-control mr-sm-2\" type=\"text\" placeholder=\"Buscar Ruta\" (keyup)=\"buscarBus(buscarTexto.value)\" (keydown.enter)=\"buscarBus(buscarTexto.value)\" #buscarTexto>\n            <button (click)=\"buscarBus(buscarTexto.value)\" class=\"btn btn-outline-success my-2 my-sm-0 \" type=\"button\">Buscar</button>\n        </form>\n        <li>\n            <button id=\"ocultar3\" class=\"btn btn-outline-danger\" (click)=\"salir()\">Salir</button>\n        </li>\n    </div>\n</nav>");
+/* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\n\n    <div class=\"col-1\">\n        <a class=\"navbar-brand\" href=\"#\">\n            <img src=\"assets/img/A-64.png\" width=\"130%\" height=\"130%\" alt=\"\">\n        </a>\n    </div>\n\n\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarTogglerDemo02\" aria-controls=\"navbarTogglerDemo02\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n\n\n    <div class=\"collapse navbar-collapse\" id=\"navbarTogglerDemo02\">\n\n        <ul class=\"navbar-nav mr-auto mt-2 mt-lg-0\">\n            <li class=\"nav-item \" routerLinkActive=\"active\" id=\"ocultar6\">\n                <!-- <a class=\"nav-link\">{{UsuarioActivo.tipoUsuario}} : {{ UsuarioActivo.nombre }}   .</a> -->\n                <a *ngIf=\"auth.getUserLogueado().tipoUsuario != '' \" class=\"nav-link\">{{auth.getUserLogueado().tipoUsuario}} : {{ auth.getUserLogueado().nombre }}   </a>\n            </li>\n        </ul>\n\n        <ul class=\"navbar-nav mr-auto mt-2 mt-lg-0\">\n            <li class=\"nav-item\" routerLinkActive=\"active\">\n                <a class=\"nav-link \" [routerLink]=\"[ 'home'] \"><i class=\"material-icons\">home</i>Inicio </a>\n            </li>\n            <li class=\"nav-item \" routerLinkActive=\"active\">\n                <a class=\"nav-link \" [routerLink]=\"[ 'buses'] \"><i class=\"material-icons\">commute</i>Rutas</a>\n            </li>\n            <li class=\"nav-item \" routerLinkActive=\"active\" id=\"ocultar1\">\n                <a class=\"nav-link \" [routerLink]=\"[ 'about'] \"><i class=\"material-icons\">build</i>Administrador</a>\n            </li>\n            <li class=\"nav-item \" routerLinkActive=\"active\" id=\"ocultar2\">\n                <a class=\"nav-link \" [routerLink]=\"[ 'registrar'] \"><i class=\"material-icons\">supervised_user_circle</i>Registrar</a>\n            </li>\n            <li class=\"nav-item \" routerLinkActive=\"active\" id=\"ocultar7\">\n                <a class=\"nav-link \" [routerLink]=\"[ 'paradas'] \"><i class=\"material-icons\">pan_tool</i>Paradas</a>\n            </li>\n            <li class=\"nav-item \" routerLinkActive=\"active\" id=\"ocultar4\">\n                <a class=\"nav-link \" [routerLink]=\"[ 'login'] \"><i class=\"material-icons\">account_box</i>Inicio Sesion</a>\n            </li>\n            <li class=\"nav-item \" routerLinkActive=\"active\" id=\"ocultar5\">\n                <a class=\"nav-link \" [routerLink]=\"[ 'conductor'] \"><i class=\"material-icons\">directions_bus</i>Conductor</a>\n            </li>\n\n        </ul>\n\n\n        <form class=\"form-inline my-2 my-lg-0 \">\n            <input class=\"form-control mr-sm-2\" type=\"text\" placeholder=\"Buscar Ruta\" (keyup)=\"buscarBus(buscarTexto.value)\" (keydown.enter)=\"buscarBus(buscarTexto.value)\" #buscarTexto>\n            <button (click)=\"buscarBus(buscarTexto.value)\" class=\"btn btn-outline-success my-2 my-sm-0 \" type=\"button\">Buscar</button>\n        </form>\n        <li>\n            <button id=\"ocultar3\" class=\"btn btn-outline-danger\" (click)=\"salir()\">Salir</button>\n        </li>\n    </div>\n</nav>");
 
 /***/ }),
 
@@ -528,16 +541,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_mapa_mapa_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/mapa/mapa.component */ "./src/app/components/mapa/mapa.component.ts");
 /* harmony import */ var _components_mapa_mapa_editar_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/mapa/mapa-editar.component */ "./src/app/components/mapa/mapa-editar.component.ts");
 /* harmony import */ var _components_mapa2_mapa2_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/mapa2/mapa2.component */ "./src/app/components/mapa2/mapa2.component.ts");
-/* harmony import */ var _components_edit_buses_edit_buses_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/edit-buses/edit-buses.component */ "./src/app/components/edit-buses/edit-buses.component.ts");
-/* harmony import */ var _components_bus_bus_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/bus/bus.component */ "./src/app/components/bus/bus.component.ts");
-/* harmony import */ var _components_buses_buses_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/buses/buses.component */ "./src/app/components/buses/buses.component.ts");
-/* harmony import */ var _components_home_home_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/home/home.component */ "./src/app/components/home/home.component.ts");
-/* harmony import */ var _components_search_search_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/search/search.component */ "./src/app/components/search/search.component.ts");
-/* harmony import */ var _components_tarjeta_bus_tarjeta_bus_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/tarjeta-bus/tarjeta-bus.component */ "./src/app/components/tarjeta-bus/tarjeta-bus.component.ts");
-/* harmony import */ var _components_shared_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/shared/navbar/navbar.component */ "./src/app/components/shared/navbar/navbar.component.ts");
-/* harmony import */ var _components_usuario_register_register_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/usuario/register/register.component */ "./src/app/components/usuario/register/register.component.ts");
-/* harmony import */ var _components_conductor_conductor_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/conductor/conductor.component */ "./src/app/components/conductor/conductor.component.ts");
-/* harmony import */ var _components_usuario_login_login_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/usuario/login/login.component */ "./src/app/components/usuario/login/login.component.ts");
+/* harmony import */ var agm_direction__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! agm-direction */ "./node_modules/agm-direction/fesm2015/agm-direction.js");
+/* harmony import */ var _components_edit_buses_edit_buses_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/edit-buses/edit-buses.component */ "./src/app/components/edit-buses/edit-buses.component.ts");
+/* harmony import */ var _components_bus_bus_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/bus/bus.component */ "./src/app/components/bus/bus.component.ts");
+/* harmony import */ var _components_buses_buses_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/buses/buses.component */ "./src/app/components/buses/buses.component.ts");
+/* harmony import */ var _components_home_home_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/home/home.component */ "./src/app/components/home/home.component.ts");
+/* harmony import */ var _components_search_search_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/search/search.component */ "./src/app/components/search/search.component.ts");
+/* harmony import */ var _components_tarjeta_bus_tarjeta_bus_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/tarjeta-bus/tarjeta-bus.component */ "./src/app/components/tarjeta-bus/tarjeta-bus.component.ts");
+/* harmony import */ var _components_shared_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/shared/navbar/navbar.component */ "./src/app/components/shared/navbar/navbar.component.ts");
+/* harmony import */ var _components_usuario_register_register_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/usuario/register/register.component */ "./src/app/components/usuario/register/register.component.ts");
+/* harmony import */ var _components_conductor_conductor_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/conductor/conductor.component */ "./src/app/components/conductor/conductor.component.ts");
+/* harmony import */ var _components_usuario_login_login_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/usuario/login/login.component */ "./src/app/components/usuario/login/login.component.ts");
+/* harmony import */ var _components_paradas_paradas_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/paradas/paradas.component */ "./src/app/components/paradas/paradas.component.ts");
 
 
 
@@ -557,6 +572,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+// Components
 
 
 
@@ -580,17 +598,18 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _components_mapa_mapa_component__WEBPACK_IMPORTED_MODULE_12__["MapaComponent"],
             _components_mapa_mapa_editar_component__WEBPACK_IMPORTED_MODULE_13__["MapaEditarComponent"],
             _components_mapa2_mapa2_component__WEBPACK_IMPORTED_MODULE_14__["Mapa2Component"],
-            _components_edit_buses_edit_buses_component__WEBPACK_IMPORTED_MODULE_15__["EditBusesComponent"],
-            _components_bus_bus_component__WEBPACK_IMPORTED_MODULE_16__["BusComponent"],
-            _components_buses_buses_component__WEBPACK_IMPORTED_MODULE_17__["BusesComponent"],
-            _components_home_home_component__WEBPACK_IMPORTED_MODULE_18__["HomeComponent"],
-            _components_search_search_component__WEBPACK_IMPORTED_MODULE_19__["SearchComponent"],
-            _components_tarjeta_bus_tarjeta_bus_component__WEBPACK_IMPORTED_MODULE_20__["TarjetaBusComponent"],
-            _components_shared_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_21__["NavbarComponent"],
-            _components_usuario_login_login_component__WEBPACK_IMPORTED_MODULE_24__["LoginComponent"],
-            _components_usuario_register_register_component__WEBPACK_IMPORTED_MODULE_22__["RegisterComponent"],
-            _components_conductor_conductor_component__WEBPACK_IMPORTED_MODULE_23__["ConductorComponent"],
-            _components_usuario_login_login_component__WEBPACK_IMPORTED_MODULE_24__["LoginComponent"]
+            _components_edit_buses_edit_buses_component__WEBPACK_IMPORTED_MODULE_16__["EditBusesComponent"],
+            _components_bus_bus_component__WEBPACK_IMPORTED_MODULE_17__["BusComponent"],
+            _components_buses_buses_component__WEBPACK_IMPORTED_MODULE_18__["BusesComponent"],
+            _components_home_home_component__WEBPACK_IMPORTED_MODULE_19__["HomeComponent"],
+            _components_search_search_component__WEBPACK_IMPORTED_MODULE_20__["SearchComponent"],
+            _components_tarjeta_bus_tarjeta_bus_component__WEBPACK_IMPORTED_MODULE_21__["TarjetaBusComponent"],
+            _components_shared_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_22__["NavbarComponent"],
+            _components_usuario_login_login_component__WEBPACK_IMPORTED_MODULE_25__["LoginComponent"],
+            _components_usuario_register_register_component__WEBPACK_IMPORTED_MODULE_23__["RegisterComponent"],
+            _components_conductor_conductor_component__WEBPACK_IMPORTED_MODULE_24__["ConductorComponent"],
+            _components_usuario_login_login_component__WEBPACK_IMPORTED_MODULE_25__["LoginComponent"],
+            _components_paradas_paradas_component__WEBPACK_IMPORTED_MODULE_26__["ParadasComponent"]
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -603,7 +622,8 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"],
             _agm_core__WEBPACK_IMPORTED_MODULE_11__["AgmCoreModule"].forRoot({
                 apiKey: 'AIzaSyDVC3W4TABNrGYhCq8fRR81Et4uFkoTh08'
-            })
+            }),
+            agm_direction__WEBPACK_IMPORTED_MODULE_15__["AgmDirectionModule"],
         ],
         providers: [
             _services_rutas_service__WEBPACK_IMPORTED_MODULE_6__["RutasService"],
@@ -639,6 +659,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _guards_admin_guard__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./guards/admin.guard */ "./src/app/guards/admin.guard.ts");
 /* harmony import */ var _components_conductor_conductor_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/conductor/conductor.component */ "./src/app/components/conductor/conductor.component.ts");
 /* harmony import */ var _guards_conductor_guard__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./guards/conductor.guard */ "./src/app/guards/conductor.guard.ts");
+/* harmony import */ var _components_paradas_paradas_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/paradas/paradas.component */ "./src/app/components/paradas/paradas.component.ts");
+
 
 
 
@@ -658,6 +680,7 @@ const APP_ROUTES = [
     { path: 'login', component: _components_usuario_login_login_component__WEBPACK_IMPORTED_MODULE_7__["LoginComponent"] },
     { path: 'conductor', component: _components_conductor_conductor_component__WEBPACK_IMPORTED_MODULE_10__["ConductorComponent"], canActivate: [_guards_conductor_guard__WEBPACK_IMPORTED_MODULE_11__["ConductorGuard"]] },
     { path: 'registrar', component: _components_usuario_register_register_component__WEBPACK_IMPORTED_MODULE_8__["RegisterComponent"], canActivate: [_guards_admin_guard__WEBPACK_IMPORTED_MODULE_9__["AdminGuard"]] },
+    { path: 'paradas', component: _components_paradas_paradas_component__WEBPACK_IMPORTED_MODULE_12__["ParadasComponent"], canActivate: [_guards_admin_guard__WEBPACK_IMPORTED_MODULE_9__["AdminGuard"]] },
     { path: 'bus/:termino', component: _components_bus_bus_component__WEBPACK_IMPORTED_MODULE_5__["BusComponent"] },
     { path: 'search/:termino', component: _components_search_search_component__WEBPACK_IMPORTED_MODULE_6__["SearchComponent"] },
     { path: '', pathMatch: 'full', redirectTo: '/home' },
@@ -716,12 +739,27 @@ let BusComponent = class BusComponent {
         this.marcadores = [];
         this.latCentroMapa = 7.11392;
         this.lngCentroMapa = -73.1198;
+        this.lat = 24.799448;
+        this.lng = 120.979021;
+        this.getDirection();
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((datos) => tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+                this.latCentroMapa = datos.coords.latitude;
+                this.lngCentroMapa = datos.coords.longitude;
+            }), () => { console.log('No esta activado el gps'); });
+        }
         this.activatedRoute.params.subscribe(params => {
             this.ruta = this.rutasService.getRuta(params.termino);
         });
         this.busService.getBuses();
         this.BusesAsociadosRuta = this.busService.busesPorRuta(this.ruta.nombre);
         this.Watcher();
+    }
+    getDirection() {
+        this.origin = { lat: 7.11392, lng: -73.1198 };
+        this.destination = { lat: 7.11392, lng: -73.1298 };
+        // this.origin = 'Taipei Main Station'
+        // this.destination = 'Taiwan Presidential Office'
     }
     ngOnDestroy() {
         if (this.MysetInterval) {
@@ -1101,8 +1139,7 @@ let EditBusesComponent = class EditBusesComponent {
         // No permitir eliminar un bus si este tiene conductores asociados
         this.selectedRuta1 = this.rutasService.getRutaById(_id);
         if (this.selectedRuta1.NumBusesAsociados === 0 || this.selectedRuta1.NumBusesAsociados === null) {
-            this.rutaService.deleteRuta(_id)
-                .subscribe(res => {
+            this.rutaService.deleteRuta(_id).subscribe(res => {
                 this.getRutas();
                 M.toast({ html: 'Eliminado satisfactoriamente' });
             });
@@ -1536,6 +1573,12 @@ __webpack_require__.r(__webpack_exports__);
 
 let MapaComponent = class MapaComponent {
     constructor(snackBar, dialog) {
+        this.snackBar = snackBar;
+        this.dialog = dialog;
+        this.marcadores = [];
+        this.lat = 7.11392;
+        this.lng = -73.1198;
+        this.getDirection();
         // const nuevoMarcador = new Marcador(this.lat, this.lng);
         // this.marcadores.push(nuevoMarcador);
         //   if (navigator.geolocation) {
@@ -1545,11 +1588,6 @@ let MapaComponent = class MapaComponent {
         //       this.lat1 = datos.coords.latitude;
         //       this.lng1 = datos.coords.longitude;
         //       console.log(this.lat1, ' ZZZZZZ ', this.lng1);
-        this.snackBar = snackBar;
-        this.dialog = dialog;
-        this.marcadores = [];
-        this.lat = 7.11392;
-        this.lng = -73.1198;
         //     },
         //      () => { console.log('No esta activado el gps'); });
         // } else {
@@ -1561,7 +1599,15 @@ let MapaComponent = class MapaComponent {
         }
     }
     ngOnInit() {
-        console.log(this.lat, 'DDDDD');
+        this.getDirection();
+    }
+    getDirection() {
+        this.origin = { lat: 7.11392, lng: -73.1198 }; // A
+        this.destination = { lat: 7.12392, lng: -73.1298 }; // D
+        this.waypoints = [
+            { location: { lat: 7.13392, lng: -73.1398 } },
+            { location: { lat: 7.14392, lng: -73.1498 } } // B
+        ];
     }
     moverMapa(evento) {
         console.log('it changed');
@@ -1694,6 +1740,123 @@ Mapa2Component = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./mapa2.component.css */ "./src/app/components/mapa2/mapa2.component.css")).default]
     })
 ], Mapa2Component);
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/paradas/paradas.component.css":
+/*!**********************************************************!*\
+  !*** ./src/app/components/paradas/paradas.component.css ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvcGFyYWRhcy9wYXJhZGFzLmNvbXBvbmVudC5jc3MifQ== */");
+
+/***/ }),
+
+/***/ "./src/app/components/paradas/paradas.component.ts":
+/*!*********************************************************!*\
+  !*** ./src/app/components/paradas/paradas.component.ts ***!
+  \*********************************************************/
+/*! exports provided: ParadasComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ParadasComponent", function() { return ParadasComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _services_parada_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/parada.service */ "./src/app/services/parada.service.ts");
+/* harmony import */ var src_app_models_parada__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/models/parada */ "./src/app/models/parada.ts");
+/* harmony import */ var _services_rutas_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/rutas.service */ "./src/app/services/rutas.service.ts");
+
+
+
+
+
+let ParadasComponent = class ParadasComponent {
+    constructor(paradaServices, rutasService) {
+        this.paradaServices = paradaServices;
+        this.rutasService = rutasService;
+        this.RutasSinParada = [];
+    }
+    ngOnInit() {
+        this.cargarBaseDatos();
+    }
+    cargarBaseDatos() {
+        this.rutasService.getRutas();
+        this.paradaServices.getParadas();
+        // console.log(this.paradaServices.paradas);
+        this.Rutas = this.rutasService.getRutas2();
+        // console.log(this.RutasSinParada);
+    }
+    obtenerRutasSinParada() {
+        this.RutasSinParada = [];
+        let agregar;
+        const array = this.paradaServices.selectedParada.rutasAsociadas;
+        for (const ruta of this.rutasService.getRutas2()) {
+            agregar = true;
+            for (const nombreRutaParada of array) {
+                // console.log(nombreRutaParada, 'XX', ruta.nombre);
+                if (nombreRutaParada === ruta.nombre) {
+                    agregar = false;
+                    break;
+                }
+                else {
+                    agregar = true;
+                }
+            }
+            if (agregar) {
+                this.RutasSinParada.push(ruta.nombre);
+            }
+        }
+    }
+    resetForm(form) {
+        if (form) {
+            form.reset();
+            this.paradaServices.selectedParada = new src_app_models_parada__WEBPACK_IMPORTED_MODULE_3__["Parada"]();
+        }
+        this.paradaServices.getParadas();
+    }
+    asignarRutaParada(form) {
+        console.log(form.value.rutap);
+        console.log(this.paradaServices.selectedParada.rutasAsociadas, '1x');
+        this.paradaServices.selectedParada.rutasAsociadas.push(form.value.rutap);
+        console.log(this.paradaServices.selectedParada.rutasAsociadas, '2x');
+        this.paradaServices.addParada2(this.paradaServices.selectedParada);
+    }
+    asignarRutaParada2(rutaNombre) {
+        console.log(rutaNombre);
+        console.log(this.paradaServices.selectedParada.rutasAsociadas, '1x');
+        this.paradaServices.selectedParada.rutasAsociadas.push(rutaNombre);
+        console.log(this.paradaServices.selectedParada.rutasAsociadas, '2x');
+        this.paradaServices.addParada2(this.paradaServices.selectedParada);
+        this.obtenerRutasSinParada();
+    }
+    removerRutaParada(NombreRuta) {
+        const i = this.paradaServices.selectedParada.rutasAsociadas.indexOf(NombreRuta);
+        console.log(this.paradaServices.selectedParada.rutasAsociadas, '11');
+        this.paradaServices.selectedParada.rutasAsociadas.splice(i, 1);
+        console.log(this.paradaServices.selectedParada.rutasAsociadas, '22');
+        this.paradaServices.addParada2(this.paradaServices.selectedParada);
+        this.obtenerRutasSinParada();
+    }
+};
+ParadasComponent.ctorParameters = () => [
+    { type: _services_parada_service__WEBPACK_IMPORTED_MODULE_2__["ParadasService"] },
+    { type: _services_rutas_service__WEBPACK_IMPORTED_MODULE_4__["RutasService"] }
+];
+ParadasComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-paradas',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./paradas.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/paradas/paradas.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./paradas.component.css */ "./src/app/components/paradas/paradas.component.css")).default]
+    })
+], ParadasComponent);
 
 
 
@@ -2066,6 +2229,7 @@ let ConductorGuard = class ConductorGuard {
     }
     canActivate() {
         // console.log('guard');
+        // return true;
         return this.auth.estaAutenticadoUnConductor();
     }
 };
@@ -2175,6 +2339,36 @@ class Bus {
         this.longitud = longitud;
         this.latitud = latitud;
         this.sentido = sentido;
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/app/models/parada.ts":
+/*!**********************************!*\
+  !*** ./src/app/models/parada.ts ***!
+  \**********************************/
+/*! exports provided: Parada */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Parada", function() { return Parada; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+
+// esta clase es llamada conductor pero hace referencia a Bus.. que por errores a la hora del diseno se
+// nombr[o conductor.. se debe cambiar a bus al final.
+class Parada {
+    // tslint:disable-next-line:variable-name
+    constructor(_id = '', nombre = '', rutasAsociadas = [], direccion = '', latitud = 0, longitud = 0, tipoParada = '') {
+        this._id = _id;
+        this.nombre = nombre;
+        this.rutasAsociadas = rutasAsociadas;
+        this.tipoParada = tipoParada;
+        this.direccion = direccion;
+        this.latitud = latitud;
+        this.longitud = longitud;
     }
 }
 
@@ -2495,6 +2689,7 @@ let AuthService = class AuthService {
             document.getElementById('ocultar4').style.display = 'none';
             document.getElementById('ocultar5').style.display = 'none';
             document.getElementById('ocultar6').style.display = 'inline';
+            document.getElementById('ocultar7').style.display = 'inline';
         }
         else {
             document.getElementById('ocultar1').style.display = 'none';
@@ -2502,6 +2697,7 @@ let AuthService = class AuthService {
             document.getElementById('ocultar3').style.display = 'none';
             document.getElementById('ocultar5').style.display = 'none';
             document.getElementById('ocultar6').style.display = 'none';
+            document.getElementById('ocultar7').style.display = 'none';
             document.getElementById('ocultar4').style.display = 'inline';
         }
         this.conductor();
@@ -2636,6 +2832,153 @@ BusService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         providedIn: 'root'
     })
 ], BusService);
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/parada.service.ts":
+/*!********************************************!*\
+  !*** ./src/app/services/parada.service.ts ***!
+  \********************************************/
+/*! exports provided: ParadasService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ParadasService", function() { return ParadasService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _models_parada__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../models/parada */ "./src/app/models/parada.ts");
+
+
+
+
+let ParadasService = class ParadasService {
+    constructor(http) {
+        this.http = http;
+        this.URL_API = '/api/paradas';
+        this.selectedParada = new _models_parada__WEBPACK_IMPORTED_MODULE_3__["Parada"]();
+        console.log('Servicio parada listo para usarse');
+    }
+    getParada() {
+        return this.http.get(this.URL_API);
+    }
+    // tslint:disable-next-line:no-shadowed-variable
+    postParada(parada) {
+        return this.http.post(this.URL_API, parada);
+    }
+    putParada(parada) {
+        return this.http.put(this.URL_API + `/${parada._id}`, parada);
+    }
+    // tslint:disable-next-line:variable-name
+    deleteParada(_id) {
+        return this.http.delete(this.URL_API + `/${_id}`);
+    }
+    // ************************************************************
+    // devuelve un array de paradas
+    // getParadas2(): Parada[] {
+    //   this.getParadas();
+    //   return this.paradas;
+    // }
+    // Actualiza la variable local paradas con las paradas de la base de datos
+    getParadas() {
+        this.getParada()
+            .subscribe(res => {
+            this.paradas = res;
+        });
+    }
+    // Obtener una parada por el nombre
+    getParadaByPlaca(termino) {
+        for (const parada of this.paradas) {
+            if (parada.nombre === termino) {
+                return parada;
+            }
+        }
+    }
+    // Obtener una parada por el ID
+    // tslint:disable-next-line:variable-name
+    getParadaById(_id) {
+        for (const parada of this.paradas) {
+            if (parada._id === _id) {
+                return parada;
+            }
+        }
+    }
+    // obtiene un array con las paradas que tengan el termino en su nombre
+    buscarParadas(termino) {
+        const paradasArr = [];
+        termino = termino.toLowerCase();
+        for (const parada of this.paradas) {
+            const placa = parada.nombre.toLowerCase();
+            if (placa.indexOf(termino) >= 0) {
+                paradasArr.push(parada);
+            }
+        }
+        return paradasArr;
+    }
+    // devuelve un array con las paradas asociadas a un nombre de ruta
+    paradasPorRuta(nombreRuta) {
+        this.getParadas();
+        const paradasAsociadasRuta = [];
+        for (const parada of this.paradas) {
+            for (const nombreRutaParada of parada.rutasAsociadas) {
+                if (nombreRutaParada === nombreRuta) {
+                    paradasAsociadasRuta.push(parada);
+                }
+            }
+        }
+        return paradasAsociadasRuta;
+    }
+    // **************************************************************
+    editParada(parada) {
+        this.getParadas();
+        this.selectedParada = parada;
+    }
+    addParada(form) {
+        if (form.value._id) {
+            this.putParada(form.value)
+                .subscribe(res => {
+                console.log('Parada actualizada satisfactoriamente');
+                this.getParadas();
+            });
+        }
+        else {
+            this.postParada(form.value)
+                .subscribe(res => {
+                console.log('Parada Guardada satisfactoriamente');
+                this.getParadas();
+            });
+        }
+    }
+    addParada2(parada) {
+        if (parada._id) {
+            this.putParada(parada)
+                .subscribe(res => {
+                console.log('parada2 actualizado satisfactoriamente');
+                this.getParadas();
+            });
+        }
+    }
+    // tslint:disable-next-line:variable-name
+    borrarParada(_id) {
+        this.selectedParada = this.getParadaById(_id);
+        this.deleteParada(_id).subscribe(res => {
+            this.getParadas();
+            console.log('Eliminado satisfactoriamente');
+        });
+        this.selectedParada = new _models_parada__WEBPACK_IMPORTED_MODULE_3__["Parada"]();
+    }
+};
+ParadasService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+];
+ParadasService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    })
+], ParadasService);
 
 
 

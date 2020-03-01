@@ -9,6 +9,7 @@ import { RegisterComponent } from './components/usuario/register/register.compon
 import { AdminGuard } from './guards/admin.guard';
 import { ConductorComponent } from './components/conductor/conductor.component';
 import { ConductorGuard } from './guards/conductor.guard';
+import { ParadasComponent } from './components/paradas/paradas.component';
 
 const APP_ROUTES: Routes = [
 {path: 'home', component: HomeComponent},
@@ -17,6 +18,7 @@ const APP_ROUTES: Routes = [
 {path: 'login', component: LoginComponent} ,
 {path: 'conductor', component: ConductorComponent, canActivate: [ ConductorGuard ]} ,
 {path: 'registrar', component: RegisterComponent, canActivate: [ AdminGuard ]},
+{path: 'paradas', component: ParadasComponent, canActivate: [ AdminGuard ]},
 {path: 'bus/:termino', component: BusComponent},
 {path: 'search/:termino', component: SearchComponent},
 {path: '', pathMatch: 'full', redirectTo: '/home'},  // regresa a la home

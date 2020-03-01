@@ -3,11 +3,11 @@
         <h1 class="display-4">Compartir Ubicación GPS Para Conductores</h1>
         <br>
 
-        <h2 *ngIf="busAsociadoConductor.RutaAsociada.nombre !== null">La Ruta Asignada es: {{busAsociadoConductor.RutaAsociada.nombre}} </h2>
-        <h2 *ngIf="busAsociadoConductor.placa !== null">La Placa del Bus Asignado es: {{busAsociadoConductor.placa}} </h2>
+        <h2 *ngIf="busAsociadoConductor.RutaAsociada.nombre != null && busAsociadoConductor.RutaAsociada.nombre != ''">La Ruta Asignada es: {{busAsociadoConductor.RutaAsociada.nombre}} </h2>
+        <h2 *ngIf="busAsociadoConductor.placa != null && busAsociadoConductor.placa != ''">La Placa del Bus Asignado es: {{busAsociadoConductor.placa}} </h2>
 
-        <h2 *ngIf="busAsociadoConductor.RutaAsociada.nombre === null">Aún no tiene ruta Asignada</h2>
-        <h2 *ngIf="busAsociadoConductor.placa === null">Aún no tiene Bus Asignado</h2>
+        <h2 *ngIf="busAsociadoConductor.RutaAsociada.nombre == null || busAsociadoConductor.RutaAsociada.nombre == ''">Aún no tiene ruta Asignada</h2>
+        <h2 *ngIf="busAsociadoConductor.placa == null || busAsociadoConductor.placa == ''">Aún no tiene Bus Asignado</h2>
 
 
     </div>

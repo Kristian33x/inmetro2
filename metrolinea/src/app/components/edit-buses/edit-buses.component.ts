@@ -121,13 +121,12 @@ addRuta2(bus: Ruta) {
     this.selectedRuta1 = this.rutasService.getRutaById(_id);
     if (this.selectedRuta1.NumBusesAsociados === 0 || this.selectedRuta1.NumBusesAsociados === null) {
 
-    this.rutaService.deleteRuta(_id)
-    .subscribe(res => {
-      this.getRutas();
-      M.toast({html: 'Eliminado satisfactoriamente'});
-    });
-    this.selectedRuta1 = new Ruta();
-  } else { console.log('El bus tiene conductores asociados'); }
+      this.rutaService.deleteRuta(_id).subscribe( res => {
+        this.getRutas();
+        M.toast({html: 'Eliminado satisfactoriamente'});
+      });
+      this.selectedRuta1 = new Ruta();
+    } else { console.log('El bus tiene conductores asociados'); }
   }
 
   resetForm(form?: NgForm) {

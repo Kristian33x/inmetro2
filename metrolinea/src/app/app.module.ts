@@ -21,6 +21,9 @@ import { MapaComponent } from './components/mapa/mapa.component';
 import { MapaEditarComponent } from './components/mapa/mapa-editar.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Mapa2Component } from './components/mapa2/mapa2.component';
+import { AgmDirectionModule } from 'agm-direction';
+
+// Components
 import { EditBusesComponent } from './components/edit-buses/edit-buses.component';
 import { BusComponent } from './components/bus/bus.component';
 import { BusesComponent } from './components/buses/buses.component';
@@ -31,6 +34,7 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { RegisterComponent } from './components/usuario/register/register.component';
 import { ConductorComponent } from './components/conductor/conductor.component';
 import { LoginComponent } from './components/usuario/login/login.component';
+import { ParadasComponent } from './components/paradas/paradas.component';
 
 
 
@@ -53,7 +57,8 @@ import { LoginComponent } from './components/usuario/login/login.component';
     LoginComponent,
     RegisterComponent,
     ConductorComponent,
-    LoginComponent
+    LoginComponent,
+    ParadasComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +71,8 @@ import { LoginComponent } from './components/usuario/login/login.component';
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDVC3W4TABNrGYhCq8fRR81Et4uFkoTh08'
-    })
+    }),
+    AgmDirectionModule,
   ],
   providers: [
     RutasService,

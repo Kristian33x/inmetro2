@@ -273,12 +273,14 @@ export class AuthService {
       document.getElementById('ocultar4').style.display = 'none';
       document.getElementById('ocultar5').style.display = 'none';
       document.getElementById('ocultar6').style.display = 'inline';
+      document.getElementById('ocultar7').style.display = 'inline';
     } else {
             document.getElementById('ocultar1').style.display = 'none';
             document.getElementById('ocultar2').style.display = 'none';
             document.getElementById('ocultar3').style.display = 'none';
             document.getElementById('ocultar5').style.display = 'none';
             document.getElementById('ocultar6').style.display = 'none';
+            document.getElementById('ocultar7').style.display = 'none';
             document.getElementById('ocultar4').style.display = 'inline';
             }
     this.conductor();

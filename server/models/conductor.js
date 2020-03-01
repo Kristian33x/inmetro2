@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
-const Bus = require('../models/bus');
 
 const ConductorSchema = new Schema({
     //Este esquema es usado para cada uno de los buses (haciendo referencia a su conductor) (Ya no hace referencia a su conductor, ahora uno de sus campos es el conductor)

@@ -48,6 +48,7 @@ router.get('/', (req, res) => {
 // Routes
 app.use('/api/buses', require('./routes/bus.routes'));
 app.use('/api/conductores', require('./routes/conductor.routes'));
+app.use('/api/paradas', require('./routes/parada.routes'));
 
 // fin index.js
 
@@ -60,6 +61,7 @@ app.use('/buses', express.static(path.join(__dirname, 'dist')));
 app.use('/login', express.static(path.join(__dirname, 'dist')));
 app.use('/about', express.static(path.join(__dirname, 'dist')));
 app.use('/registrar', express.static(path.join(__dirname, 'dist')));
+app.use('/paradas', express.static(path.join(__dirname, 'dist')));
 
 
 app.use(router);

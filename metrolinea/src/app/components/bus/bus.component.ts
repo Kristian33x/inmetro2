@@ -24,19 +24,40 @@ export class BusComponent implements OnDestroy {
   latCentroMapa = 7.11392;
   lngCentroMapa = -73.1198;
 
+  public lat = 24.799448;
+  public lng = 120.979021;
+
+  public origin: any;
+  public destination: any;
+
   constructor( private activatedRoute: ActivatedRoute,
                private rutasService: RutasService, private busService: BusService,
                public dialog: MatDialog) {
+                this.getDirection();
+                if (navigator.geolocation) {
+                       navigator.geolocation.getCurrentPosition( async ( datos ) => {
+                         this.latCentroMapa = datos.coords.latitude;
+                         this.lngCentroMapa = datos.coords.longitude;
+                       },
+                        () => { console.log('No esta activado el gps'); });
+                }
 
-    this.activatedRoute.params.subscribe(params => {
-        this.ruta = this.rutasService.getRuta( params.termino);
-    });
-    this.busService.getBuses();
-    this.BusesAsociadosRuta = this.busService.busesPorRuta(this.ruta.nombre);
-    this.Watcher();
+                this.activatedRoute.params.subscribe(params => {
+                    this.ruta = this.rutasService.getRuta( params.termino);
+                });
+                this.busService.getBuses();
+                this.BusesAsociadosRuta = this.busService.busesPorRuta(this.ruta.nombre);
+                this.Watcher();
   }
 
 
+  getDirection() {
+    this.origin = { lat: 7.11392, lng: -73.1198 } ;
+    this.destination = { lat: 7.11392, lng: -73.1298 } ;
+
+    // this.origin = 'Taipei Main Station'
+    // this.destination = 'Taiwan Presidential Office'
+  }
 
   ngOnDestroy(): void {
     if (this.MysetInterval) {

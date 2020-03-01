@@ -1,0 +1,214 @@
+<h1 class="my-5">PARADAS DE LAS DIFERENTES RUTAS</h1>
+<hr>
+<div class="row">
+    <div class="col-md-3 my-2" *ngFor="let parada of this.paradaServices.paradas">
+        <mat-card class="example-card">
+
+            <mat-card-header>
+                <div mat-card-avatar><img src="{{parada.tipoParada}}" style="width: 120%; height: 120%; border-radius:30px;"></div>
+                <mat-card-title>{{parada.nombre}}</mat-card-title>
+                <mat-card-subtitle *ngIf="parada.tipoParada === 'assets/img/station_stop.png'"> Estacion</mat-card-subtitle>
+                <mat-card-subtitle *ngIf="parada.tipoParada === 'assets/img/bus_stop.png'"> Parada </mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image style="width: min-content; height: min-content;" src="{{parada.tipoParada}} ">
+
+            <mat-card-content>
+                <b>{{parada.rutasAsociadas}}</b>
+            </mat-card-content>
+
+            <mat-card-actions style="text-align: center;">
+
+                <button (click)="this.paradaServices.editParada(parada); this.cargarBaseDatos(); obtenerRutasSinParada();" class="btn btn-outline-primary btn-sm " type="button" title="Agregar Ruta" data-toggle="modal" data-target="#modalAsignarRutaParada">
+                        <i class="material-icons">call_split</i>
+                    </button> &nbsp;
+
+                <button (click)="this.paradaServices.editParada(parada)" type="button" title="Editar Parada" class="btn btn-outline-warning btn-sm " data-toggle="modal" data-target="#modalActualizarParadas">
+                        <i class="material-icons">edit</i>
+                    </button> &nbsp;
+
+                <button (click)="this.paradaServices.editParada(parada)" type="button" title="Eliminar Parada" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#modalEliminarParadas">
+                         <i class="material-icons">delete</i>
+                    </button>
+
+            </mat-card-actions>
+
+        </mat-card>
+    </div>
+    <div class="col-1">
+
+    </div>
+
+</div>
+
+
+<!--Inicio del modal agregar/actualizar Paradas--->
+<div class="modal fade" id="modalActualizarParadas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-primary modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Agregar/Actualizar Parada</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+            </div>
+            <div class="modal-body">
+
+                <form class="user" #paradaForm="ngForm" (ngSubmit)="this.paradaServices.addParada(paradaForm)">
+
+                    <div class="form-group row">
+                        <div class="col-md-9">
+                            <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="this.paradaServices.selectedParada._id">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-3 form-control-label" for="text-input">Nombre de Parada</label>
+                        <div class="col-md-9">
+                            <input class="form-control form-control-user" type="text" name="nombre" #nombre="ngModel" [(ngModel)]="this.paradaServices.selectedParada.nombre" placeholder="Nombre">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 form-control-label" for="text-input">Direccion</label>
+                        <div class="col-md-9">
+                            <input class="form-control form-control-user" type="text" name="direccion" #direccion="ngModel" [(ngModel)]="this.paradaServices.selectedParada.direccion" placeholder="direccion">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 form-control-label" for="text-input">Latitud</label>
+                        <div class="col-md-9">
+                            <input class="form-control form-control-user" type="number" name="latitud" #latitud="ngModel" [(ngModel)]="this.paradaServices.selectedParada.latitud" placeholder="Latitud">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 form-control-label" for="text-input">Longitud</label>
+                        <div class="col-md-9">
+                            <input class="form-control form-control-user" type="number" name="longitud" #longitud="ngModel" [(ngModel)]="this.paradaServices.selectedParada.longitud" placeholder="Longitud">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 form-control-label" for="text-input">Tipo de Parada</label>
+                        <div class="col-md-9">
+                            <input type="radio" name="tipoParada" #tipoParada="ngModel" [(ngModel)]="this.paradaServices.selectedParada.tipoParada" value="assets/img/bus_stop.png" checked> Parada Bus
+                            <input type="radio" name="tipoParada" #tipoParada="ngModel" [(ngModel)]="this.paradaServices.selectedParada.tipoParada" value="assets/img/station_stop.png"> Parada Estacion
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-9">
+                            <input type="hidden" name="rutasAsociadas" #rutasAsociadas="ngModel" [(ngModel)]="this.paradaServices.selectedParada.rutasAsociadas">
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <div class="card-action">
+                            <div class="input-field">
+                                <button class="btn btn-primary btn-user mce-btn-group" style="margin-right: 7.5px;" (click)="resetForm(paradaForm)">
+                                                        Limpiar</button>
+                                <button class="btn btn-success btn-user mce-btn-group" (click)="this.paradaServices.addParada(paradaForm)" data-dismiss="modal">
+                                                        Guardar</button>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--Fin del modal agregar/actualizar Paradas--->
+
+<!-- Inicio del modal Eliminar Parada -->
+<div class="modal fade" id="modalEliminarParadas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-danger" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Eliminar Parada de {{this.paradaServices.selectedParada.nombre}}</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+            </div>
+            <div class="modal-body">
+                <p>Estas seguro de eliminar la Parada?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button (click)="this.paradaServices.borrarParada(this.paradaServices.selectedParada._id)" type="button" class="btn btn-danger" data-dismiss="modal">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Fin del modal Eliminar Parada -->
+
+<!-- Inicio del modal Asignar Ruta al array de rutas de una Parada -->
+<div class="modal fade" id="modalAsignarRutaParada" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-danger" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Agregar/Eliminar Ruta a: <b>{{this.paradaServices.selectedParada.nombre}}</b>.</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <h4 class="modal-dialog my-0">Agregar Ruta. </h4>
+                <br>
+
+                <div *ngIf="this.RutasSinParada != undefined">
+                    <div class="row my-2" *ngFor="let rutaNombre of this.RutasSinParada;">
+                        <div class="col-4">
+                            {{rutaNombre}}
+                        </div>
+                        <div class="col-6">
+
+                        </div>
+                        <div class="col-2">
+                            <button type="button" (click)="asignarRutaParada2(rutaNombre)" title="Agregar Parada" class="btn btn-success btn-sm">
+                                <i class="material-icons">local_hospital</i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="this.RutasSinParada.length == 0">
+                    <b>No hay Rutas para agregar</b>
+                </div>
+
+                <br>
+
+                <hr>
+                <h4 class="modal-dialog my-0">Eliminar Ruta. </h4> <br>
+                <div *ngIf="this.paradaServices.selectedParada.rutasAsociadas.length != 0">
+                    <div class="row my-2" *ngFor="let nombreRuta of this.paradaServices.selectedParada.rutasAsociadas;">
+                        <div class="col-4">
+                            {{nombreRuta}}
+                        </div>
+                        <div class="col-6">
+
+                        </div>
+                        <div class="col-2">
+                            <button type="button" (click)="removerRutaParada(nombreRuta)" title="Eliminar Parada" class="btn btn-danger btn-sm">
+                                <i class="material-icons">cancel</i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="this.paradaServices.selectedParada.rutasAsociadas.length == 0">
+                    <b>Sin Rutas Asociadas.</b>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" style="text-align: center;" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Fin del modal Asignar Ruta a Bus -->
+<!-- remove_circle_outline -->
+<!-- highlight_off -->
+<!-- local_hospital es un mas -->
+<!-- clear cancel -->
