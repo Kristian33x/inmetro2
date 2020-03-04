@@ -20,7 +20,6 @@ import { AgmCoreModule } from '@agm/core';
 import { MapaComponent } from './components/mapa/mapa.component';
 import { MapaEditarComponent } from './components/mapa/mapa-editar.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { Mapa2Component } from './components/mapa2/mapa2.component';
 import { AgmDirectionModule } from 'agm-direction';
 
 // Components
@@ -46,7 +45,6 @@ import { ParadasComponent } from './components/paradas/paradas.component';
     AppComponent,
     MapaComponent,
     MapaEditarComponent,
-    Mapa2Component,
     EditBusesComponent,
     BusComponent,
     BusesComponent,

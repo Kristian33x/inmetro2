@@ -110,7 +110,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"jumbotron jumbotron-fluid animated fadeIn \">\n    <div class=\"container\">\n        <h1 class=\"display-4\">INMETRO App</h1>\n        <mat-toolbar color=\"primary\">\n            <span>Rastreo de Buses Mediante GPS</span>\n        </mat-toolbar>\n\n        <!-- <p class=\"lead\">Esta es la aplicacion para rastrear buses de metrolinea</p> -->\n    </div>\n    <img src='assets/img/A-64.png' alt=\"123\" class=\"img-fluid\">\n    <!-- <div #map style=\"width:100%;height:400px\"></div> -->\n    <!-- <app-mapa></app-mapa> -->\n</div>\n\n\n<div class=\"main-container\">\n    <!-- <h3>Raised Buttons</h3>\n    <div class=\"example-button-row\">\n        <button mat-raised-button>Basic</button>\n        <button mat-raised-button color=\"primary\">Primary</button>\n        <button mat-raised-button color=\"accent\">Accent</button>\n        <button mat-raised-button color=\"warn\">Warn</button>\n        <button mat-raised-button disabled>Disabled</button>\n        <a mat-raised-button routerLink=\".\">Link</a>\n    </div>\n\n    <mat-progress-bar mode=\"indeterminate\"></mat-progress-bar> -->\n    <br><br><br>\n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"jumbotron jumbotron-fluid animated fadeIn \">\n    <div class=\"container\">\n        <h1 class=\"display-4\">INMETRO App</h1>\n        <mat-toolbar color=\"primary\">\n            <span>Rastreo de Buses Mediante GPS</span>\n        </mat-toolbar>\n\n        <!-- <p class=\"lead\">Esta es la aplicacion para rastrear buses de metrolinea</p> -->\n    </div>\n    <img src='assets/img/A-64.png' alt=\"123\" class=\"img-fluid\">\n    <!-- <div #map style=\"width:100%;height:400px\"></div> -->\n    <!-- <app-mapa></app-mapa> -->\n</div>\n\n\n<div class=\"main-container\">\n    <!-- <h3>Raised Buttons</h3>\n    <div class=\"example-button-row\">\n        <button mat-raised-button>Basic</button>\n        <button mat-raised-button color=\"primary\">Primary</button>\n        <button mat-raised-button color=\"accent\">Accent</button>\n        <button mat-raised-button color=\"warn\">Warn</button>\n        <button mat-raised-button disabled>Disabled</button>\n        <a mat-raised-button routerLink=\".\">Link</a>\n    </div>\n\n    <mat-progress-bar mode=\"indeterminate\"></mat-progress-bar> -->\n    <br><br><br>\n</div>\n\n<app-mapa></app-mapa>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/mapa/mapa-editar.component.html": 
@@ -133,17 +133,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
             /* harmony default export */ __webpack_exports__["default"] = ("<mat-card>\n\n    <mat-card-title>\n        Mapa\n    </mat-card-title>\n\n    <!-- (centerChange)= (zoomChange) -->\n    <mat-card-content>\n        <agm-map (mapClick)=\"agregarMarcador( $event )\" (boundsChange)=\"moverMapa( $event);\" [latitude]=\"lat\" [longitude]=\"lng\" [zoom]=\"16\">\n            <!-- <agm-circle [latitude]=\"lat\" [longitude]=\"lng\" [radius]=\"30\" [fillColor]=\"'red'\" [circleDraggable]=\"true\" [editable]=\"true\">></agm-circle> -->\n\n            <!-- <agm-direction [origin]=\"this.origin\" [destination]=\"this.destination\" [waypoints]=\"this.waypoints\"> </agm-direction> -->\n\n\n            <!-- <agm-marker *ngFor=\"let marcador of marcadores; let i = index\" [iconUrl]=\"'assets/carro.bmp'\" [label]=\"marcador.placa\" [latitude]=\"marcador.latitud\" [longitude]=\"marcador.longitud\">\n\n                <agm-info-window>\n                    <strong>{{marcador.placa}}</strong>\n                    <p>\n                        {{marcador.ruta}}\n                    </p>\n                    <div>\n                        <button (click)=\"editarMarcador(marcador)\" mat-raised-button color=\"primary\">Editar</button>\n                        <button (click)=\"borrarMarcador(i)\" mat-raised-button color=\"warn\">Borrar</button>\n                    </div>\n                </agm-info-window>\n            </agm-marker> -->\n        </agm-map>\n    </mat-card-content>\n\n</mat-card>");
-            /***/ 
-        }),
-        /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/mapa2/mapa2.component.html": 
-        /*!*********************************************************************************************!*\
-          !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/mapa2/mapa2.component.html ***!
-          \*********************************************************************************************/
-        /*! exports provided: default */
-        /***/ (function (module, __webpack_exports__, __webpack_require__) {
-            "use strict";
-            __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<!-- <div id=\"map\"></div>\nReplace the value of the key parameter with your own API key.\n<script async defer src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyCkUOdZ5y7hMm0yrcCQoCvLwzdM6M8s5qk&callback=initMap\">\n    navigator.geolocation.getCurrentPosition(\n        function(datos) {\n            console.log(\"lat: \" + datos.coords.latitude);\n        }\n    )\n</script> -->\n\n<div #map style=\"width:100%;height:400px\"></div>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/paradas/paradas.component.html": 
@@ -594,19 +583,18 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
             /* harmony import */ var _agm_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @agm/core */ "./node_modules/@agm/core/fesm2015/agm-core.js");
             /* harmony import */ var _components_mapa_mapa_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/mapa/mapa.component */ "./src/app/components/mapa/mapa.component.ts");
             /* harmony import */ var _components_mapa_mapa_editar_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/mapa/mapa-editar.component */ "./src/app/components/mapa/mapa-editar.component.ts");
-            /* harmony import */ var _components_mapa2_mapa2_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/mapa2/mapa2.component */ "./src/app/components/mapa2/mapa2.component.ts");
-            /* harmony import */ var agm_direction__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! agm-direction */ "./node_modules/agm-direction/fesm2015/agm-direction.js");
-            /* harmony import */ var _components_edit_buses_edit_buses_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/edit-buses/edit-buses.component */ "./src/app/components/edit-buses/edit-buses.component.ts");
-            /* harmony import */ var _components_bus_bus_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/bus/bus.component */ "./src/app/components/bus/bus.component.ts");
-            /* harmony import */ var _components_buses_buses_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/buses/buses.component */ "./src/app/components/buses/buses.component.ts");
-            /* harmony import */ var _components_home_home_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/home/home.component */ "./src/app/components/home/home.component.ts");
-            /* harmony import */ var _components_search_search_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/search/search.component */ "./src/app/components/search/search.component.ts");
-            /* harmony import */ var _components_tarjeta_bus_tarjeta_bus_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/tarjeta-bus/tarjeta-bus.component */ "./src/app/components/tarjeta-bus/tarjeta-bus.component.ts");
-            /* harmony import */ var _components_shared_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/shared/navbar/navbar.component */ "./src/app/components/shared/navbar/navbar.component.ts");
-            /* harmony import */ var _components_usuario_register_register_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/usuario/register/register.component */ "./src/app/components/usuario/register/register.component.ts");
-            /* harmony import */ var _components_conductor_conductor_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/conductor/conductor.component */ "./src/app/components/conductor/conductor.component.ts");
-            /* harmony import */ var _components_usuario_login_login_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/usuario/login/login.component */ "./src/app/components/usuario/login/login.component.ts");
-            /* harmony import */ var _components_paradas_paradas_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/paradas/paradas.component */ "./src/app/components/paradas/paradas.component.ts");
+            /* harmony import */ var agm_direction__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! agm-direction */ "./node_modules/agm-direction/fesm2015/agm-direction.js");
+            /* harmony import */ var _components_edit_buses_edit_buses_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/edit-buses/edit-buses.component */ "./src/app/components/edit-buses/edit-buses.component.ts");
+            /* harmony import */ var _components_bus_bus_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/bus/bus.component */ "./src/app/components/bus/bus.component.ts");
+            /* harmony import */ var _components_buses_buses_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/buses/buses.component */ "./src/app/components/buses/buses.component.ts");
+            /* harmony import */ var _components_home_home_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/home/home.component */ "./src/app/components/home/home.component.ts");
+            /* harmony import */ var _components_search_search_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/search/search.component */ "./src/app/components/search/search.component.ts");
+            /* harmony import */ var _components_tarjeta_bus_tarjeta_bus_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/tarjeta-bus/tarjeta-bus.component */ "./src/app/components/tarjeta-bus/tarjeta-bus.component.ts");
+            /* harmony import */ var _components_shared_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/shared/navbar/navbar.component */ "./src/app/components/shared/navbar/navbar.component.ts");
+            /* harmony import */ var _components_usuario_register_register_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/usuario/register/register.component */ "./src/app/components/usuario/register/register.component.ts");
+            /* harmony import */ var _components_conductor_conductor_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/conductor/conductor.component */ "./src/app/components/conductor/conductor.component.ts");
+            /* harmony import */ var _components_usuario_login_login_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/usuario/login/login.component */ "./src/app/components/usuario/login/login.component.ts");
+            /* harmony import */ var _components_paradas_paradas_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/paradas/paradas.component */ "./src/app/components/paradas/paradas.component.ts");
             // Rutas
             // Servicios
             // Componentes
@@ -626,19 +614,18 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                         _app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"],
                         _components_mapa_mapa_component__WEBPACK_IMPORTED_MODULE_12__["MapaComponent"],
                         _components_mapa_mapa_editar_component__WEBPACK_IMPORTED_MODULE_13__["MapaEditarComponent"],
-                        _components_mapa2_mapa2_component__WEBPACK_IMPORTED_MODULE_14__["Mapa2Component"],
-                        _components_edit_buses_edit_buses_component__WEBPACK_IMPORTED_MODULE_16__["EditBusesComponent"],
-                        _components_bus_bus_component__WEBPACK_IMPORTED_MODULE_17__["BusComponent"],
-                        _components_buses_buses_component__WEBPACK_IMPORTED_MODULE_18__["BusesComponent"],
-                        _components_home_home_component__WEBPACK_IMPORTED_MODULE_19__["HomeComponent"],
-                        _components_search_search_component__WEBPACK_IMPORTED_MODULE_20__["SearchComponent"],
-                        _components_tarjeta_bus_tarjeta_bus_component__WEBPACK_IMPORTED_MODULE_21__["TarjetaBusComponent"],
-                        _components_shared_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_22__["NavbarComponent"],
-                        _components_usuario_login_login_component__WEBPACK_IMPORTED_MODULE_25__["LoginComponent"],
-                        _components_usuario_register_register_component__WEBPACK_IMPORTED_MODULE_23__["RegisterComponent"],
-                        _components_conductor_conductor_component__WEBPACK_IMPORTED_MODULE_24__["ConductorComponent"],
-                        _components_usuario_login_login_component__WEBPACK_IMPORTED_MODULE_25__["LoginComponent"],
-                        _components_paradas_paradas_component__WEBPACK_IMPORTED_MODULE_26__["ParadasComponent"]
+                        _components_edit_buses_edit_buses_component__WEBPACK_IMPORTED_MODULE_15__["EditBusesComponent"],
+                        _components_bus_bus_component__WEBPACK_IMPORTED_MODULE_16__["BusComponent"],
+                        _components_buses_buses_component__WEBPACK_IMPORTED_MODULE_17__["BusesComponent"],
+                        _components_home_home_component__WEBPACK_IMPORTED_MODULE_18__["HomeComponent"],
+                        _components_search_search_component__WEBPACK_IMPORTED_MODULE_19__["SearchComponent"],
+                        _components_tarjeta_bus_tarjeta_bus_component__WEBPACK_IMPORTED_MODULE_20__["TarjetaBusComponent"],
+                        _components_shared_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_21__["NavbarComponent"],
+                        _components_usuario_login_login_component__WEBPACK_IMPORTED_MODULE_24__["LoginComponent"],
+                        _components_usuario_register_register_component__WEBPACK_IMPORTED_MODULE_22__["RegisterComponent"],
+                        _components_conductor_conductor_component__WEBPACK_IMPORTED_MODULE_23__["ConductorComponent"],
+                        _components_usuario_login_login_component__WEBPACK_IMPORTED_MODULE_24__["LoginComponent"],
+                        _components_paradas_paradas_component__WEBPACK_IMPORTED_MODULE_25__["ParadasComponent"]
                     ],
                     imports: [
                         _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -652,7 +639,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                         _agm_core__WEBPACK_IMPORTED_MODULE_11__["AgmCoreModule"].forRoot({
                             apiKey: 'AIzaSyDVC3W4TABNrGYhCq8fRR81Et4uFkoTh08'
                         }),
-                        agm_direction__WEBPACK_IMPORTED_MODULE_15__["AgmDirectionModule"],
+                        agm_direction__WEBPACK_IMPORTED_MODULE_14__["AgmDirectionModule"],
                     ],
                     providers: [
                         _services_rutas_service__WEBPACK_IMPORTED_MODULE_6__["RutasService"],
@@ -692,8 +679,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                 { path: 'login', component: _components_usuario_login_login_component__WEBPACK_IMPORTED_MODULE_7__["LoginComponent"] },
                 { path: 'conductor', component: _components_conductor_conductor_component__WEBPACK_IMPORTED_MODULE_10__["ConductorComponent"], canActivate: [_guards_conductor_guard__WEBPACK_IMPORTED_MODULE_11__["ConductorGuard"]] },
                 { path: 'registrar', component: _components_usuario_register_register_component__WEBPACK_IMPORTED_MODULE_8__["RegisterComponent"], canActivate: [_guards_admin_guard__WEBPACK_IMPORTED_MODULE_9__["AdminGuard"]] },
-                { path: 'paradas', component: _components_paradas_paradas_component__WEBPACK_IMPORTED_MODULE_12__["ParadasComponent"] },
-                { path: 'bus/:termino', component: _components_bus_bus_component__WEBPACK_IMPORTED_MODULE_5__["BusComponent"], canActivate: [_guards_admin_guard__WEBPACK_IMPORTED_MODULE_9__["AdminGuard"]] },
+                { path: 'paradas', component: _components_paradas_paradas_component__WEBPACK_IMPORTED_MODULE_12__["ParadasComponent"], canActivate: [_guards_admin_guard__WEBPACK_IMPORTED_MODULE_9__["AdminGuard"]] },
+                { path: 'bus/:termino', component: _components_bus_bus_component__WEBPACK_IMPORTED_MODULE_5__["BusComponent"] },
                 { path: 'search/:termino', component: _components_search_search_component__WEBPACK_IMPORTED_MODULE_6__["SearchComponent"] },
                 { path: '', pathMatch: 'full', redirectTo: '/home' },
             ];
@@ -1667,105 +1654,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                     styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./mapa.component.css */ "./src/app/components/mapa/mapa.component.css")).default]
                 })
             ], MapaComponent);
-            /***/ 
-        }),
-        /***/ "./src/app/components/mapa2/mapa2.component.css": 
-        /*!******************************************************!*\
-          !*** ./src/app/components/mapa2/mapa2.component.css ***!
-          \******************************************************/
-        /*! exports provided: default */
-        /***/ (function (module, __webpack_exports__, __webpack_require__) {
-            "use strict";
-            __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvbWFwYTIvbWFwYTIuY29tcG9uZW50LmNzcyJ9 */");
-            /***/ 
-        }),
-        /***/ "./src/app/components/mapa2/mapa2.component.ts": 
-        /*!*****************************************************!*\
-          !*** ./src/app/components/mapa2/mapa2.component.ts ***!
-          \*****************************************************/
-        /*! exports provided: Mapa2Component */
-        /***/ (function (module, __webpack_exports__, __webpack_require__) {
-            "use strict";
-            __webpack_require__.r(__webpack_exports__);
-            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Mapa2Component", function () { return Mapa2Component; });
-            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-            var Mapa2Component = /** @class */ (function () {
-                function Mapa2Component() {
-                }
-                Mapa2Component.prototype.ngOnInit = function () {
-                    return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-                        return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, this.posicion()];
-                                case 1:
-                                    _a.sent();
-                                    return [2 /*return*/];
-                            }
-                        });
-                    });
-                };
-                Mapa2Component.prototype.posicion = function () {
-                    return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-                        var _this = this;
-                        return __generator(this, function (_a) {
-                            if (navigator.geolocation) {
-                                navigator.geolocation.getCurrentPosition(function (datos) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
-                                    var _a, _b, mapProperties, marker;
-                                    return __generator(this, function (_c) {
-                                        switch (_c.label) {
-                                            case 0:
-                                                // console.log( await datos.coords.latitude, 'asdasdasdasd3');
-                                                // console.log( await datos.coords.longitude, 'asdasdasdasd4');
-                                                _a = this;
-                                                return [4 /*yield*/, datos.coords.latitude];
-                                            case 1:
-                                                // console.log( await datos.coords.latitude, 'asdasdasdasd3');
-                                                // console.log( await datos.coords.longitude, 'asdasdasdasd4');
-                                                _a.lat = _c.sent();
-                                                _b = this;
-                                                return [4 /*yield*/, datos.coords.longitude];
-                                            case 2:
-                                                _b.lng = _c.sent();
-                                                console.log(this.lat, ' @@@@@@@ ', this.lng);
-                                                mapProperties = {
-                                                    center: new google.maps.LatLng(this.lat, this.lng),
-                                                    zoom: 15,
-                                                    mapTypeId: google.maps.MapTypeId.ROADMAP
-                                                };
-                                                this.map = new google.maps.Map(this.mapElement.nativeElement, mapProperties);
-                                                marker = new google.maps.Marker({
-                                                    position: new google.maps.LatLng(7.1315202, -73.123147),
-                                                    icon: 'assets/bus-solid.svg',
-                                                    map: this.map
-                                                });
-                                                return [2 /*return*/];
-                                        }
-                                    });
-                                }); }, function () { console.log('No esta activado el gps'); });
-                            }
-                            else {
-                                this.lat = 7.11392;
-                                this.lng = -73.1198;
-                            }
-                            console.log(this.lat, ' @@@@@@@2 ', this.lng);
-                            return [2 /*return*/];
-                        });
-                    });
-                };
-                return Mapa2Component;
-            }());
-            tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('map', { static: true })
-            ], Mapa2Component.prototype, "mapElement", void 0);
-            Mapa2Component = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-                    selector: 'app-mapa2',
-                    template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./mapa2.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/mapa2/mapa2.component.html")).default,
-                    styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./mapa2.component.css */ "./src/app/components/mapa2/mapa2.component.css")).default]
-                })
-            ], Mapa2Component);
             /***/ 
         }),
         /***/ "./src/app/components/paradas/paradas.component.css": 
