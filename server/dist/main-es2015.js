@@ -657,7 +657,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_usuario_register_register_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/usuario/register/register.component */ "./src/app/components/usuario/register/register.component.ts");
 /* harmony import */ var _guards_admin_guard__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./guards/admin.guard */ "./src/app/guards/admin.guard.ts");
 /* harmony import */ var _components_conductor_conductor_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/conductor/conductor.component */ "./src/app/components/conductor/conductor.component.ts");
-/* harmony import */ var _components_paradas_paradas_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/paradas/paradas.component */ "./src/app/components/paradas/paradas.component.ts");
+/* harmony import */ var _guards_conductor_guard__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./guards/conductor.guard */ "./src/app/guards/conductor.guard.ts");
+/* harmony import */ var _components_paradas_paradas_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/paradas/paradas.component */ "./src/app/components/paradas/paradas.component.ts");
+
 
 
 
@@ -675,9 +677,9 @@ const APP_ROUTES = [
     { path: 'about', component: _components_edit_buses_edit_buses_component__WEBPACK_IMPORTED_MODULE_3__["EditBusesComponent"], canActivate: [_guards_admin_guard__WEBPACK_IMPORTED_MODULE_9__["AdminGuard"]] },
     { path: 'buses', component: _components_buses_buses_component__WEBPACK_IMPORTED_MODULE_4__["BusesComponent"] },
     { path: 'login', component: _components_usuario_login_login_component__WEBPACK_IMPORTED_MODULE_7__["LoginComponent"] },
-    { path: 'conductor', component: _components_conductor_conductor_component__WEBPACK_IMPORTED_MODULE_10__["ConductorComponent"] },
+    { path: 'conductor', component: _components_conductor_conductor_component__WEBPACK_IMPORTED_MODULE_10__["ConductorComponent"], canActivate: [_guards_conductor_guard__WEBPACK_IMPORTED_MODULE_11__["ConductorGuard"]] },
     { path: 'registrar', component: _components_usuario_register_register_component__WEBPACK_IMPORTED_MODULE_8__["RegisterComponent"], canActivate: [_guards_admin_guard__WEBPACK_IMPORTED_MODULE_9__["AdminGuard"]] },
-    { path: 'paradas', component: _components_paradas_paradas_component__WEBPACK_IMPORTED_MODULE_11__["ParadasComponent"], canActivate: [_guards_admin_guard__WEBPACK_IMPORTED_MODULE_9__["AdminGuard"]] },
+    { path: 'paradas', component: _components_paradas_paradas_component__WEBPACK_IMPORTED_MODULE_12__["ParadasComponent"], canActivate: [_guards_admin_guard__WEBPACK_IMPORTED_MODULE_9__["AdminGuard"]] },
     { path: 'bus/:termino', component: _components_bus_bus_component__WEBPACK_IMPORTED_MODULE_5__["BusComponent"] },
     { path: 'search/:termino', component: _components_search_search_component__WEBPACK_IMPORTED_MODULE_6__["SearchComponent"] },
     { path: '', pathMatch: 'full', redirectTo: '/home' },
@@ -2166,6 +2168,45 @@ AdminGuard = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         providedIn: 'root'
     })
 ], AdminGuard);
+
+
+
+/***/ }),
+
+/***/ "./src/app/guards/conductor.guard.ts":
+/*!*******************************************!*\
+  !*** ./src/app/guards/conductor.guard.ts ***!
+  \*******************************************/
+/*! exports provided: ConductorGuard */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConductorGuard", function() { return ConductorGuard; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/auth.service */ "./src/app/services/auth.service.ts");
+
+
+
+let ConductorGuard = class ConductorGuard {
+    constructor(auth) {
+        this.auth = auth;
+    }
+    canActivate() {
+        // console.log('guard');
+        // return true;
+        return this.auth.estaAutenticadoUnConductor();
+    }
+};
+ConductorGuard.ctorParameters = () => [
+    { type: _services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"] }
+];
+ConductorGuard = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    })
+], ConductorGuard);
 
 
 
