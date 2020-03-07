@@ -52,7 +52,10 @@
                     <td *ngIf="bus.latitud != 0 && bus.sentido == null"> {{bus.latitud}}, {{bus.longitud}}, -</td>
 
                     <td>
-                        <button (click)="UbicarEnMapa(bus.latitud,bus.longitud,bus.sentido);" type="button" title="Ubicar en Mapa este Bus" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modalAsignarRutaBus">
+                        <button *ngIf="bus.latitud === 0" type="button" title="Bus no habilitado" class="btn btn-success btn-sm" disabled="true">
+                            <i class="material-icons">directions_bus</i>
+                        </button>
+                        <button *ngIf="bus.latitud !== 0" (click)="UbicarEnMapa(bus.latitud,bus.longitud,bus.sentido);" type="button" title="Ubicar Bus en Mapa" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modalAsignarRutaBus">
                         <i class="material-icons">directions_bus</i>
                     </button>&nbsp;
                     </td>
@@ -78,7 +81,7 @@
 
             <agm-direction [travelMode]="'DRIVING'" [origin]="this.origin" [destination]="this.destination" [waypoints]="this.waypoints"> </agm-direction>
 
-            <agm-marker [iconUrl]="'assets/img/mapaUsuario.png'" [label]="Tu" [latitude]="latCentroMapa" [longitude]="lngCentroMapa">
+            <agm-marker [iconUrl]="'assets/img/mapaUsuario.png'" [label]="Tu" [latitude]="latUsuario" [longitude]="lngUsuario">
 
                 <agm-info-window>
                     <strong>Aqui Estas!!</strong>

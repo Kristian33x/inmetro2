@@ -27,7 +27,8 @@ export class BusComponent implements OnDestroy, OnInit {
   marcadores: Marcador[] = [];
   latCentroMapa = 7.11392;
   lngCentroMapa = -73.1198;
-
+  latUsuario: number;
+  lngUsuario: number;
   // Datos utilizados para dibujar la 'ruta' de la ruta seleccionada en el mapa
   origin: any;
   destination: any;
@@ -40,6 +41,8 @@ export class BusComponent implements OnDestroy, OnInit {
                        navigator.geolocation.getCurrentPosition( async ( datos ) => {
                          this.latCentroMapa = datos.coords.latitude;
                          this.lngCentroMapa = datos.coords.longitude;
+                         this.latUsuario = datos.coords.latitude;
+                         this.lngUsuario = datos.coords.longitude;
                        },
                         () => { console.log('No esta activado el gps'); });
                 }
