@@ -1,7 +1,7 @@
 <mat-card>
 
     <mat-card-title>
-        Mapa
+        Mapa {{lat}} {{lng}}
     </mat-card-title>
 
     <!-- (centerChange)= (zoomChange) -->
@@ -12,19 +12,12 @@
             <!-- <agm-direction [origin]="this.origin" [destination]="this.destination" [waypoints]="this.waypoints"> </agm-direction> -->
 
 
-            <!-- <agm-marker *ngFor="let marcador of marcadores; let i = index" [iconUrl]="'assets/carro.bmp'" [label]="marcador.placa" [latitude]="marcador.latitud" [longitude]="marcador.longitud">
+            <agm-marker [iconUrl]="'assets/img/mapaUsuario.png'" [label]="Tu" [latitude]="lat" [longitude]="lng">
 
                 <agm-info-window>
-                    <strong>{{marcador.placa}}</strong>
-                    <p>
-                        {{marcador.ruta}}
-                    </p>
-                    <div>
-                        <button (click)="editarMarcador(marcador)" mat-raised-button color="primary">Editar</button>
-                        <button (click)="borrarMarcador(i)" mat-raised-button color="warn">Borrar</button>
-                    </div>
+                    <strong>Aqui Estas!!</strong>
                 </agm-info-window>
-            </agm-marker> -->
+            </agm-marker>
         </agm-map>
     </mat-card-content>
 

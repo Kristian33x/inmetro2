@@ -12,8 +12,8 @@ import { MapaEditarComponent } from './mapa-editar.component';
 export class MapaComponent implements OnInit {
 
  marcadores: Marcador[] = [];
- lat = 7.11392;
- lng = -73.1198;
+ lat = 7.13707729242462 ;
+ lng = -73.11724761399356;
  lat1;
  lng1;
 
@@ -25,6 +25,14 @@ export class MapaComponent implements OnInit {
   constructor(private snackBar: MatSnackBar, public dialog: MatDialog) {
     this.getDirection();
 
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition( async ( datos ) => {
+        this.lat = datos.coords.latitude;
+        this.lng = datos.coords.longitude;
+      });
+    }
+    console.log(this.lat , this.lng);
     // const nuevoMarcador = new Marcador(this.lat, this.lng);
     // this.marcadores.push(nuevoMarcador);
   //   if (navigator.geolocation) {
@@ -51,12 +59,20 @@ export class MapaComponent implements OnInit {
   }
 
   getDirection() {
-    this.origin = { lat: 7.11392, lng: -73.1198 }; // A
-    this.destination = { lat: 7.12392, lng: -73.1298 }; // D
-    this.waypoints = [
-     {location: { lat: 7.13392, lng: -73.1398 }}, // C
-     {location: { lat: 7.14392, lng: -73.1498 }} // B
-    ];
+    // this.origin = { lat: 7.11392, lng: -73.1198 }; // A
+    // this.destination = { lat: 7.12392, lng: -73.1298 }; // D
+    // this.waypoints = [
+    //  {location: { lat: 7.13392, lng: -73.1398 }}, // C
+    //  {location: { lat: 7.14392, lng: -73.1498 }} // B
+    // ];
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition( async ( datos ) => {
+        this.lat = datos.coords.latitude;
+        this.lng = datos.coords.longitude;
+        console.log(this.lat , this.lng, 'YY');
+      });
+    }
+    console.log(this.lat , this.lng, 'XX');
   }
 
   moverMapa(evento) {

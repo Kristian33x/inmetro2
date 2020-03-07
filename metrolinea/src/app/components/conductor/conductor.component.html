@@ -40,23 +40,32 @@
         <div class="form-group row">
             <label class="col-md-3 form-control-label" for="text-input"></label>
             <label class="col-md-3 form-control-label" for="text-input">Longitud</label>
-            <div class="col-md-3">
+            <div class="col-md-3" *ngIf="busAsociadoConductor.longitud !== 0">
                 <input class="form-control form-control-user" type="text" name="longitud" #longitud="ngModel" [(ngModel)]="busAsociadoConductor.longitud" placeholder="Longitud">
+            </div>
+            <div class="col-md-3" *ngIf="busAsociadoConductor.longitud === 0">
+                <input class="form-control form-control-user" type="text" name="longitud" #longitud="ngModel" [(ngModel)]="-">
             </div>
         </div>
 
         <div class="form-group row">
             <label class="col-md-3 form-control-label" for="text-input"></label>
             <label class="col-md-3 form-control-label" for="text-input">Latitud</label>
-            <div class="col-md-3">
+            <div class="col-md-3" *ngIf="busAsociadoConductor.latitud !== 0">
                 <input class="form-control form-control-user" type="text" name="latitud" #latitud="ngModel" [(ngModel)]="busAsociadoConductor.latitud" placeholder="Latitud">
+            </div>
+            <div class="col-md-3" *ngIf="busAsociadoConductor.latitud === 0">
+                <input class="form-control form-control-user" type="text" name="latitud" #latitud="ngModel" [(ngModel)]="-">
             </div>
         </div>
         <div class="form-group row">
             <label class="col-md-3 form-control-label" for="text-input"></label>
             <label class="col-md-3 form-control-label" for="text-input">Sentido</label>
-            <div class="col-md-3">
+            <div class="col-md-3" *ngIf="busAsociadoConductor.sentido !== 0">
                 <input class="form-control form-control-user" type="text" name="sentido" #sentido="ngModel" [(ngModel)]="busAsociadoConductor.sentido" placeholder="Sentido">
+            </div>
+            <div class="col-md-3" *ngIf="busAsociadoConductor.sentido === 0">
+                <input class="form-control form-control-user" type="text" name="sentido" #sentido="ngModel" [(ngModel)]="-">
             </div>
         </div>
     </form>

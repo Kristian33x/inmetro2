@@ -78,8 +78,14 @@
 
             <agm-direction [travelMode]="'DRIVING'" [origin]="this.origin" [destination]="this.destination" [waypoints]="this.waypoints"> </agm-direction>
 
+            <agm-marker [iconUrl]="'assets/img/mapaUsuario.png'" [label]="Tu" [latitude]="latCentroMapa" [longitude]="lngCentroMapa">
 
-            <agm-marker *ngFor="let marcador of marcadores; let i = index" [iconUrl]="'assets/img/location.png'" [label]="marcador.placa" [latitude]="marcador.latitud" [longitude]="marcador.longitud">
+                <agm-info-window>
+                    <strong>Aqui Estas!!</strong>
+                </agm-info-window>
+            </agm-marker>
+
+            <agm-marker *ngFor="let marcador of marcadores; let i = index" [iconUrl]="'assets/img/mapaBus.png'" [label]="marcador.ruta.nombre" [latitude]="marcador.latitud" [longitude]="marcador.longitud">
 
                 <agm-info-window>
                     <strong>{{marcador.placa}}</strong>
