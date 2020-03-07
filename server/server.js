@@ -62,6 +62,7 @@ app.use('/login', express.static(path.join(__dirname, 'dist')));
 app.use('/about', express.static(path.join(__dirname, 'dist')));
 app.use('/registrar', express.static(path.join(__dirname, 'dist')));
 app.use('/paradas', express.static(path.join(__dirname, 'dist')));
+app.use('/conductor', express.static(path.join(__dirname, 'dist')));
 
 
 app.use(router);

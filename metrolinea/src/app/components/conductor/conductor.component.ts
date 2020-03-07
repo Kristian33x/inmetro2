@@ -13,6 +13,7 @@ declare var M: any;
 export class ConductorComponent implements OnInit {
 
   busAsociadoConductor = new Bus();
+  GPSdesactivado = false;
   id: any;
   constructor(public auth: AuthService, public busService: BusService) {}
 
@@ -84,10 +85,10 @@ export class ConductorComponent implements OnInit {
           this.busAsociadoConductor.latitud =  datos.coords.latitude;
           this.busAsociadoConductor.longitud =  datos.coords.longitude;
           this.busAsociadoConductor.sentido = datos.coords.heading;
-
+          this.GPSdesactivado = false;
           this.actualizarPosicionEnBaseDeDatos();
            }
-      }, () => { console.log('No esta activado el gps'); M.toast({html: 'No esta activado el gps'});  });
+      }, () => { console.log('No esta activado el gps'); M.toast({html: 'No esta activado el gps'}); this.GPSdesactivado = true; });
       } else {
               this.reiniciarPosicion();
              }
