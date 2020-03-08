@@ -66,7 +66,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<h1 class=\"animated fadeIn\">{{ruta.nombre | uppercase}} <small>({{ ruta.Fecha | date:'y' }})</small></h1>\n<hr>\n\n<div class=\"row animated fadeIn fast\">\n\n    <div class=\"col-md-4\">\n\n        <img [src]=\"ruta.imagenBus\" [alt]=\"ruta.nombre\" class=\"img-fluid\">\n        <br><br>\n        <a [routerLink]=\"['/buses']\" class=\" btn btn-outline-danger btn-block \"> Regresar..</a>\n    </div>\n\n    <div class=\"col-md-8 \">\n        <h3>{{ruta.nombre}}</h3>\n        <hr>\n        <p>\n            {{ruta.descripcion}}\n        </p>\n        <img [src]=\"ruta.imagenTipoBus \" [alt]=\"ruta.imagenTipoBus\" class=\"img-fluid\">\n    </div>\n\n</div>\n\n<div class=\"row animated fadeIn fast\">\n\n    <div class=\"col-md-4\">\n\n    </div>\n\n    <div class=\"col-md-8 \">\n        <h3>Numero de buses asociados a la ruta: {{ruta.NumBusesAsociados}}</h3>\n        <h3>Buses asociados a la ruta:</h3>\n\n        <table class=\"table table-bordered table-striped table-sm\">\n            <thead>\n                <tr>\n                    <th>Placa</th>\n                    <th>coordenadas</th>\n                    <th>Operaciones</th>\n                </tr>\n            </thead>\n            <tbody>\n                <tr *ngFor=\"let bus of BusesAsociadosRuta\">\n                    <td>{{bus.placa}}</td>\n                    <!-- GPS Celular -->\n                    <td *ngIf=\"bus.latitud != 0 && bus.sentido != null\"> {{bus.latitud}}, {{bus.longitud}}, {{bus.sentido}}</td>\n\n                    <!-- GPS Desactivado -->\n                    <td *ngIf=\"bus.latitud == 0 && bus.sentido != null\"> - , - , -</td>\n\n                    <!-- GPS por WIFI -->\n                    <td *ngIf=\"bus.latitud != 0 && bus.sentido == null\"> {{bus.latitud}}, {{bus.longitud}}, -</td>\n\n                    <td>\n                        <button *ngIf=\"bus.latitud === 0\" type=\"button\" title=\"Bus no habilitado\" class=\"btn btn-success btn-sm\" disabled=\"true\">\n                            <i class=\"material-icons\">directions_bus</i>\n                        </button>\n                        <button *ngIf=\"bus.latitud !== 0\" (click)=\"UbicarEnMapa(bus.latitud,bus.longitud,bus.sentido);\" type=\"button\" title=\"Ubicar Bus en Mapa\" class=\"btn btn-success btn-sm\" data-toggle=\"modal\" data-target=\"#modalAsignarRutaBus\">\n                        <i class=\"material-icons\">directions_bus</i>\n                    </button>&nbsp;\n                    </td>\n\n                </tr>\n            </tbody>\n        </table>\n    </div>\n\n</div>\n\n<mat-card>\n\n    <mat-card-title>\n        Mapa\n    </mat-card-title>\n\n    <!-- (centerChange)= (zoomChange) -->\n\n    <mat-card-content>\n        <agm-map [latitude]=\"latCentroMapa\" [longitude]=\"lngCentroMapa\" [zoom]=\"15\">\n            <!-- <agm-circle [latitude]=\"lat\" [longitude]=\"lng\" [radius]=\"30\" [fillColor]=\"'red'\" [circleDraggable]=\"true\" [editable]=\"true\">></agm-circle> -->\n\n            <agm-direction [travelMode]=\"'DRIVING'\" [origin]=\"this.origin\" [destination]=\"this.destination\" [waypoints]=\"this.waypoints\"> </agm-direction>\n\n            <agm-marker [iconUrl]=\"'assets/img/mapaUsuario.png'\" [label]=\"Tu\" [latitude]=\"latUsuario\" [longitude]=\"lngUsuario\">\n\n                <agm-info-window>\n                    <strong>Aqui Estas!!</strong>\n                </agm-info-window>\n            </agm-marker>\n\n            <agm-marker *ngFor=\"let marcador of marcadores; let i = index\" [iconUrl]=\"'assets/img/mapaBus.png'\" [label]=\"marcador.ruta.nombre\" [latitude]=\"marcador.latitud\" [longitude]=\"marcador.longitud\">\n\n                <agm-info-window>\n                    <strong>{{marcador.placa}}</strong>\n                    <p>\n                        {{marcador.ruta.nombre}} , {{marcador.ruta.descripcion}}\n                    </p>\n                    <div>\n                        <button (click)=\"CuadroDialogo(marcador)\" mat-raised-button color=\"primary\">Ver mas...</button>\n                    </div>\n                </agm-info-window>\n\n            </agm-marker>\n\n        </agm-map>\n    </mat-card-content>\n\n</mat-card>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<h1 class=\"animated fadeIn\">{{ruta.nombre | uppercase}} <small>({{ ruta.Fecha | date:'y' }})</small></h1>\n<hr>\n\n<div class=\"row animated fadeIn fast\">\n\n    <div class=\"col-md-4\">\n\n        <img [src]=\"ruta.imagenBus\" [alt]=\"ruta.nombre\" class=\"img-fluid\">\n        <br><br>\n        <a [routerLink]=\"['/rutas']\" class=\" btn btn-outline-danger btn-block \"> Regresar..</a>\n    </div>\n\n    <div class=\"col-md-8 \">\n        <h3>{{ruta.nombre}}</h3>\n        <hr>\n        <p>\n            {{ruta.descripcion}}\n        </p>\n        <img [src]=\"ruta.imagenTipoBus \" [alt]=\"ruta.imagenTipoBus\" class=\"img-fluid\">\n    </div>\n\n</div>\n\n<div class=\"row animated fadeIn fast\">\n\n    <div class=\"col-md-4\">\n\n    </div>\n\n    <div class=\"col-md-8 \">\n        <h3>Numero de buses asociados a la ruta: {{ruta.NumBusesAsociados}}</h3>\n        <h3>Buses asociados a la ruta:</h3>\n\n        <table class=\"table table-bordered table-striped table-sm\">\n            <thead>\n                <tr>\n                    <th>Placa</th>\n                    <th>coordenadas</th>\n                    <th>Operaciones</th>\n                </tr>\n            </thead>\n            <tbody>\n                <tr *ngFor=\"let bus of BusesAsociadosRuta\">\n                    <td>{{bus.placa}}</td>\n                    <!-- GPS Celular -->\n                    <td *ngIf=\"bus.latitud != 0 && bus.sentido != null\"> {{bus.latitud}}, {{bus.longitud}}, {{bus.sentido}}</td>\n\n                    <!-- GPS Desactivado -->\n                    <td *ngIf=\"bus.latitud == 0 && bus.sentido != null\"> - , - , -</td>\n\n                    <!-- GPS por WIFI -->\n                    <td *ngIf=\"bus.latitud != 0 && bus.sentido == null\"> {{bus.latitud}}, {{bus.longitud}}, -</td>\n\n                    <td>\n                        <button *ngIf=\"bus.latitud === 0\" type=\"button\" title=\"Bus no habilitado\" class=\"btn btn-success btn-sm\" disabled=\"true\">\n                            <i class=\"material-icons\">directions_bus</i>\n                        </button>\n                        <button *ngIf=\"bus.latitud !== 0\" (click)=\"UbicarEnMapa(bus.latitud,bus.longitud,bus.sentido);\" type=\"button\" title=\"Ubicar Bus en Mapa\" class=\"btn btn-success btn-sm\" data-toggle=\"modal\" data-target=\"#modalAsignarRutaBus\">\n                        <i class=\"material-icons\">directions_bus</i>\n                    </button>&nbsp;\n                    </td>\n\n                </tr>\n            </tbody>\n        </table>\n    </div>\n\n</div>\n\n<mat-card>\n\n    <mat-card-title>\n        <p style=\"color: darkgreen;\">Mapa</p>\n    </mat-card-title>\n\n    <!-- (centerChange)= (zoomChange) -->\n\n    <mat-card-content>\n        <agm-map [latitude]=\"latCentroMapa\" [longitude]=\"lngCentroMapa\" [zoom]=\"15\">\n            <!-- <agm-circle [latitude]=\"lat\" [longitude]=\"lng\" [radius]=\"30\" [fillColor]=\"'red'\" [circleDraggable]=\"true\" [editable]=\"true\">></agm-circle> -->\n\n            <agm-direction [travelMode]=\"'DRIVING'\" [origin]=\"this.origin\" [destination]=\"this.destination\" [waypoints]=\"this.waypoints\"> </agm-direction>\n\n            <agm-marker [iconUrl]=\"'assets/img/mapaUsuario.png'\" [latitude]=\"latUsuario\" [longitude]=\"lngUsuario\">\n\n                <agm-info-window>\n                    <strong>Aqui Estas!!</strong>\n                </agm-info-window>\n            </agm-marker>\n\n            <agm-marker *ngFor=\"let marcador of marcadores; let i = index\" [iconUrl]=\"'assets/img/mapaBus.png'\" [label]=\"marcador.ruta.nombre\" [latitude]=\"marcador.latitud\" [longitude]=\"marcador.longitud\">\n\n                <agm-info-window>\n                    <strong>{{marcador.placa}}</strong>\n                    <p>\n                        {{marcador.ruta.nombre}} , {{marcador.ruta.descripcion}}\n                    </p>\n                    <div>\n                        <button (click)=\"CuadroDialogo(marcador)\" mat-raised-button color=\"primary\">Ver mas...</button>\n                    </div>\n                </agm-info-window>\n\n            </agm-marker>\n\n        </agm-map>\n    </mat-card-content>\n\n</mat-card>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/buses/buses.component.html": 
@@ -110,7 +110,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"jumbotron jumbotron-fluid animated fadeIn \">\n    <div class=\"container\">\n        <h1 class=\"display-3\" style=\"text-align: center;\">INMETRO App</h1>\n        <mat-toolbar color=\"accent\">\n            <span>Rastreo de Buses Mediante GPS</span>\n        </mat-toolbar>\n\n        <!-- <p class=\"lead\">Esta es la aplicacion para rastrear buses de metrolinea</p> -->\n    </div>\n    <img src='assets/img/A-64.png' title=\"INMETRO APP\" height=\"100%\" width=\"100%\" class=\"img-fluid\">\n    <!-- <div #map style=\"width:100%;height:400px\"></div> -->\n    <!-- <app-mapa></app-mapa> -->\n</div>\n\n\n<div class=\"main-container\">\n    <!-- <h3>Raised Buttons</h3>\n    <div class=\"example-button-row\">\n        <button mat-raised-button>Basic</button>\n        <button mat-raised-button color=\"primary\">Primary</button>\n        <button mat-raised-button color=\"accent\">Accent</button>\n        <button mat-raised-button color=\"warn\">Warn</button>\n        <button mat-raised-button disabled>Disabled</button>\n        <a mat-raised-button routerLink=\".\">Link</a>\n    </div>\n\n    <mat-progress-bar mode=\"indeterminate\"></mat-progress-bar> -->\n    <br><br><br>\n</div>\n\n<!-- <app-mapa></app-mapa> -->");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"jumbotron jumbotron-fluid animated fadeIn \">\n    <div class=\"container\">\n        <h1 class=\"display-3\" style=\"text-align: center;\">INMETRO App</h1>\n        <mat-toolbar class=\"my-2 center\" [style.backgroundColor]=\"'lightgreen'\">\n            <span>Rastreo de Buses Mediante GPS</span>\n        </mat-toolbar>\n\n        <!-- <p class=\"lead\">Esta es la aplicacion para rastrear buses de metrolinea</p> -->\n    </div>\n    <img src='assets/img/A-64.png' title=\"INMETRO APP\" height=\"100%\" width=\"100%\" class=\"img-fluid\">\n    <!-- <div #map style=\"width:100%;height:400px\"></div> -->\n    <!-- <app-mapa></app-mapa> -->\n</div>\n\n\n<!-- <div class=\"main-container\"> -->\n<!-- <h3>Raised Buttons</h3>\n    <div class=\"example-button-row\">\n        <button mat-raised-button>Basic</button>\n        <button mat-raised-button color=\"primary\">Primary</button>\n        <button mat-raised-button color=\"accent\">Accent</button>\n        <button mat-raised-button color=\"warn\">Warn</button>\n        <button mat-raised-button disabled>Disabled</button>\n        <a mat-raised-button routerLink=\".\">Link</a>\n    </div>\n\n    <mat-progress-bar mode=\"indeterminate\"></mat-progress-bar> -->\n\n<!-- </div> -->\n\n<!-- <app-mapa></app-mapa> -->");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/mapa/mapa-editar.component.html": 
@@ -132,7 +132,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<mat-card>\n\n    <mat-card-title>\n        Mapa {{lat}} {{lng}}\n    </mat-card-title>\n\n    <!-- (centerChange)= (zoomChange) -->\n    <mat-card-content>\n        <agm-map (mapClick)=\"agregarMarcador( $event )\" (boundsChange)=\"moverMapa( $event);\" [latitude]=\"lat\" [longitude]=\"lng\" [zoom]=\"16\">\n            <!-- <agm-circle [latitude]=\"lat\" [longitude]=\"lng\" [radius]=\"30\" [fillColor]=\"'red'\" [circleDraggable]=\"true\" [editable]=\"true\">></agm-circle> -->\n\n            <!-- <agm-direction [origin]=\"this.origin\" [destination]=\"this.destination\" [waypoints]=\"this.waypoints\"> </agm-direction> -->\n\n\n            <agm-marker [iconUrl]=\"'assets/img/mapaUsuario.png'\" [label]=\"Tu\" [latitude]=\"lat\" [longitude]=\"lng\">\n\n                <agm-info-window>\n                    <strong>Aqui Estas!!</strong>\n                </agm-info-window>\n            </agm-marker>\n        </agm-map>\n    </mat-card-content>\n\n</mat-card>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<mat-card [style.backgroundColor]=\"'white'\">\n\n    <mat-card-title>\n        <p style=\"color: darkgreen;\">Mapa</p>\n    </mat-card-title>\n\n    <!-- (centerChange)= (zoomChange) -->\n    <mat-card-content>\n        <agm-map (mapClick)=\"agregarMarcador( $event )\" (boundsChange)=\"moverMapa( $event);\" [latitude]=\"lat\" [longitude]=\"lng\" [zoom]=\"16\">\n            <!-- <agm-circle [latitude]=\"lat\" [longitude]=\"lng\" [radius]=\"30\" [fillColor]=\"'red'\" [circleDraggable]=\"true\" [editable]=\"true\">></agm-circle> -->\n\n            <!-- <agm-direction [origin]=\"this.origin\" [destination]=\"this.destination\" [waypoints]=\"this.waypoints\"> </agm-direction> -->\n\n\n            <agm-marker [iconUrl]=\"'assets/img/mapaUsuario.png'\" [label]=\"'Tu'\" [latitude]=\"lat\" [longitude]=\"lng\">\n\n                <agm-info-window>\n                    <strong>Aqui Estas!!</strong>\n                </agm-info-window>\n            </agm-marker>\n        </agm-map>\n    </mat-card-content>\n\n</mat-card>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/paradas/paradas.component.html": 
@@ -154,7 +154,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<h1>Buscando: <small>{{termino}}</small></h1>\n\n<div *ngIf='termino==\"\"' (keyup)=\"irRutas()\">\n\n</div>\n\n<div class=\"row animated fadeIn fast\" *ngIf=\"rutasSearch.length==0\">\n    <div class=\"col-md-12\">\n        <div class=\"alert alert-info\" role=\"alert\">\n            No existen resultados con el termino: {{termino}}\n        </div>\n    </div>\n</div>\n\n<div class=\"card-columns\">\n    <app-tarjeta-bus [termino]=\"ruta.nombre\" [ruta]=\"ruta\" *ngFor=\"let ruta of rutasSearch ;\"></app-tarjeta-bus>\n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<h1>Buscando: <small>{{termino}}</small></h1>\n\n<div *ngIf='termino==\"\"' (keyup)=\"irRutas()\">\n\n</div>\n\n<div class=\"row animated fadeIn fast\" *ngIf=\"rutasSearch.length==0\">\n    <div class=\"col-md-12\">\n        <div class=\"alert alert-info\" role=\"alert\">\n            No existen Rutas asociadas con el termino: {{termino}}\n        </div>\n    </div>\n</div>\n\n<div class=\"card-columns\">\n    <app-tarjeta-bus [termino]=\"ruta.nombre\" [ruta]=\"ruta\" *ngFor=\"let ruta of rutasSearch ;\"></app-tarjeta-bus>\n</div>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/shared/navbar/navbar.component.html": 
@@ -165,7 +165,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\n\n    <div class=\"col-1\">\n        <a class=\"navbar-brand\" href=\"#\">\n            <img src=\"assets/img/A-64.png\" width=\"130%\" height=\"130%\" alt=\"\">\n        </a>\n    </div>\n\n\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarTogglerDemo02\" aria-controls=\"navbarTogglerDemo02\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n\n\n    <div class=\"collapse navbar-collapse\" id=\"navbarTogglerDemo02\">\n\n        <ul class=\"navbar-nav mr-auto mt-2 mt-lg-0\">\n            <li class=\"nav-item \" routerLinkActive=\"active\" id=\"ocultar6\">\n                <!-- <a class=\"nav-link\">{{UsuarioActivo.tipoUsuario}} : {{ UsuarioActivo.nombre }}   .</a> -->\n                <a *ngIf=\"auth.getUserLogueado().tipoUsuario != '' \" class=\"nav-link\">{{auth.getUserLogueado().tipoUsuario}} : {{ auth.getUserLogueado().nombre }}   </a>\n            </li>\n        </ul>\n\n        <ul class=\"navbar-nav mr-auto mt-2 mt-lg-0\">\n            <li class=\"nav-item\" routerLinkActive=\"active\">\n                <a class=\"nav-link \" [routerLink]=\"[ 'home'] \"><i class=\"material-icons\">home</i>Inicio </a>\n            </li>\n            <li class=\"nav-item \" routerLinkActive=\"active\">\n                <a class=\"nav-link \" [routerLink]=\"[ 'buses'] \"><i class=\"material-icons\">commute</i>Rutas</a>\n            </li>\n            <li class=\"nav-item \" routerLinkActive=\"active\" id=\"ocultar1\">\n                <a class=\"nav-link \" [routerLink]=\"[ 'about'] \"><i class=\"material-icons\">build</i>Administrador</a>\n            </li>\n            <li class=\"nav-item \" routerLinkActive=\"active\" id=\"ocultar2\">\n                <a class=\"nav-link \" [routerLink]=\"[ 'registrar'] \"><i class=\"material-icons\">supervised_user_circle</i>Registrar</a>\n            </li>\n            <li class=\"nav-item \" routerLinkActive=\"active\" id=\"ocultar7\">\n                <a class=\"nav-link \" [routerLink]=\"[ 'paradas'] \"><i class=\"material-icons\">pan_tool</i>Paradas</a>\n            </li>\n            <li class=\"nav-item \" routerLinkActive=\"active\" id=\"ocultar4\">\n                <a class=\"nav-link \" [routerLink]=\"[ 'login'] \"><i class=\"material-icons\">account_box</i>Inicio Sesion</a>\n            </li>\n            <li class=\"nav-item \" routerLinkActive=\"active\" id=\"ocultar5\">\n                <a class=\"nav-link \" [routerLink]=\"[ 'conductor'] \"><i class=\"material-icons\">directions_bus</i>Conductor</a>\n            </li>\n\n        </ul>\n\n\n        <form class=\"form-inline my-2 my-lg-0 \">\n            <input class=\"form-control mr-sm-2\" type=\"text\" placeholder=\"Buscar Ruta\" (keyup)=\"buscarBus(buscarTexto.value)\" (keydown.enter)=\"buscarBus(buscarTexto.value)\" #buscarTexto>\n            <button (click)=\"buscarBus(buscarTexto.value)\" class=\"btn btn-outline-success my-2 my-sm-0 \" type=\"button\">Buscar</button>\n        </form>\n        <li>\n            <button id=\"ocultar3\" class=\"btn btn-outline-danger\" (click)=\"salir()\">Salir</button>\n        </li>\n    </div>\n</nav>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\n\n    <div class=\"col-1\">\n        <a class=\"navbar-brand\" href=\"#\">\n            <img src=\"assets/img/A-64.png\" width=\"130%\" height=\"130%\" alt=\"\">\n        </a>\n    </div>\n\n\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarTogglerDemo02\" aria-controls=\"navbarTogglerDemo02\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n\n\n    <div class=\"collapse navbar-collapse\" id=\"navbarTogglerDemo02\">\n\n        <ul class=\"navbar-nav mr-auto mt-2 mt-lg-0\">\n            <li class=\"nav-item \" routerLinkActive=\"active\" id=\"ocultar6\">\n                <!-- <a class=\"nav-link\">{{UsuarioActivo.tipoUsuario}} : {{ UsuarioActivo.nombre }}   .</a> -->\n                <a *ngIf=\"auth.getUserLogueado().tipoUsuario != '' \" class=\"nav-link\">{{auth.getUserLogueado().tipoUsuario}} : {{ auth.getUserLogueado().nombre }}   </a>\n            </li>\n        </ul>\n\n        <ul class=\"navbar-nav mr-auto mt-2 mt-lg-0\">\n            <li class=\"nav-item\" routerLinkActive=\"active\">\n                <a class=\"nav-link \" [routerLink]=\"[ 'inicio'] \"><i class=\"material-icons\">home</i>Inicio </a>\n            </li>\n            <li class=\"nav-item \" routerLinkActive=\"active\">\n                <a class=\"nav-link \" [routerLink]=\"[ 'rutas'] \"><i class=\"material-icons\">commute</i>Rutas</a>\n            </li>\n            <li class=\"nav-item \" routerLinkActive=\"active\" id=\"ocultar1\">\n                <a class=\"nav-link \" [routerLink]=\"[ 'administrador'] \"><i class=\"material-icons\">build</i>Administrador</a>\n            </li>\n            <li class=\"nav-item \" routerLinkActive=\"active\" id=\"ocultar2\">\n                <a class=\"nav-link \" [routerLink]=\"[ 'registrar'] \"><i class=\"material-icons\">supervised_user_circle</i>Registrar</a>\n            </li>\n            <li class=\"nav-item \" routerLinkActive=\"active\" id=\"ocultar7\">\n                <a class=\"nav-link \" [routerLink]=\"[ 'paradas'] \"><i class=\"material-icons\">pan_tool</i>Paradas</a>\n            </li>\n            <li class=\"nav-item \" routerLinkActive=\"active\" id=\"ocultar4\">\n                <a class=\"nav-link \" [routerLink]=\"[ 'login'] \"><i class=\"material-icons\">account_box</i>Inicio Sesion</a>\n            </li>\n            <li class=\"nav-item \" routerLinkActive=\"active\" id=\"ocultar5\">\n                <a class=\"nav-link \" [routerLink]=\"[ 'conductor'] \"><i class=\"material-icons\">directions_bus</i>Conductor</a>\n            </li>\n\n        </ul>\n\n\n        <form class=\"form-inline my-2 my-lg-0 \">\n            <input class=\"form-control mr-sm-2\" type=\"text\" placeholder=\"A donde vas?\" (keyup)=\"buscarBus(buscarTexto.value)\" (keydown.enter)=\"buscarBus(buscarTexto.value)\" #buscarTexto>\n            <button (click)=\"buscarBus(buscarTexto.value)\" class=\"btn btn-outline-success my-2 my-sm-0 \" type=\"button\">Buscar</button>\n        </form>\n        <li>\n            <button id=\"ocultar3\" class=\"btn btn-outline-danger\" (click)=\"salir()\">Salir</button>\n        </li>\n    </div>\n</nav>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/tarjeta-bus/tarjeta-bus.component.html": 
@@ -686,16 +686,16 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
             /* harmony import */ var _guards_conductor_guard__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./guards/conductor.guard */ "./src/app/guards/conductor.guard.ts");
             /* harmony import */ var _components_paradas_paradas_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/paradas/paradas.component */ "./src/app/components/paradas/paradas.component.ts");
             var APP_ROUTES = [
-                { path: 'home', component: _components_home_home_component__WEBPACK_IMPORTED_MODULE_2__["HomeComponent"] },
-                { path: 'about', component: _components_edit_buses_edit_buses_component__WEBPACK_IMPORTED_MODULE_3__["EditBusesComponent"], canActivate: [_guards_admin_guard__WEBPACK_IMPORTED_MODULE_9__["AdminGuard"]] },
-                { path: 'buses', component: _components_buses_buses_component__WEBPACK_IMPORTED_MODULE_4__["BusesComponent"] },
+                { path: 'inicio', component: _components_home_home_component__WEBPACK_IMPORTED_MODULE_2__["HomeComponent"] },
+                { path: 'administrador', component: _components_edit_buses_edit_buses_component__WEBPACK_IMPORTED_MODULE_3__["EditBusesComponent"], canActivate: [_guards_admin_guard__WEBPACK_IMPORTED_MODULE_9__["AdminGuard"]] },
+                { path: 'rutas', component: _components_buses_buses_component__WEBPACK_IMPORTED_MODULE_4__["BusesComponent"] },
                 { path: 'login', component: _components_usuario_login_login_component__WEBPACK_IMPORTED_MODULE_7__["LoginComponent"] },
                 { path: 'conductor', component: _components_conductor_conductor_component__WEBPACK_IMPORTED_MODULE_10__["ConductorComponent"], canActivate: [_guards_conductor_guard__WEBPACK_IMPORTED_MODULE_11__["ConductorGuard"]] },
                 { path: 'registrar', component: _components_usuario_register_register_component__WEBPACK_IMPORTED_MODULE_8__["RegisterComponent"], canActivate: [_guards_admin_guard__WEBPACK_IMPORTED_MODULE_9__["AdminGuard"]] },
                 { path: 'paradas', component: _components_paradas_paradas_component__WEBPACK_IMPORTED_MODULE_12__["ParadasComponent"], canActivate: [_guards_admin_guard__WEBPACK_IMPORTED_MODULE_9__["AdminGuard"]] },
                 { path: 'bus/:termino', component: _components_bus_bus_component__WEBPACK_IMPORTED_MODULE_5__["BusComponent"] },
                 { path: 'search/:termino', component: _components_search_search_component__WEBPACK_IMPORTED_MODULE_6__["SearchComponent"] },
-                { path: '', pathMatch: 'full', redirectTo: '/home' },
+                { path: '', pathMatch: 'full', redirectTo: '/inicio' },
             ];
             var APP_ROUTING = _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"].forRoot(APP_ROUTES);
             /***/ 
@@ -1749,7 +1749,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                         agregar = true;
                         for (var _b = 0, array_1 = array; _b < array_1.length; _b++) {
                             var nombreRutaParada = array_1[_b];
-                            // console.log(nombreRutaParada, 'XX', ruta.nombre);
                             if (nombreRutaParada === ruta.nombre) {
                                 agregar = false;
                                 break;
@@ -1819,18 +1818,23 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
             /* harmony import */ var _services_rutas_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/rutas.service */ "./src/app/services/rutas.service.ts");
             /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+            /* harmony import */ var _services_parada_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/parada.service */ "./src/app/services/parada.service.ts");
             var SearchComponent = /** @class */ (function () {
-                function SearchComponent(activatedRoute, rutasServices, router) {
+                function SearchComponent(activatedRoute, rutasServices, router, paradasService) {
                     this.activatedRoute = activatedRoute;
                     this.rutasServices = rutasServices;
                     this.router = router;
+                    this.paradasService = paradasService;
                     this.rutasSearch = [];
                 }
                 SearchComponent.prototype.ngOnInit = function () {
                     var _this = this;
                     this.activatedRoute.params.subscribe(function (params) {
-                        _this.rutasSearch = _this.rutasServices.buscarRutas(params.termino);
+                        // this.rutasSearch = this.rutasServices.buscarRutas( params.termino); // buscar por nombre bus
+                        var arrayConNombreRutas = _this.paradasService.buscarRutasPorNombreParada(params.termino);
+                        _this.rutasSearch = _this.rutasServices.buscarRutasPorArraydeTerminos(arrayConNombreRutas);
                         _this.termino = params.termino;
+                        // console.log(this.termino, '222', params);
                     });
                 };
                 SearchComponent.prototype.irRutas = function () {
@@ -1841,7 +1845,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
             SearchComponent.ctorParameters = function () { return [
                 { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"] },
                 { type: _services_rutas_service__WEBPACK_IMPORTED_MODULE_2__["RutasService"] },
-                { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }
+                { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
+                { type: _services_parada_service__WEBPACK_IMPORTED_MODULE_4__["ParadasService"] }
             ]; };
             SearchComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1987,7 +1992,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                         // console.log('login1', form.value);
                         this.authService.login(form.value).subscribe(function (res) {
                             _this.authService.administrador();
-                            _this.router.navigateByUrl('/home');
+                            _this.router.navigateByUrl('/inicio');
                         }, function (error) {
                             console.log(error, 'Ultimo error');
                             document.getElementById('errorEmail').style.display = 'inline';
@@ -2826,6 +2831,33 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                     }
                     return array;
                 };
+                ParadasService.prototype.buscarRutasPorNombreParada = function (nombreParada) {
+                    var _this = this;
+                    var rutas = [];
+                    this.getParada()
+                        .subscribe(function (res) {
+                        _this.paradas = res;
+                        var paradasArr = _this.buscarParadas(nombreParada);
+                        for (var _i = 0, paradasArr_1 = paradasArr; _i < paradasArr_1.length; _i++) {
+                            var parada = paradasArr_1[_i];
+                            for (var _a = 0, _b = parada.rutasAsociadas; _a < _b.length; _a++) {
+                                var nombreRutadeParada = _b[_a];
+                                var agregar = true;
+                                for (var _c = 0, rutas_1 = rutas; _c < rutas_1.length; _c++) {
+                                    var nombreRutasExistentes = rutas_1[_c];
+                                    if (nombreRutasExistentes === nombreRutadeParada) {
+                                        agregar = false;
+                                        break;
+                                    }
+                                }
+                                if (agregar) {
+                                    rutas.push(nombreRutadeParada);
+                                }
+                            }
+                        }
+                    });
+                    return rutas;
+                };
                 // obtiene un array con las paradas que tengan el termino en su nombre
                 ParadasService.prototype.buscarParadas = function (termino) {
                     var paradasArr = [];
@@ -2967,80 +2999,21 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
             /* harmony import */ var _ruta_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ruta.service */ "./src/app/services/ruta.service.ts");
             var RutasService = /** @class */ (function () {
-                // private buses: Bus[] = [
-                //     {
-                //       _id: '1',
-                //       nombre: 'P10',
-                //       bio:  'Lorem ipsum dolor sit, ametmus quas alias.',
-                //       img: 'assets/img/P10.png',
-                //       aparicion: '2012-01-01',
-                //       casa: 'assets/img/padron.png'
-                //     },
-                //     {
-                //       _id: '1',
-                //       nombre: 'AB2',
-                //       bio: 'Lorem ipsum dolorum inventore debitis libero, non id voluptas accusantium consequuntur nesciunt',
-                //       img: 'assets/img/AB2.png',
-                //       aparicion: '2012-01-01',
-                //       casa: 'assets/img/alimentador.png'
-                //     },
-                //     {
-                //       _id: '1',
-                //       nombre: 'P13',
-                //       bio: 'Lorem ipsum, non id voluptas accusantium consequuntur nesciunt incidunt possimus blanditiis',
-                //       img: 'assets/img/P13.png',
-                //       aparicion: '2010-01-01',
-                //       casa: 'assets/img/padron.png'
-                //     },
-                //     {
-                //       _id: '1',
-                //       nombre: 'T1',
-                //       bio: 'Lorem ipsum dolor, earum inventoidunt possimus blanditiis molestias accusamus',
-                //       img: 'assets/img/T1.png',
-                //       aparicion: '2013-01-01',
-                //       casa: 'assets/img/articulado.png'
-                //     },
-                //     {
-                //       _id: '1',
-                //       nombre: 'AB1',
-                //       bio: 'Lo earum inventore debitis libero, non id voluptas accusantium consequuntur nesciunt incidu',
-                //       img: 'assets/img/AB1.png',
-                //       aparicion: '2013-01-01',
-                //       casa: 'assets/img/alimentador.png'
-                //     },
-                //     {
-                //       _id: '1',
-                //       nombre: 'P8',
-                //       bio: 'Lorem um invi adipisicing elit. Recusandae veniam excepturi quidem quasi, earum inventore de',
-                //       img: 'assets/img/P8.png',
-                //       aparicion: '2015-01-01',
-                //       casa: 'assets/img/articulado.png'
-                //     },
-                //     {
-                //       _id: '1',
-                //       nombre: 'T3',
-                //       bio: 'Loren id voluptas accusantium consequuntur nesciunt incidunt possimus blanditiis molestias accusamus quas alias.',
-                //       img: 'assets/img/T3.png',
-                //       aparicion: '2015-01-01',
-                //       casa: 'assets/img/padron.png'
-                //     }
-                //   ];
                 function RutasService(rutaService) {
                     this.rutaService = rutaService;
                     console.log('Servicio listo para usarse');
                 }
-                // Actualiza la variable 'buses' y retorna este array
+                // Actualiza la variable 'rutas' y retorna este array
                 RutasService.prototype.getRutas2 = function () {
                     this.getRutas();
                     return this.rutas;
                 };
-                // Obtener buses de la base de datos y guardarlos en la variable 'buses'
-                // tambien podria decirse que este metodo actualiza la variable 'buses'
+                // Obtener rutas de la base de datos y guardarlos en la variable 'rutas'
+                // tambien podria decirse que este metodo actualiza la variable 'rutas'
                 RutasService.prototype.getRutas = function () {
                     var _this = this;
                     this.rutaService.getRuta()
                         .subscribe(function (res) {
-                        // this.busService.buses = res as Bus[];
                         _this.rutas = res;
                     });
                 };
@@ -3057,12 +3030,12 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                     }
                     return rutasPorTipo;
                 };
-                // Obtener un bus por nombre
+                // Obtener una ruta por nombre
                 RutasService.prototype.getRuta = function (termino) {
                     for (var _i = 0, _a = this.rutas; _i < _a.length; _i++) {
                         var ruta = _a[_i];
-                        ruta = ruta;
-                        if (ruta.nombre === termino) {
+                        // console.log(ruta.nombre , '===', termino);
+                        if (ruta.nombre.toLowerCase() === termino) {
                             return ruta;
                         }
                     }
@@ -3071,27 +3044,41 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                 RutasService.prototype.getRutaById = function (_id) {
                     for (var _i = 0, _a = this.rutas; _i < _a.length; _i++) {
                         var ruta = _a[_i];
-                        ruta = ruta;
                         if (ruta._id === _id) {
                             return ruta;
                         }
                     }
                 };
-                // Obtener lista de buses por nombre.. se usa en filtrar
+                // Obtener lista de rutas por nombre.. se usa en filtrar
                 RutasService.prototype.buscarRutas = function (termino) {
+                    var _this = this;
                     var RutasArr = [];
-                    RutasArr = RutasArr;
-                    termino = termino.toLowerCase();
-                    for (var _i = 0, _a = this.rutas; _i < _a.length; _i++) {
-                        var bus = _a[_i];
-                        bus = bus;
-                        var nombre = bus.nombre.toLowerCase();
-                        nombre = nombre;
-                        if (nombre.indexOf(termino) >= 0) {
-                            RutasArr.push(bus);
-                            // console.log(busesArr);
+                    this.rutaService.getRuta()
+                        .subscribe(function (res) {
+                        _this.rutas = res;
+                        termino = termino.toLowerCase();
+                        for (var _i = 0, _a = _this.rutas; _i < _a.length; _i++) {
+                            var ruta = _a[_i];
+                            var nombre = ruta.nombre.toLowerCase();
+                            if (nombre.indexOf(termino) >= 0) {
+                                RutasArr.push(ruta);
+                            }
                         }
-                    }
+                    });
+                    return RutasArr;
+                };
+                RutasService.prototype.buscarRutasPorArraydeTerminos = function (terminos) {
+                    var _this = this;
+                    var RutasArr = [];
+                    this.rutaService.getRuta()
+                        .subscribe(function (res) {
+                        _this.rutas = res;
+                        for (var _i = 0, terminos_1 = terminos; _i < terminos_1.length; _i++) {
+                            var termino = terminos_1[_i];
+                            termino = termino.toLowerCase();
+                            RutasArr.push(_this.getRuta(termino));
+                        }
+                    });
                     return RutasArr;
                 };
                 return RutasService;
@@ -3102,13 +3089,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
             RutasService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])()
             ], RutasService);
-            //     export interface Bus {
-            //           nombre: string;
-            //           bio: string;
-            //           img: string;
-            //           aparicion: string;
-            //           casa: string;
-            // }
             /***/ 
         }),
         /***/ "./src/environments/environment.ts": 

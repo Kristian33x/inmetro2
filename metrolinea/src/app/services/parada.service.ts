@@ -88,6 +88,28 @@ export class ParadasService {
     return array;
   }
 
+  buscarRutasPorNombreParada(nombreParada: string) {
+    const rutas: string[] = [];
+    this.getParada()
+    .subscribe(res => {
+      this.paradas = res as Parada[];
+      const paradasArr = this.buscarParadas(nombreParada);
+      for (const parada of paradasArr) {
+        for (const nombreRutadeParada of parada.rutasAsociadas) {
+          let agregar = true;
+          for (const nombreRutasExistentes of rutas) {
+            if (nombreRutasExistentes === nombreRutadeParada) {
+              agregar = false;
+              break;
+            }
+          }
+          if (agregar) { rutas.push(nombreRutadeParada); }
+        }
+      }
+    });
+    return rutas;
+  }
+
   // obtiene un array con las paradas que tengan el termino en su nombre
   buscarParadas( termino: string) {
 

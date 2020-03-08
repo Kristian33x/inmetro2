@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
       // console.log('login1', form.value);
       this.authService.login(form.value).subscribe(res => {
       this.authService.administrador();
-      this.router.navigateByUrl('/home');
+      this.router.navigateByUrl('/inicio');
     },
     error => {
       console.log(error, 'Ultimo error');

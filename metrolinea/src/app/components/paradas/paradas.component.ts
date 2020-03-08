@@ -38,7 +38,6 @@ export class ParadasComponent implements OnInit {
     for (const ruta of this.rutasService.getRutas2()) {
       agregar = true;
       for (const nombreRutaParada of array) {
-        // console.log(nombreRutaParada, 'XX', ruta.nombre);
         if (nombreRutaParada === ruta.nombre) {
           agregar = false;
           break;

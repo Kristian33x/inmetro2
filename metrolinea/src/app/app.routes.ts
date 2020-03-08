@@ -12,16 +12,16 @@ import { ConductorGuard } from './guards/conductor.guard';
 import { ParadasComponent } from './components/paradas/paradas.component';
 
 const APP_ROUTES: Routes = [
-{path: 'home', component: HomeComponent},
-{path: 'about', component: EditBusesComponent, canActivate: [ AdminGuard ]},
-{path: 'buses', component: BusesComponent},
+{path: 'inicio', component: HomeComponent},
+{path: 'administrador', component: EditBusesComponent, canActivate: [ AdminGuard ]},
+{path: 'rutas', component: BusesComponent},
 {path: 'login', component: LoginComponent} ,
 {path: 'conductor', component: ConductorComponent, canActivate: [ ConductorGuard ]} ,
 {path: 'registrar', component: RegisterComponent, canActivate: [ AdminGuard ]},
 {path: 'paradas', component: ParadasComponent, canActivate: [ AdminGuard ]},
 {path: 'bus/:termino', component: BusComponent},
 {path: 'search/:termino', component: SearchComponent},
-{path: '', pathMatch: 'full', redirectTo: '/home'},  // regresa a la home
+{path: '', pathMatch: 'full', redirectTo: '/inicio'},  // regresa a la home
 
 ];
 

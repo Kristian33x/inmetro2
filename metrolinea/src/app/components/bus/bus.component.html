@@ -7,7 +7,7 @@
 
         <img [src]="ruta.imagenBus" [alt]="ruta.nombre" class="img-fluid">
         <br><br>
-        <a [routerLink]="['/buses']" class=" btn btn-outline-danger btn-block "> Regresar..</a>
+        <a [routerLink]="['/rutas']" class=" btn btn-outline-danger btn-block "> Regresar..</a>
     </div>
 
     <div class="col-md-8 ">
@@ -70,7 +70,7 @@
 <mat-card>
 
     <mat-card-title>
-        Mapa
+        <p style="color: darkgreen;">Mapa</p>
     </mat-card-title>
 
     <!-- (centerChange)= (zoomChange) -->
@@ -81,7 +81,7 @@
 
             <agm-direction [travelMode]="'DRIVING'" [origin]="this.origin" [destination]="this.destination" [waypoints]="this.waypoints"> </agm-direction>
 
-            <agm-marker [iconUrl]="'assets/img/mapaUsuario.png'" [label]="Tu" [latitude]="latUsuario" [longitude]="lngUsuario">
+            <agm-marker [iconUrl]="'assets/img/mapaUsuario.png'" [latitude]="latUsuario" [longitude]="lngUsuario">
 
                 <agm-info-window>
                     <strong>Aqui Estas!!</strong>
