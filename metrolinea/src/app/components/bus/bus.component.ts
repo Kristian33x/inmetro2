@@ -132,7 +132,7 @@ export class BusComponent implements OnDestroy, OnInit {
               if (this.paradasRuta.length === index + 1) {
                 this.destination = { lat: parada.latitud, lng: parada.longitud, stopover: true  }; // D
               } else {
-                      this.waypoints.push({location: { lat: parada.latitud, lng: parada.longitud, stopover: false  }});
+                      this.waypoints.push({location: { lat: parada.latitud, lng: parada.longitud, stopover: true  }});
                      }
       }
       index++;

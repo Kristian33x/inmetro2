@@ -830,7 +830,7 @@ let BusComponent = class BusComponent {
                     this.destination = { lat: parada.latitud, lng: parada.longitud, stopover: true }; // D
                 }
                 else {
-                    this.waypoints.push({ location: { lat: parada.latitud, lng: parada.longitud, stopover: false } });
+                    this.waypoints.push({ location: { lat: parada.latitud, lng: parada.longitud, stopover: true } });
                 }
             }
             index++;

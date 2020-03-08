@@ -837,7 +837,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                                 this.destination = { lat: parada.latitud, lng: parada.longitud, stopover: true }; // D
                             }
                             else {
-                                this.waypoints.push({ location: { lat: parada.latitud, lng: parada.longitud, stopover: false } });
+                                this.waypoints.push({ location: { lat: parada.latitud, lng: parada.longitud, stopover: true } });
                             }
                         }
                         index++;
