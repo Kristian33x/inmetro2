@@ -3099,7 +3099,7 @@ let RutasService = class RutasService {
     getRuta(termino) {
         for (const ruta of this.rutas) {
             // console.log(ruta.nombre , '===', termino);
-            if (ruta.nombre.toLowerCase() === termino) {
+            if (ruta.nombre.toLowerCase() === termino.toLowerCase()) {
                 return ruta;
             }
         }

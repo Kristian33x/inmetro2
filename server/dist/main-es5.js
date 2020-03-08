@@ -3035,7 +3035,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                     for (var _i = 0, _a = this.rutas; _i < _a.length; _i++) {
                         var ruta = _a[_i];
                         // console.log(ruta.nombre , '===', termino);
-                        if (ruta.nombre.toLowerCase() === termino) {
+                        if (ruta.nombre.toLowerCase() === termino.toLowerCase()) {
                             return ruta;
                         }
                     }
