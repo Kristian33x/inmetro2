@@ -43,7 +43,7 @@ export class NavbarComponent implements OnInit {
     window.addEventListener('beforeunload', (e) => {
     const confirmationMessage = '\o/';
     this.auth.logout();
-    (e || window.event).returnValue = confirmationMessage; // Gecko + IE
+    // (e || window.event).returnValue = confirmationMessage; // Gecko + IE
     return confirmationMessage;
   });
 }

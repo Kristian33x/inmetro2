@@ -119,19 +119,20 @@ export class BusComponent implements OnDestroy, OnInit {
 
   getDirection() {
 
-    this.origin = { lat: 7.137089498267445 , lng: -73.11899185180664 }; // A
-    this.destination = { lat: 7.137089498267445, lng: -73.11899185180664 }; // D
-    let index = 1;
+    this.origin = { lat: 7.157089498267445 , lng: -73.15899185180664, stopover: true  }; // A
+    this.destination = { lat: 7.137089498267445, lng: -73.11899185180664, stopover: true  }; // D
+    let index = 0;
     this.waypoints = [];
     console.log(this.paradasRuta.length);
     for (const parada of this.paradasRuta) {
-      if (index === 1) {
-        this.origin = { lat: parada.latitud , lng: parada.longitud }; // A
+      console.log('index=', index , 'lenght=', this.paradasRuta.length);
+      if (index === 0) {
+        this.origin = { lat: parada.latitud , lng: parada.longitud, stopover: true  }; // A
       } else {
-              if (this.paradasRuta.length === index) {
-                this.destination = { lat: parada.latitud, lng: parada.longitud }; // D
+              if (this.paradasRuta.length === index + 1) {
+                this.destination = { lat: parada.latitud, lng: parada.longitud, stopover: true  }; // D
               } else {
-                      this.waypoints.push({location: { lat: parada.latitud, lng: parada.longitud }});
+                      this.waypoints.push({location: { lat: parada.latitud, lng: parada.longitud, stopover: false  }});
                      }
       }
       index++;

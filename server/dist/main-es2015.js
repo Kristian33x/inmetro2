@@ -45,7 +45,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h1 class=\"animated fadeIn\">{{ruta.nombre | uppercase}} <small>({{ ruta.Fecha | date:'y' }})</small></h1>\n<hr>\n\n<div class=\"row animated fadeIn fast\">\n\n    <div class=\"col-md-4\">\n\n        <img [src]=\"ruta.imagenBus\" [alt]=\"ruta.nombre\" class=\"img-fluid\">\n        <br><br>\n        <a [routerLink]=\"['/rutas']\" class=\" btn btn-outline-danger btn-block \"> Regresar..</a>\n    </div>\n\n    <div class=\"col-md-8 \">\n        <h3>{{ruta.nombre}}</h3>\n        <hr>\n        <p>\n            {{ruta.descripcion}}\n        </p>\n        <img [src]=\"ruta.imagenTipoBus \" [alt]=\"ruta.imagenTipoBus\" class=\"img-fluid\">\n    </div>\n\n</div>\n\n<div class=\"row animated fadeIn fast\">\n\n    <div class=\"col-md-4\">\n\n    </div>\n\n    <div class=\"col-md-8 \">\n        <h3>Numero de buses asociados a la ruta: {{ruta.NumBusesAsociados}}</h3>\n        <h3>Buses asociados a la ruta:</h3>\n\n        <table class=\"table table-bordered table-striped table-sm\">\n            <thead>\n                <tr>\n                    <th>Placa</th>\n                    <th>coordenadas</th>\n                    <th>Operaciones</th>\n                </tr>\n            </thead>\n            <tbody>\n                <tr *ngFor=\"let bus of BusesAsociadosRuta\">\n                    <td>{{bus.placa}}</td>\n                    <!-- GPS Celular -->\n                    <td *ngIf=\"bus.latitud != 0 && bus.sentido != null\"> {{bus.latitud}}, {{bus.longitud}}, {{bus.sentido}}</td>\n\n                    <!-- GPS Desactivado -->\n                    <td *ngIf=\"bus.latitud == 0 && bus.sentido != null\"> - , - , -</td>\n\n                    <!-- GPS por WIFI -->\n                    <td *ngIf=\"bus.latitud != 0 && bus.sentido == null\"> {{bus.latitud}}, {{bus.longitud}}, -</td>\n\n                    <td>\n                        <button *ngIf=\"bus.latitud === 0\" type=\"button\" title=\"Bus no habilitado\" class=\"btn btn-success btn-sm\" disabled=\"true\">\n                            <i class=\"material-icons\">directions_bus</i>\n                        </button>\n                        <button *ngIf=\"bus.latitud !== 0\" (click)=\"UbicarEnMapa(bus.latitud,bus.longitud,bus.sentido);\" type=\"button\" title=\"Ubicar Bus en Mapa\" class=\"btn btn-success btn-sm\" data-toggle=\"modal\" data-target=\"#modalAsignarRutaBus\">\n                        <i class=\"material-icons\">directions_bus</i>\n                    </button>&nbsp;\n                    </td>\n\n                </tr>\n            </tbody>\n        </table>\n    </div>\n\n</div>\n\n<mat-card>\n\n    <mat-card-title>\n        <p style=\"color: darkgreen;\">Mapa</p>\n    </mat-card-title>\n\n    <!-- (centerChange)= (zoomChange) -->\n\n    <mat-card-content>\n        <agm-map [latitude]=\"latCentroMapa\" [longitude]=\"lngCentroMapa\" [zoom]=\"15\">\n            <!-- <agm-circle [latitude]=\"lat\" [longitude]=\"lng\" [radius]=\"30\" [fillColor]=\"'red'\" [circleDraggable]=\"true\" [editable]=\"true\">></agm-circle> -->\n\n            <agm-direction [travelMode]=\"'DRIVING'\" [origin]=\"this.origin\" [destination]=\"this.destination\" [waypoints]=\"this.waypoints\"> </agm-direction>\n\n            <agm-marker [iconUrl]=\"'assets/img/mapaUsuario.png'\" [latitude]=\"latUsuario\" [longitude]=\"lngUsuario\">\n\n                <agm-info-window>\n                    <strong>Aqui Estas!!</strong>\n                </agm-info-window>\n            </agm-marker>\n\n            <agm-marker *ngFor=\"let marcador of marcadores; let i = index\" [iconUrl]=\"'assets/img/mapaBus.png'\" [label]=\"marcador.ruta.nombre\" [latitude]=\"marcador.latitud\" [longitude]=\"marcador.longitud\">\n\n                <agm-info-window>\n                    <strong>{{marcador.placa}}</strong>\n                    <p>\n                        {{marcador.ruta.nombre}} , {{marcador.ruta.descripcion}}\n                    </p>\n                    <div>\n                        <button (click)=\"CuadroDialogo(marcador)\" mat-raised-button color=\"primary\">Ver mas...</button>\n                    </div>\n                </agm-info-window>\n\n            </agm-marker>\n\n        </agm-map>\n    </mat-card-content>\n\n</mat-card>");
+/* harmony default export */ __webpack_exports__["default"] = ("<h1 class=\"animated fadeIn\">{{ruta.nombre | uppercase}} <small>({{ ruta.Fecha | date:'y' }})</small></h1>\n<hr>\n\n<div class=\"row animated fadeIn fast\">\n\n    <div class=\"col-md-4\">\n\n        <img [src]=\"ruta.imagenBus\" [alt]=\"ruta.nombre\" class=\"img-fluid\">\n        <br><br>\n        <a [routerLink]=\"['/rutas']\" class=\" btn btn-outline-danger btn-block \"> Regresar..</a>\n    </div>\n\n    <div class=\"col-md-8 \">\n        <h3>{{ruta.nombre}}</h3>\n        <hr>\n        <p>\n            {{ruta.descripcion}}\n        </p>\n        <img [src]=\"ruta.imagenTipoBus \" [alt]=\"ruta.imagenTipoBus\" class=\"img-fluid\">\n    </div>\n\n</div>\n\n<div class=\"row animated fadeIn fast\">\n\n    <div class=\"col-md-4\">\n\n    </div>\n\n    <div class=\"col-md-8 \">\n        <h3>Numero de buses asociados a la ruta: {{ruta.NumBusesAsociados}}</h3>\n        <h3>Buses asociados a la ruta:</h3>\n\n        <table class=\"table table-bordered table-striped table-sm\">\n            <thead>\n                <tr>\n                    <th>Placa</th>\n                    <th>coordenadas</th>\n                    <th>Operaciones</th>\n                </tr>\n            </thead>\n            <tbody>\n                <tr *ngFor=\"let bus of BusesAsociadosRuta\">\n                    <td>{{bus.placa}}</td>\n                    <!-- GPS Celular -->\n                    <td *ngIf=\"bus.latitud != 0 && bus.sentido != null\"> {{bus.latitud}}, {{bus.longitud}}, {{bus.sentido}}</td>\n\n                    <!-- GPS Desactivado -->\n                    <td *ngIf=\"bus.latitud == 0 && bus.sentido != null\"> - , - , -</td>\n\n                    <!-- GPS por WIFI -->\n                    <td *ngIf=\"bus.latitud != 0 && bus.sentido == null\"> {{bus.latitud}}, {{bus.longitud}}, -</td>\n\n                    <td>\n                        <button *ngIf=\"bus.latitud === 0\" type=\"button\" title=\"Bus no habilitado\" class=\"btn btn-success btn-sm\" disabled=\"true\">\n                            <i class=\"material-icons\">directions_bus</i>\n                        </button>\n                        <button *ngIf=\"bus.latitud !== 0\" (click)=\"UbicarEnMapa(bus.latitud,bus.longitud,bus.sentido);\" type=\"button\" title=\"Ubicar Bus en Mapa\" class=\"btn btn-success btn-sm\" data-toggle=\"modal\" data-target=\"#modalAsignarRutaBus\">\n                        <i class=\"material-icons\">directions_bus</i>\n                    </button>&nbsp;\n                    </td>\n\n                </tr>\n            </tbody>\n        </table>\n    </div>\n\n</div>\n\n<mat-card>\n\n    <mat-card-title>\n        <p style=\"color: darkgreen;\">Mapa</p>\n    </mat-card-title>\n\n    <!-- (centerChange)= (zoomChange) -->\n\n    <mat-card-content>\n        <agm-map [latitude]=\"latCentroMapa\" [longitude]=\"lngCentroMapa\" [zoom]=\"15\">\n            <!-- <agm-circle [latitude]=\"lat\" [longitude]=\"lng\" [radius]=\"30\" [fillColor]=\"'red'\" [circleDraggable]=\"true\" [editable]=\"true\">></agm-circle> -->\n\n            <agm-direction [transitOptions]=\"{ modes: ['BUS']}\" [travelMode]=\"'TRANSIT'\" [origin]=\"this.origin\" [destination]=\"this.destination\" [waypoints]=\"this.waypoints\"> </agm-direction>\n\n            <agm-marker [iconUrl]=\"'assets/img/mapaUsuario.png'\" [latitude]=\"latUsuario\" [longitude]=\"lngUsuario\">\n\n                <agm-info-window>\n                    <strong>Aqui Estas!!</strong>\n                </agm-info-window>\n            </agm-marker>\n\n            <agm-marker *ngFor=\"let marcador of marcadores; let i = index\" [iconUrl]=\"'assets/img/mapaBus.png'\" [label]=\"marcador.ruta.nombre\" [latitude]=\"marcador.latitud\" [longitude]=\"marcador.longitud\">\n\n                <agm-info-window>\n                    <strong>{{marcador.placa}}</strong>\n                    <p>\n                        {{marcador.ruta.nombre}} , {{marcador.ruta.descripcion}}\n                    </p>\n                    <div>\n                        <button (click)=\"CuadroDialogo(marcador)\" mat-raised-button color=\"primary\">Ver mas...</button>\n                    </div>\n                </agm-info-window>\n\n            </agm-marker>\n\n        </agm-map>\n    </mat-card-content>\n\n</mat-card>");
 
 /***/ }),
 
@@ -123,7 +123,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<mat-card [style.backgroundColor]=\"'white'\">\n\n    <mat-card-title>\n        <p style=\"color: darkgreen;\">Mapa</p>\n    </mat-card-title>\n\n    <!-- (centerChange)= (zoomChange) -->\n    <mat-card-content>\n        <agm-map (mapClick)=\"agregarMarcador( $event )\" (boundsChange)=\"moverMapa( $event);\" [latitude]=\"lat\" [longitude]=\"lng\" [zoom]=\"16\">\n            <!-- <agm-circle [latitude]=\"lat\" [longitude]=\"lng\" [radius]=\"30\" [fillColor]=\"'red'\" [circleDraggable]=\"true\" [editable]=\"true\">></agm-circle> -->\n\n            <!-- <agm-direction [origin]=\"this.origin\" [destination]=\"this.destination\" [waypoints]=\"this.waypoints\"> </agm-direction> -->\n\n\n            <agm-marker [iconUrl]=\"'assets/img/mapaUsuario.png'\" [label]=\"'Tu'\" [latitude]=\"lat\" [longitude]=\"lng\">\n\n                <agm-info-window>\n                    <strong>Aqui Estas!!</strong>\n                </agm-info-window>\n            </agm-marker>\n        </agm-map>\n    </mat-card-content>\n\n</mat-card>");
+/* harmony default export */ __webpack_exports__["default"] = ("<mat-card [style.backgroundColor]=\"'white'\">\n\n    <mat-card-title>\n        <p style=\"color: darkgreen;\">Mapa</p>\n    </mat-card-title>\n\n    <!-- (centerChange)= (zoomChange) -->\n    <mat-card-content>\n        <agm-map (mapClick)=\"agregarMarcador( $event )\" (boundsChange)=\"moverMapa( $event);\" [latitude]=\"lat\" [longitude]=\"lng\" [zoom]=\"16\">\n            <!-- <agm-circle [latitude]=\"lat\" [longitude]=\"lng\" [radius]=\"30\" [fillColor]=\"'red'\" [circleDraggable]=\"true\" [editable]=\"true\">></agm-circle> -->\n\n            <agm-direction [transitOptions]=\"{ modes: ['BUS']}\" [travelMode]=\"'TRANSIT'\" [provideRouteAlternatives]=\"true\" [origin]=\"this.origin\" [destination]=\"this.destination\" [waypoints]=\"this.waypoints\"> </agm-direction>\n\n\n            <agm-marker [iconUrl]=\"'assets/img/mapaUsuario.png'\" [latitude]=\"lat\" [longitude]=\"lng\">\n\n                <agm-info-window>\n                    <strong>Aqui Estas!!</strong>\n                </agm-info-window>\n            </agm-marker>\n        </agm-map>\n    </mat-card-content>\n\n</mat-card>");
 
 /***/ }),
 
@@ -815,21 +815,22 @@ let BusComponent = class BusComponent {
         this.getDirection();
     }
     getDirection() {
-        this.origin = { lat: 7.137089498267445, lng: -73.11899185180664 }; // A
-        this.destination = { lat: 7.137089498267445, lng: -73.11899185180664 }; // D
-        let index = 1;
+        this.origin = { lat: 7.157089498267445, lng: -73.15899185180664, stopover: true }; // A
+        this.destination = { lat: 7.137089498267445, lng: -73.11899185180664, stopover: true }; // D
+        let index = 0;
         this.waypoints = [];
         console.log(this.paradasRuta.length);
         for (const parada of this.paradasRuta) {
-            if (index === 1) {
-                this.origin = { lat: parada.latitud, lng: parada.longitud }; // A
+            console.log('index=', index, 'lenght=', this.paradasRuta.length);
+            if (index === 0) {
+                this.origin = { lat: parada.latitud, lng: parada.longitud, stopover: true }; // A
             }
             else {
-                if (this.paradasRuta.length === index) {
-                    this.destination = { lat: parada.latitud, lng: parada.longitud }; // D
+                if (this.paradasRuta.length === index + 1) {
+                    this.destination = { lat: parada.latitud, lng: parada.longitud, stopover: true }; // D
                 }
                 else {
-                    this.waypoints.push({ location: { lat: parada.latitud, lng: parada.longitud } });
+                    this.waypoints.push({ location: { lat: parada.latitud, lng: parada.longitud, stopover: false } });
                 }
             }
             index++;
@@ -1616,6 +1617,8 @@ let MapaComponent = class MapaComponent {
         this.marcadores = [];
         this.lat = 7.13707729242462;
         this.lng = -73.11724761399356;
+        this.transitOptions = { modes: ['BUS'], };
+        this.waypoints = [];
         this.getDirection();
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((datos) => tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
@@ -1647,8 +1650,8 @@ let MapaComponent = class MapaComponent {
         this.getDirection();
     }
     getDirection() {
-        // this.origin = { lat: 7.11392, lng: -73.1198 }; // A
-        // this.destination = { lat: 7.12392, lng: -73.1298 }; // D
+        this.origin = 'Bucaramanga Estacion San Mateo N-s'; // A
+        this.destination = 'Bucaramanga Estacion Chorreras N-s'; // D
         // this.waypoints = [
         //  {location: { lat: 7.13392, lng: -73.1398 }}, // C
         //  {location: { lat: 7.14392, lng: -73.1498 }} // B
@@ -1937,7 +1940,7 @@ let NavbarComponent = class NavbarComponent {
         window.addEventListener('beforeunload', (e) => {
             const confirmationMessage = '\o/';
             this.auth.logout();
-            (e || window.event).returnValue = confirmationMessage; // Gecko + IE
+            // (e || window.event).returnValue = confirmationMessage; // Gecko + IE
             return confirmationMessage;
         });
     }

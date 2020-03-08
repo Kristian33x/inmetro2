@@ -79,7 +79,7 @@
         <agm-map [latitude]="latCentroMapa" [longitude]="lngCentroMapa" [zoom]="15">
             <!-- <agm-circle [latitude]="lat" [longitude]="lng" [radius]="30" [fillColor]="'red'" [circleDraggable]="true" [editable]="true">></agm-circle> -->
 
-            <agm-direction [travelMode]="'DRIVING'" [origin]="this.origin" [destination]="this.destination" [waypoints]="this.waypoints"> </agm-direction>
+            <agm-direction [transitOptions]="{ modes: ['BUS']}" [travelMode]="'TRANSIT'" [origin]="this.origin" [destination]="this.destination" [waypoints]="this.waypoints"> </agm-direction>
 
             <agm-marker [iconUrl]="'assets/img/mapaUsuario.png'" [latitude]="latUsuario" [longitude]="lngUsuario">
 

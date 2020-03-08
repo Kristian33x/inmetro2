@@ -9,10 +9,10 @@
         <agm-map (mapClick)="agregarMarcador( $event )" (boundsChange)="moverMapa( $event);" [latitude]="lat" [longitude]="lng" [zoom]="16">
             <!-- <agm-circle [latitude]="lat" [longitude]="lng" [radius]="30" [fillColor]="'red'" [circleDraggable]="true" [editable]="true">></agm-circle> -->
 
-            <!-- <agm-direction [origin]="this.origin" [destination]="this.destination" [waypoints]="this.waypoints"> </agm-direction> -->
+            <agm-direction [transitOptions]="{ modes: ['BUS']}" [travelMode]="'TRANSIT'" [provideRouteAlternatives]="true" [origin]="this.origin" [destination]="this.destination" [waypoints]="this.waypoints"> </agm-direction>
 
 
-            <agm-marker [iconUrl]="'assets/img/mapaUsuario.png'" [label]="'Tu'" [latitude]="lat" [longitude]="lng">
+            <agm-marker [iconUrl]="'assets/img/mapaUsuario.png'" [latitude]="lat" [longitude]="lng">
 
                 <agm-info-window>
                     <strong>Aqui Estas!!</strong>

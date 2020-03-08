@@ -16,11 +16,11 @@ export class MapaComponent implements OnInit {
  lng = -73.11724761399356;
  lat1;
  lng1;
-
+ public transitOptions: any = { modes: ['BUS'], };
 
   public origin: any;
   public destination: any;
-  waypoints: any;
+  waypoints: any = [];
 
   constructor(private snackBar: MatSnackBar, public dialog: MatDialog) {
     this.getDirection();
@@ -59,8 +59,8 @@ export class MapaComponent implements OnInit {
   }
 
   getDirection() {
-    // this.origin = { lat: 7.11392, lng: -73.1198 }; // A
-    // this.destination = { lat: 7.12392, lng: -73.1298 }; // D
+    this.origin = 'Bucaramanga Estacion San Mateo N-s'; // A
+    this.destination = 'Bucaramanga Estacion Chorreras N-s'; // D
     // this.waypoints = [
     //  {location: { lat: 7.13392, lng: -73.1398 }}, // C
     //  {location: { lat: 7.14392, lng: -73.1498 }} // B
