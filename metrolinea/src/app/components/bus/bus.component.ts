@@ -33,6 +33,8 @@ export class BusComponent implements OnDestroy, OnInit {
   origin: any;
   destination: any;
   waypoints: any;
+  activoDirections = false;
+  activoParadas = false;
 
   constructor( private activatedRoute: ActivatedRoute, private rutasService: RutasService, private busService: BusService,
                public dialog: MatDialog, public paradasService: ParadasService) {
@@ -118,26 +120,41 @@ export class BusComponent implements OnDestroy, OnInit {
   }
 
   getDirection() {
-
-    this.origin = { lat: 7.157089498267445 , lng: -73.15899185180664, stopover: true  }; // A
-    this.destination = { lat: 7.137089498267445, lng: -73.11899185180664, stopover: true  }; // D
-    let index = 0;
-    this.waypoints = [];
-    console.log(this.paradasRuta.length);
-    for (const parada of this.paradasRuta) {
-      console.log('index=', index , 'lenght=', this.paradasRuta.length);
-      if (index === 0) {
-        this.origin = { lat: parada.latitud , lng: parada.longitud, stopover: true  }; // A
-      } else {
-              if (this.paradasRuta.length === index + 1) {
-                this.destination = { lat: parada.latitud, lng: parada.longitud, stopover: true  }; // D
-              } else {
-                      this.waypoints.push({location: { lat: parada.latitud, lng: parada.longitud, stopover: true  }});
-                     }
-      }
-      index++;
-    }
-    console.log(this.waypoints, 'CC', this.origin, 'origin', this.destination, 'destination' );
+    this.activoDirections = true;
+    this.origin = this.ruta.origen; // A
+    this.destination = this.ruta.destino; // D
   }
+
+  setActivoParadas() {
+    this.activoParadas = !this.activoParadas;
+  }
+
+  // Se utilizaba para crear una directions desde una parada origen a una parada destino y en waypoints muchas paradas.
+  // se ubicaba en mapa con longitud y latitud de las paradas lo cual no era muy eficiente
+  // y la directions resultante en ocasiones no devolvia ningun resultado o uno erroneo porque las coordenadas
+  // no estaban ubicadas en el lugar exacto
+
+  // getDirection() {
+
+  //   this.origin = { lat: 7.157089498267445 , lng: -73.15899185180664, stopover: true  }; // A
+  //   this.destination = { lat: 7.137089498267445, lng: -73.11899185180664, stopover: true  }; // D
+  //   let index = 0;
+  //   this.waypoints = [];
+  //   console.log(this.paradasRuta.length);
+  //   for (const parada of this.paradasRuta) {
+  //     console.log('index=', index , 'lenght=', this.paradasRuta.length);
+  //     if (index === 0) {
+  //       this.origin = { lat: parada.latitud , lng: parada.longitud, stopover: true  }; // A
+  //     } else {
+  //             if (this.paradasRuta.length === index + 1) {
+  //               this.destination = { lat: parada.latitud, lng: parada.longitud, stopover: true  }; // D
+  //             } else {
+  //                     this.waypoints.push({location: { lat: parada.latitud, lng: parada.longitud, stopover: true  }});
+  //                    }
+  //     }
+  //     index++;
+  //   }
+  //   console.log(this.waypoints, 'CC', this.origin, 'origin', this.destination, 'destination' );
+  // }
 
 }

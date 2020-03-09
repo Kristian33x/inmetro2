@@ -23,13 +23,14 @@ busCtrl.createBus = async(req, res) => {
         Fecha: req.body.Fecha,
         imagenTipoBus: req.body.imagenTipoBus,
         NumBusesAsociados: req.body.NumBusesAsociados,
-        arrayBuses: req.body.arrayBuses
+        origen: req.body.origen,
+        destino: req.body.destino
     });
     await bus.save();
     //console.log(bus);
     // console.log(req.body);
     res.json({
-        "estatus": "Bus Guardado"
+        "estatus": "Ruta Guardada"
     });
 };
 
@@ -42,12 +43,13 @@ busCtrl.editBus = async(req, res) => {
         Fecha: req.body.Fecha,
         imagenTipoBus: req.body.imagenTipoBus,
         NumBusesAsociados: req.body.NumBusesAsociados,
-        arrayBuses: req.body.arrayBuses
+        origen: req.body.origen,
+        destino: req.body.destino
     }
     await Bus.findByIdAndUpdate(id, { $set: bus }, { new: true });
 
     res.json({
-        "estatus": "Bus Actualizado"
+        "estatus": "Ruta Actualizada"
     });
 };
 
@@ -55,7 +57,7 @@ busCtrl.deleteBus = async(req, res) => {
     const { id } = req.params;
     await Bus.findByIdAndRemove(id);
     res.json({
-        "estatus": "Bus Eliminado"
+        "estatus": "Ruta Eliminada"
     });
 }
 

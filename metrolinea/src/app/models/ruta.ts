@@ -3,7 +3,7 @@ export class Ruta {
 
     // tslint:disable-next-line:variable-name
     constructor(_id = '', nombre = '', descripcion = '', imagenBus = '', Fecha  = '', imagenTipoBus = '',
-                NumBusesAsociados = 0, arrayBuses = ''  ) {
+                NumBusesAsociados = 0, origen = '', destino = ''  ) {
         this._id = _id;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -11,7 +11,8 @@ export class Ruta {
         this.Fecha = Fecha;
         this.imagenTipoBus = imagenTipoBus;
         this.NumBusesAsociados = NumBusesAsociados;
-        this.arrayBuses = arrayBuses;
+        this.origen = origen;
+        this.destino = destino;
 
     }
 
@@ -23,5 +24,6 @@ export class Ruta {
     Fecha: string;
     imagenTipoBus: string;
     NumBusesAsociados: number;
-    arrayBuses: string;
+    origen: string;
+    destino: string;
 }

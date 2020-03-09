@@ -85,15 +85,14 @@ export class EditBusesComponent implements OnInit {
   }
 }
 
-addRuta2(bus: Ruta) {
+addRuta2(ruta: Ruta) {
 
-  // this.actualizarBusEnConductores(bus);
-  if (bus._id) {
+  if (ruta._id) {
 
-    this.rutaService.putRuta(bus)
+    this.rutaService.putRuta(ruta)
     .subscribe(res => {
-      this.actualizarRutaEnBuses(bus);
-      M.toast({html: 'bus2 actualizado satisfactoriamente'});
+      this.actualizarRutaEnBuses(ruta);
+      M.toast({html: 'ruta2 actualizada satisfactoriamente'});
       this.getRutas();
     });
   }
@@ -145,6 +144,15 @@ addRuta2(bus: Ruta) {
       form.reset();
       this.selectedRuta1 = new Ruta();
     }
+  }
+
+  asignarOrigenDestinoRuta(form: NgForm) {
+    // esto es un form que se convierte en UserI y es el nuevo Conductor para el bus y selectedBus1.ConductorAsociado es el Conductor actual
+    console.log(form);
+    this.selectedRuta1.origen = form.value.origen;
+    this.selectedRuta1.destino = form.value.destino;
+    this.addRuta2(this.selectedRuta1);
+
   }
 
 

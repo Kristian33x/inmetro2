@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 const ConductorSchema = new Schema({
     //Este esquema es usado para cada uno de los buses (haciendo referencia a su conductor) (Ya no hace referencia a su conductor, ahora uno de sus campos es el conductor)
-
+    // Este esquema es de buses. el de conductores y administradores es Auth. esto es por evitar errores al cambiar nombres de carpetas
     tipoBus: { type: String, required: true },
     placa: { type: String, require: true, unique: true },
     RutaAsociada: {
@@ -15,7 +15,8 @@ const ConductorSchema = new Schema({
             Fecha: String,
             imagenTipoBus: String,
             NumBusesAsociados: Number,
-            arrayBuses: String
+            origen: String,
+            destino: String
         },
         require: false
     }, // todo bus tiene una Ruta asociada, lo cual corresponde a un schema como el de arriba (BusSchema)

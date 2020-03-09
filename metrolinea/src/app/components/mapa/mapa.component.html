@@ -1,18 +1,27 @@
 <mat-card [style.backgroundColor]="'white'">
 
     <mat-card-title>
-        <p style="color: darkgreen;">Mapa</p>
+        <div class="form-group row">
+            <div class="col-md-6">
+                <p style="color: darkgreen;">Mapa</p>
+                <div class="input-group" ng-controller="ngifctrl">
+                    <b>A donde vas?</b>&nbsp;
+                    <input (keydown.enter)="getDirection(buscarParada.value)" type="text" id="texto" name="texto" class="form-control" placeholder="Ej: Estacion San Mateo, SENA, UIS" #buscarParada>&nbsp;
+                    <button (click)="getDirection(buscarParada.value)" type="button" title="Buscar" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
+                </div>
+            </div>
+        </div>
     </mat-card-title>
 
-    <!-- (centerChange)= (zoomChange) -->
+    <!-- (centerChange)= (zoomChange) (boundsChange)="moverMapa( $event);" (mapClick)="agregarMarcador( $event )" -->
+    <!-- <agm-circle [latitude]="lat" [longitude]="lng" [radius]="30" [fillColor]="'red'" [circleDraggable]="true" [editable]="true">></agm-circle> -->
+
     <mat-card-content>
-        <agm-map (mapClick)="agregarMarcador( $event )" (boundsChange)="moverMapa( $event);" [latitude]="lat" [longitude]="lng" [zoom]="16">
-            <!-- <agm-circle [latitude]="lat" [longitude]="lng" [radius]="30" [fillColor]="'red'" [circleDraggable]="true" [editable]="true">></agm-circle> -->
 
-            <agm-direction [transitOptions]="{ modes: ['BUS']}" [travelMode]="'TRANSIT'" [provideRouteAlternatives]="true" [origin]="this.origin" [destination]="this.destination" [waypoints]="this.waypoints"> </agm-direction>
+        <agm-map [latitude]="latUsuario" [longitude]="lngUsuario" [zoom]="16">
+            <agm-direction *ngIf="isDirectionActive" [transitOptions]="{ modes: ['BUS']}" [travelMode]="'TRANSIT'" [provideRouteAlternatives]="true" [origin]="this.origin" [destination]="this.destination"> </agm-direction>
 
-
-            <agm-marker [iconUrl]="'assets/img/mapaUsuario.png'" [latitude]="lat" [longitude]="lng">
+            <agm-marker [iconUrl]="'assets/img/mapaUsuario.png'" [latitude]="latUsuario" [longitude]="lngUsuario">
 
                 <agm-info-window>
                     <strong>Aqui Estas!!</strong>

@@ -10,8 +10,8 @@ const BusSchema = new Schema({
     Fecha: { type: String, require: true },
     imagenTipoBus: { type: String, require: true },
     NumBusesAsociados: { type: Number, require: true }, //se podria obtener del array de buses
-    arrayBuses: { type: String, require: false }, //luego cambiar el tipo de string a buses
-
+    origen: { type: String, require: false }, //luego cambiar el tipo de string a buses
+    destino: { type: String, require: false },
 });
 
 

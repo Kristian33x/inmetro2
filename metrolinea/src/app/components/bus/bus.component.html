@@ -70,7 +70,7 @@
 <mat-card>
 
     <mat-card-title>
-        <p style="color: darkgreen;">Mapa</p>
+        <p style="color: darkgreen;">Mapa</p> <button (click)="this.setActivoParadas()" type="button" title="Activar/Desactivar Paradas en Mapa" class="btn btn-primary"><i class="fa fa-search"></i> Paradas en Mapa</button>
     </mat-card-title>
 
     <!-- (centerChange)= (zoomChange) -->
@@ -78,8 +78,8 @@
     <mat-card-content>
         <agm-map [latitude]="latCentroMapa" [longitude]="lngCentroMapa" [zoom]="15">
             <!-- <agm-circle [latitude]="lat" [longitude]="lng" [radius]="30" [fillColor]="'red'" [circleDraggable]="true" [editable]="true">></agm-circle> -->
-
-            <agm-direction [transitOptions]="{ modes: ['BUS']}" [travelMode]="'TRANSIT'" [origin]="this.origin" [destination]="this.destination" [waypoints]="this.waypoints"> </agm-direction>
+            <!-- [waypoints]="this.waypoints" -->
+            <agm-direction *ngIf="this.activoDirections" [transitOptions]="{ modes: ['BUS']}" [travelMode]="'TRANSIT'" [origin]="this.origin" [destination]="this.destination"> </agm-direction>
 
             <agm-marker [iconUrl]="'assets/img/mapaUsuario.png'" [latitude]="latUsuario" [longitude]="lngUsuario">
 
@@ -102,6 +102,9 @@
 
             </agm-marker>
 
+            <div *ngIf="this.activoParadas">
+                <agm-marker *ngFor="let parada of this.paradasRuta" [latitude]="parada.latitud" [longitude]="parada.longitud"></agm-marker>
+            </div>
         </agm-map>
     </mat-card-content>
 

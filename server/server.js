@@ -46,9 +46,9 @@ router.get('/', (req, res) => {
 // app.use(cors({ origin: 'http://localhost:4200' }))
 
 // Routes
-app.use('/api/buses', require('./routes/bus.routes'));
-app.use('/api/conductores', require('./routes/conductor.routes'));
-app.use('/api/paradas', require('./routes/parada.routes'));
+app.use('/api/buses', require('./routes/bus.routes')); // rutas
+app.use('/api/conductores', require('./routes/conductor.routes')); // buses
+app.use('/api/paradas', require('./routes/parada.routes')); // paradas
 
 // fin index.js
 
