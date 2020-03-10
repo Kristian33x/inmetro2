@@ -120,9 +120,13 @@ export class BusComponent implements OnDestroy, OnInit {
   }
 
   getDirection() {
-    this.activoDirections = true;
     this.origin = this.ruta.origen; // A
     this.destination = this.ruta.destino; // D
+    this.activoDirections = true;
+  }
+
+  setActivoDirections() {
+    this.activoDirections = !this.activoDirections;
   }
 
   setActivoParadas() {

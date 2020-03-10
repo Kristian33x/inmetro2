@@ -70,7 +70,8 @@
 <mat-card>
 
     <mat-card-title>
-        <p style="color: darkgreen;">Mapa</p> <button (click)="this.setActivoParadas()" type="button" title="Activar/Desactivar Paradas en Mapa" class="btn btn-primary"><i class="fa fa-search"></i> Paradas en Mapa</button>
+        <p style="color: darkgreen;">Mapa</p> <button (click)="this.setActivoParadas()" type="button" title="Activar/Desactivar Paradas en Mapa" class="btn btn-outline-light"><i class="fa fa-search"></i> Paradas en Mapa</button> &nbsp; <button (click)="this.setActivoDirections()"
+            type="button" title="Activar/Desactivar Ruta en Mapa" class="btn btn-outline-info"><i class="fa fa-search"></i> Ruta en Mapa</button>
     </mat-card-title>
 
     <!-- (centerChange)= (zoomChange) -->
@@ -88,7 +89,7 @@
                 </agm-info-window>
             </agm-marker>
 
-            <agm-marker *ngFor="let marcador of marcadores; let i = index" [iconUrl]="'assets/img/mapaBus.png'" [label]="marcador.ruta.nombre" [latitude]="marcador.latitud" [longitude]="marcador.longitud">
+            <agm-marker *ngFor="let marcador of marcadores; let i = index" [iconUrl]="'assets/img/mapaBus.png'" [latitude]="marcador.latitud" [longitude]="marcador.longitud">
 
                 <agm-info-window>
                     <strong>{{marcador.placa}}</strong>

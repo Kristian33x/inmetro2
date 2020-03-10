@@ -17,9 +17,9 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
         this.activatedRoute.params.subscribe(params => {
-          // this.rutasSearch = this.rutasServices.buscarRutas( params.termino); // buscar por nombre bus
-          const arrayConNombreRutas = this.paradasService.buscarRutasPorNombreParada(params.termino);
-          this.rutasSearch = this.rutasServices.buscarRutasPorArraydeTerminos(arrayConNombreRutas);
+          this.rutasSearch = this.rutasServices.buscarRutas( params.termino); // buscar por nombre bus
+          // const arrayConNombreRutas = this.paradasService.buscarRutasPorNombreParada(params.termino);
+          // this.rutasSearch = this.rutasServices.buscarRutasPorArraydeTerminos(arrayConNombreRutas);
           this.termino = params.termino;
           // console.log(this.termino, '222', params);
         } );
