@@ -25,10 +25,19 @@
                 <mat-card-subtitle *ngIf="parada.tipoParada === 'assets/img/station_stop.png'"> Estacion</mat-card-subtitle>
                 <mat-card-subtitle *ngIf="parada.tipoParada === 'assets/img/bus_stop.png'"> Parada </mat-card-subtitle>
             </mat-card-header>
-            <img mat-card-image style="width: min-content; height: min-content;" src="{{parada.tipoParada}} ">
+            <!-- <img mat-card-image style="width: min-content; height: min-content;" src="{{parada.tipoParada}} "> -->
 
             <mat-card-content>
-                <b>{{parada.rutasAsociadas}}</b>
+                <div class="alert alert-info" role="alert" *ngIf="parada.rutasAsociadas.length !== 0">
+                    <b>{{parada.rutasAsociadas}}</b>
+                </div>
+
+                <!-- <div class="col-md-12" *ngIf="parada.rutasAsociadas.length === 0"> -->
+                <div class="alert alert-info" role="alert" *ngIf="parada.rutasAsociadas.length === 0">
+                    Sin rutas asociadas.
+                </div>
+                <!-- </div> -->
+
             </mat-card-content>
 
             <mat-card-actions style="text-align: center;">
@@ -56,7 +65,7 @@
         <div class="row animated fadeIn fast" *ngIf="this.paradaServices.busquedaParadas.length == 0">
             <div class="col-md-12">
                 <div class="alert alert-info" role="alert">
-                    No existen resultados pata la busqueda.
+                    No existen resultados para la busqueda.
                 </div>
             </div>
         </div>
