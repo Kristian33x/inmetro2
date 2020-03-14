@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { ParadasService } from '../../services/parada.service';
 import { NgForm } from '@angular/forms';
 import { Parada } from 'src/app/models/parada';

@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit {
     .subscribe(res => {
       this.administrador();
       this.auth.getUsers();
-      this.hola();
+      this.cerrarVentana();
       // this.UsuarioActivo = this.auth.getUserLogueado();
     });
 
@@ -39,7 +39,7 @@ export class NavbarComponent implements OnInit {
     this.router.navigateByUrl('/login');
   }
 
-  hola() {
+  cerrarVentana() {
     window.addEventListener('beforeunload', (e) => {
     const confirmationMessage = '\o/';
     this.auth.logout();
