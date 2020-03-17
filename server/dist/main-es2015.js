@@ -123,7 +123,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<mat-card [style.backgroundColor]=\"'white'\">\n\n    <mat-card-title>\n        <div class=\"form-group row\">\n            <div class=\"col-md-6\">\n                <p style=\"color: darkgreen;\">Mapa</p>\n                <div class=\"input-group\" ng-controller=\"ngifctrl\">\n                    <b>A donde vas?</b>&nbsp;\n                    <input (keydown.enter)=\"getDirection(buscarParada.value)\" type=\"text\" id=\"texto\" name=\"texto\" class=\"form-control\" placeholder=\"Ej: Estacion San Mateo, SENA, UIS\" #buscarParada>&nbsp;\n                    <button (click)=\"getDirection(buscarParada.value)\" type=\"button\" title=\"Buscar\" class=\"btn btn-primary\"><i class=\"fa fa-search\"></i> Buscar</button>\n                </div>\n            </div>\n        </div>\n    </mat-card-title>\n\n    <!-- (centerChange)= (zoomChange) (boundsChange)=\"moverMapa( $event);\" (mapClick)=\"agregarMarcador( $event )\" -->\n    <!-- <agm-circle [latitude]=\"lat\" [longitude]=\"lng\" [radius]=\"30\" [fillColor]=\"'red'\" [circleDraggable]=\"true\" [editable]=\"true\">></agm-circle> -->\n\n    <mat-card-content>\n\n        <agm-map [latitude]=\"latUsuario\" [longitude]=\"lngUsuario\" [zoom]=\"16\">\n            <agm-direction *ngIf=\"isDirectionActive\" [transitOptions]=\"{ modes: ['BUS']}\" [travelMode]=\"'TRANSIT'\" [provideRouteAlternatives]=\"true\" [origin]=\"this.origin\" [destination]=\"this.destination\"> </agm-direction>\n\n            <agm-marker [iconUrl]=\"'assets/img/mapaUsuario.png'\" [latitude]=\"latUsuario\" [longitude]=\"lngUsuario\">\n\n                <agm-info-window>\n                    <strong>Aqui Estas!!</strong>\n                </agm-info-window>\n            </agm-marker>\n        </agm-map>\n    </mat-card-content>\n\n</mat-card>");
+/* harmony default export */ __webpack_exports__["default"] = ("<mat-card [style.backgroundColor]=\"'white'\">\n\n    <mat-card-title>\n        <div class=\"form-group row\">\n            <div class=\"col-md-6\">\n                <p style=\"color: darkgreen;\">Mapa</p>\n                <div class=\"input-group\" ng-controller=\"ngifctrl\">\n                    <b>A donde vas?</b>&nbsp;\n                    <input (keydown.enter)=\"getDirection(buscarParada.value); busquedaEventoAnalytics(buscarParada.value);\" type=\"text\" id=\"texto\" name=\"texto\" class=\"form-control\" placeholder=\"Ej: Estacion San Mateo, SENA, UIS\" #buscarParada>&nbsp;\n                    <button (click)=\"getDirection(buscarParada.value); busquedaEventoAnalytics(buscarParada.value);\" type=\"button\" title=\"Buscar\" class=\"btn btn-primary\"><i class=\"fa fa-search\"></i> Buscar</button>\n                </div>\n            </div>\n        </div>\n    </mat-card-title>\n\n    <!-- (centerChange)= (zoomChange) (boundsChange)=\"moverMapa( $event);\" (mapClick)=\"agregarMarcador( $event )\" -->\n    <!-- <agm-circle [latitude]=\"lat\" [longitude]=\"lng\" [radius]=\"30\" [fillColor]=\"'red'\" [circleDraggable]=\"true\" [editable]=\"true\">></agm-circle> -->\n\n    <mat-card-content>\n\n        <agm-map [latitude]=\"latUsuario\" [longitude]=\"lngUsuario\" [zoom]=\"16\">\n            <agm-direction *ngIf=\"isDirectionActive\" [transitOptions]=\"{ modes: ['BUS']}\" [travelMode]=\"'TRANSIT'\" [provideRouteAlternatives]=\"true\" [origin]=\"this.origin\" [destination]=\"this.destination\"> </agm-direction>\n\n            <agm-marker [iconUrl]=\"'assets/img/mapaUsuario.png'\" [latitude]=\"latUsuario\" [longitude]=\"lngUsuario\">\n\n                <agm-info-window>\n                    <strong>Aqui Estas!!</strong>\n                </agm-info-window>\n            </agm-marker>\n        </agm-map>\n    </mat-card-content>\n\n</mat-card>");
 
 /***/ }),
 
@@ -1498,11 +1498,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 
 
-// import {} from 'googlemaps';
-// import { ViewChild } from '@angular/core';
 let HomeComponent = class HomeComponent {
-    //   @ViewChild('map') mapElement: any;
-    //   map: google.maps.Map;
     constructor() { }
     ngOnInit() { }
 };
@@ -1600,10 +1596,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 
 
-// import { Marcador } from '../../Class/marcador.class';
-// import {MatSnackBar} from '@angular/material/snack-bar';
-// import {MatDialog} from '@angular/material/dialog';
-// import { MapaEditarComponent } from './mapa-editar.component';
 let MapaComponent = class MapaComponent {
     constructor() {
         //  marcadores: Marcador[] = [];
@@ -1616,7 +1608,7 @@ let MapaComponent = class MapaComponent {
                 this.lngUsuario = datos.coords.longitude;
             }));
         }
-        console.log(this.latUsuario, this.lngUsuario, 'RRR');
+        // console.log(this.latUsuario , this.lngUsuario, 'RRR');
         // const nuevoMarcador = new Marcador(this.lat, this.lng);
         // this.marcadores.push(nuevoMarcador);
         //   if (navigator.geolocation) {
@@ -1649,10 +1641,14 @@ let MapaComponent = class MapaComponent {
         // ];
         this.origin = { location: { lat: this.latUsuario, lng: this.lngUsuario } };
         this.destination = direccion;
-        console.log(this.origin, this.destination, 'XX');
+        // console.log(this.origin , this.destination, );
     }
     setIsDirection() {
         this.isDirectionActive = false;
+    }
+    busquedaEventoAnalytics(busqueda) {
+        gtag('send', busqueda, 'A donde Van?', 'Busqueda de Rutas');
+        console.log('hola');
     }
 };
 MapaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([

@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-// import { Marcador } from '../../Class/marcador.class';
-// import {MatSnackBar} from '@angular/material/snack-bar';
-// import {MatDialog} from '@angular/material/dialog';
-// import { MapaEditarComponent } from './mapa-editar.component';
+
+declare var gtag;
 
 @Component({
   selector: 'app-mapa',
@@ -30,7 +28,7 @@ export class MapaComponent implements OnInit {
         this.lngUsuario = datos.coords.longitude;
       });
     }
-    console.log(this.latUsuario , this.lngUsuario, 'RRR');
+    // console.log(this.latUsuario , this.lngUsuario, 'RRR');
     // const nuevoMarcador = new Marcador(this.lat, this.lng);
     // this.marcadores.push(nuevoMarcador);
   //   if (navigator.geolocation) {
@@ -66,13 +64,17 @@ export class MapaComponent implements OnInit {
     // ];
     this.origin = {location: { lat: this.latUsuario, lng: this.lngUsuario }};
     this.destination = direccion;
-    console.log(this.origin , this.destination, 'XX');
+    // console.log(this.origin , this.destination, );
   }
 
   setIsDirection() {
     this.isDirectionActive = false;
   }
 
+  busquedaEventoAnalytics(busqueda: string) {
+    gtag('send', busqueda, 'A donde Van?', 'Busqueda de Rutas' );
+    console.log('hola');
+  }
 
   // moverMapa(evento) {
   //   console.log('it changed');
