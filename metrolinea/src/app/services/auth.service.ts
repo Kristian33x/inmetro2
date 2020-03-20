@@ -5,6 +5,7 @@ import { JwtResponseI } from '../models/jwt-response';
 import {tap } from 'rxjs/operators';
 import {Observable, BehaviorSubject} from 'rxjs';
 import { BusService } from './bus.service';
+import Swal from 'sweetalert2';
 
 @Injectable()
 export class AuthService {
@@ -144,7 +145,7 @@ export class AuthService {
       },
       error => { console.log(error, 'Email o Contrasena incorrecta'); }
     ));
-    }
+  }
 
   // asigna el id para luego ser borrado en logout, es usado en conductorComponent.ts
   borrarWatchPosition(id: any) {
@@ -156,7 +157,7 @@ export class AuthService {
     this.getSelectedUserByEmail();
     this.selectedUser.estado = false; // Desconectado
     this.putEstadoUser(this.selectedUser).subscribe( res => {
-      // console.log(res, 'Usuario Desconectado');
+    // console.log(res, 'Usuario Desconectado');
     });
     navigator.geolocation.clearWatch(this.id);
     this.actualizarConductorEnBuses(this.selectedUser, 0);
@@ -165,6 +166,12 @@ export class AuthService {
     localStorage.removeItem('EMAIL');
     localStorage.removeItem('ACCESS_TOKEN');
     localStorage.removeItem('EXPIRES_IN');
+    Swal.fire({
+      icon: 'success',
+      title: 'Sesión finalizada',
+      showConfirmButton: false,
+      timer: 1000
+    });
   }
 
   // Actualiza el estado del conductorAsociado a un bus a la hora de hacer login y logout

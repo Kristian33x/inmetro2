@@ -55,27 +55,27 @@ export class ParadasComponent implements OnInit {
   }
 
   asignarRutaParada(form: NgForm) {
-    console.log(form.value.rutap);
-    console.log(this.paradaServices.selectedParada.rutasAsociadas, '1x');
+    // console.log(form.value.rutap);
+    // console.log(this.paradaServices.selectedParada.rutasAsociadas, '1x');
     this.paradaServices.selectedParada.rutasAsociadas.push(form.value.rutap);
-    console.log(this.paradaServices.selectedParada.rutasAsociadas, '2x');
+    // console.log(this.paradaServices.selectedParada.rutasAsociadas, '2x');
     this.paradaServices.addParada2(this.paradaServices.selectedParada);
   }
 
   asignarRutaParada2(rutaNombre: string) {
-    console.log(rutaNombre);
-    console.log(this.paradaServices.selectedParada.rutasAsociadas, '1x');
+    // console.log(rutaNombre);
+    // console.log(this.paradaServices.selectedParada.rutasAsociadas, '1x');
     this.paradaServices.selectedParada.rutasAsociadas.push(rutaNombre);
-    console.log(this.paradaServices.selectedParada.rutasAsociadas, '2x');
+    // console.log(this.paradaServices.selectedParada.rutasAsociadas, '2x');
     this.paradaServices.addParada2(this.paradaServices.selectedParada);
     this.obtenerRutasSinParada();
   }
 
   removerRutaParada(NombreRuta: string) {
     const i = this.paradaServices.selectedParada.rutasAsociadas.indexOf( NombreRuta );
-    console.log(this.paradaServices.selectedParada.rutasAsociadas, '11');
+    // console.log(this.paradaServices.selectedParada.rutasAsociadas, '11');
     this.paradaServices.selectedParada.rutasAsociadas.splice(i, 1);
-    console.log(this.paradaServices.selectedParada.rutasAsociadas, '22');
+    // console.log(this.paradaServices.selectedParada.rutasAsociadas, '22');
     this.paradaServices.addParada2(this.paradaServices.selectedParada);
     this.obtenerRutasSinParada();
   }

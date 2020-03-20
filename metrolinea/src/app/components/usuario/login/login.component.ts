@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
+import Swal from 'sweetalert2';
 
 declare var M: any;
 
@@ -27,21 +28,39 @@ export class LoginComponent implements OnInit {
 
     // console.log(form.valid);
     if (form.valid) {
-      console.log('Valido');
+      // console.log('Valido');
       // console.log('login1', form.value);
       this.authService.login(form.value).subscribe(res => {
-      this.authService.administrador();
-      this.router.navigateByUrl('/inicio');
+        Swal.fire({
+          icon: 'success',
+          title: 'Sesión iniciada',
+          showConfirmButton: false,
+          timer: 1000
+        });
+        this.authService.administrador();
+        this.router.navigateByUrl('/inicio');
     },
     error => {
-      console.log(error, 'Ultimo error');
-      document.getElementById('errorEmail').style.display = 'inline';
-      setTimeout(() => {
-        this.errorEmail();
-      }, 3000);
-       }
+        // console.log(error, 'Ultimo error');
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Email y/o Contrasena incorrecta!'
+        });
+        document.getElementById('errorEmail').style.display = 'inline';
+        setTimeout(() => {
+          this.errorEmail();
+        }, 3000);
+         }
     );
-    } else { console.log('No valido');  M.toast({html: 'email no valido'});   }
+    } else {
+            // console.log('No valido');
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Campo Email y/o Contrasena no valido!'
+            });
+          }
   }
 
   // Oculta el mensaje que aparece al escribir una direccion de correo y/o contrasena equivocada

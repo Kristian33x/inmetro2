@@ -22,6 +22,9 @@ import { MapaEditarComponent } from './components/mapa/mapa-editar.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AgmDirectionModule } from 'agm-direction';
 
+// Google Analytics
+import { GoogleAnalyticsService } from './services/google-analytics.service';
+
 // Components
 import { EditBusesComponent } from './components/edit-buses/edit-buses.component';
 import { BusComponent } from './components/bus/bus.component';
@@ -74,7 +77,8 @@ import { ParadasComponent } from './components/paradas/paradas.component';
   ],
   providers: [
     RutasService,
-    AuthService
+    AuthService,
+    GoogleAnalyticsService
   ],
   bootstrap: [AppComponent]
 })

@@ -123,7 +123,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<mat-card [style.backgroundColor]=\"'white'\">\n\n    <mat-card-title>\n        <div class=\"form-group row\">\n            <div class=\"col-md-6\">\n                <p style=\"color: darkgreen;\">Mapa</p>\n                <div class=\"input-group\" ng-controller=\"ngifctrl\">\n                    <b>A donde vas?</b>&nbsp;\n                    <input (keydown.enter)=\"getDirection(buscarParada.value); busquedaEventoAnalytics(buscarParada.value);\" type=\"text\" id=\"texto\" name=\"texto\" class=\"form-control\" placeholder=\"Ej: Estacion San Mateo, SENA, UIS\" #buscarParada>&nbsp;\n                    <button (click)=\"getDirection(buscarParada.value); busquedaEventoAnalytics(buscarParada.value);\" type=\"button\" title=\"Buscar\" class=\"btn btn-primary\"><i class=\"fa fa-search\"></i> Buscar</button>\n                </div>\n            </div>\n        </div>\n    </mat-card-title>\n\n    <!-- (centerChange)= (zoomChange) (boundsChange)=\"moverMapa( $event);\" (mapClick)=\"agregarMarcador( $event )\" -->\n    <!-- <agm-circle [latitude]=\"lat\" [longitude]=\"lng\" [radius]=\"30\" [fillColor]=\"'red'\" [circleDraggable]=\"true\" [editable]=\"true\">></agm-circle> -->\n\n    <mat-card-content>\n\n        <agm-map [latitude]=\"latUsuario\" [longitude]=\"lngUsuario\" [zoom]=\"16\">\n            <agm-direction *ngIf=\"isDirectionActive\" [transitOptions]=\"{ modes: ['BUS']}\" [travelMode]=\"'TRANSIT'\" [provideRouteAlternatives]=\"true\" [origin]=\"this.origin\" [destination]=\"this.destination\"> </agm-direction>\n\n            <agm-marker [iconUrl]=\"'assets/img/mapaUsuario.png'\" [latitude]=\"latUsuario\" [longitude]=\"lngUsuario\">\n\n                <agm-info-window>\n                    <strong>Aqui Estas!!</strong>\n                </agm-info-window>\n            </agm-marker>\n        </agm-map>\n    </mat-card-content>\n\n</mat-card>");
+/* harmony default export */ __webpack_exports__["default"] = ("<mat-card [style.backgroundColor]=\"'white'\">\n\n    <mat-card-title>\n        <div class=\"form-group row\">\n            <div class=\"col-md-6\">\n                <p style=\"color: darkgreen;\">Mapa</p>\n                <div class=\"input-group\" ng-controller=\"ngifctrl\">\n                    <b>A donde vas?</b>&nbsp;\n                    <input (keydown.enter)=\"getDirection(buscarParada.value); SendAddToCartEvent(buscarParada.value);\" type=\"text\" id=\"texto\" name=\"texto\" class=\"form-control\" placeholder=\"Ej: Estacion San Mateo, SENA, UIS\" #buscarParada>&nbsp;\n                    <button (click)=\"getDirection(buscarParada.value); SendAddToCartEvent(buscarParada.value);\" type=\"button\" title=\"Buscar\" class=\"btn btn-primary\"><i class=\"fa fa-search\"></i> Buscar</button>\n                </div>\n            </div>\n        </div>\n    </mat-card-title>\n\n    <!-- (centerChange)= (zoomChange) (boundsChange)=\"moverMapa( $event);\" (mapClick)=\"agregarMarcador( $event )\" -->\n    <!-- <agm-circle [latitude]=\"lat\" [longitude]=\"lng\" [radius]=\"30\" [fillColor]=\"'red'\" [circleDraggable]=\"true\" [editable]=\"true\">></agm-circle> -->\n\n    <mat-card-content>\n\n        <agm-map [latitude]=\"latUsuario\" [longitude]=\"lngUsuario\" [zoom]=\"16\">\n            <agm-direction *ngIf=\"isDirectionActive\" [transitOptions]=\"{ modes: ['BUS']}\" [travelMode]=\"'TRANSIT'\" [provideRouteAlternatives]=\"true\" [origin]=\"this.origin\" [destination]=\"this.destination\"> </agm-direction>\n\n            <agm-marker [iconUrl]=\"'assets/img/mapaUsuario.png'\" [latitude]=\"latUsuario\" [longitude]=\"lngUsuario\">\n\n                <agm-info-window>\n                    <strong>Aqui Estas!!</strong>\n                </agm-info-window>\n            </agm-marker>\n        </agm-map>\n    </mat-card-content>\n\n</mat-card>");
 
 /***/ }),
 
@@ -543,17 +543,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_mapa_mapa_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/mapa/mapa.component */ "./src/app/components/mapa/mapa.component.ts");
 /* harmony import */ var _components_mapa_mapa_editar_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/mapa/mapa-editar.component */ "./src/app/components/mapa/mapa-editar.component.ts");
 /* harmony import */ var agm_direction__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! agm-direction */ "./node_modules/agm-direction/fesm2015/agm-direction.js");
-/* harmony import */ var _components_edit_buses_edit_buses_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/edit-buses/edit-buses.component */ "./src/app/components/edit-buses/edit-buses.component.ts");
-/* harmony import */ var _components_bus_bus_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/bus/bus.component */ "./src/app/components/bus/bus.component.ts");
-/* harmony import */ var _components_buses_buses_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/buses/buses.component */ "./src/app/components/buses/buses.component.ts");
-/* harmony import */ var _components_home_home_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/home/home.component */ "./src/app/components/home/home.component.ts");
-/* harmony import */ var _components_search_search_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/search/search.component */ "./src/app/components/search/search.component.ts");
-/* harmony import */ var _components_tarjeta_bus_tarjeta_bus_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/tarjeta-bus/tarjeta-bus.component */ "./src/app/components/tarjeta-bus/tarjeta-bus.component.ts");
-/* harmony import */ var _components_shared_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/shared/navbar/navbar.component */ "./src/app/components/shared/navbar/navbar.component.ts");
-/* harmony import */ var _components_usuario_register_register_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/usuario/register/register.component */ "./src/app/components/usuario/register/register.component.ts");
-/* harmony import */ var _components_conductor_conductor_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/conductor/conductor.component */ "./src/app/components/conductor/conductor.component.ts");
-/* harmony import */ var _components_usuario_login_login_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/usuario/login/login.component */ "./src/app/components/usuario/login/login.component.ts");
-/* harmony import */ var _components_paradas_paradas_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/paradas/paradas.component */ "./src/app/components/paradas/paradas.component.ts");
+/* harmony import */ var _services_google_analytics_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./services/google-analytics.service */ "./src/app/services/google-analytics.service.ts");
+/* harmony import */ var _components_edit_buses_edit_buses_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/edit-buses/edit-buses.component */ "./src/app/components/edit-buses/edit-buses.component.ts");
+/* harmony import */ var _components_bus_bus_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/bus/bus.component */ "./src/app/components/bus/bus.component.ts");
+/* harmony import */ var _components_buses_buses_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/buses/buses.component */ "./src/app/components/buses/buses.component.ts");
+/* harmony import */ var _components_home_home_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/home/home.component */ "./src/app/components/home/home.component.ts");
+/* harmony import */ var _components_search_search_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/search/search.component */ "./src/app/components/search/search.component.ts");
+/* harmony import */ var _components_tarjeta_bus_tarjeta_bus_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/tarjeta-bus/tarjeta-bus.component */ "./src/app/components/tarjeta-bus/tarjeta-bus.component.ts");
+/* harmony import */ var _components_shared_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/shared/navbar/navbar.component */ "./src/app/components/shared/navbar/navbar.component.ts");
+/* harmony import */ var _components_usuario_register_register_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/usuario/register/register.component */ "./src/app/components/usuario/register/register.component.ts");
+/* harmony import */ var _components_conductor_conductor_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/conductor/conductor.component */ "./src/app/components/conductor/conductor.component.ts");
+/* harmony import */ var _components_usuario_login_login_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/usuario/login/login.component */ "./src/app/components/usuario/login/login.component.ts");
+/* harmony import */ var _components_paradas_paradas_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/paradas/paradas.component */ "./src/app/components/paradas/paradas.component.ts");
 
 
 
@@ -573,6 +574,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+// Google Analytics
 
 // Components
 
@@ -597,18 +600,18 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"],
             _components_mapa_mapa_component__WEBPACK_IMPORTED_MODULE_12__["MapaComponent"],
             _components_mapa_mapa_editar_component__WEBPACK_IMPORTED_MODULE_13__["MapaEditarComponent"],
-            _components_edit_buses_edit_buses_component__WEBPACK_IMPORTED_MODULE_15__["EditBusesComponent"],
-            _components_bus_bus_component__WEBPACK_IMPORTED_MODULE_16__["BusComponent"],
-            _components_buses_buses_component__WEBPACK_IMPORTED_MODULE_17__["BusesComponent"],
-            _components_home_home_component__WEBPACK_IMPORTED_MODULE_18__["HomeComponent"],
-            _components_search_search_component__WEBPACK_IMPORTED_MODULE_19__["SearchComponent"],
-            _components_tarjeta_bus_tarjeta_bus_component__WEBPACK_IMPORTED_MODULE_20__["TarjetaBusComponent"],
-            _components_shared_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_21__["NavbarComponent"],
-            _components_usuario_login_login_component__WEBPACK_IMPORTED_MODULE_24__["LoginComponent"],
-            _components_usuario_register_register_component__WEBPACK_IMPORTED_MODULE_22__["RegisterComponent"],
-            _components_conductor_conductor_component__WEBPACK_IMPORTED_MODULE_23__["ConductorComponent"],
-            _components_usuario_login_login_component__WEBPACK_IMPORTED_MODULE_24__["LoginComponent"],
-            _components_paradas_paradas_component__WEBPACK_IMPORTED_MODULE_25__["ParadasComponent"]
+            _components_edit_buses_edit_buses_component__WEBPACK_IMPORTED_MODULE_16__["EditBusesComponent"],
+            _components_bus_bus_component__WEBPACK_IMPORTED_MODULE_17__["BusComponent"],
+            _components_buses_buses_component__WEBPACK_IMPORTED_MODULE_18__["BusesComponent"],
+            _components_home_home_component__WEBPACK_IMPORTED_MODULE_19__["HomeComponent"],
+            _components_search_search_component__WEBPACK_IMPORTED_MODULE_20__["SearchComponent"],
+            _components_tarjeta_bus_tarjeta_bus_component__WEBPACK_IMPORTED_MODULE_21__["TarjetaBusComponent"],
+            _components_shared_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_22__["NavbarComponent"],
+            _components_usuario_login_login_component__WEBPACK_IMPORTED_MODULE_25__["LoginComponent"],
+            _components_usuario_register_register_component__WEBPACK_IMPORTED_MODULE_23__["RegisterComponent"],
+            _components_conductor_conductor_component__WEBPACK_IMPORTED_MODULE_24__["ConductorComponent"],
+            _components_usuario_login_login_component__WEBPACK_IMPORTED_MODULE_25__["LoginComponent"],
+            _components_paradas_paradas_component__WEBPACK_IMPORTED_MODULE_26__["ParadasComponent"]
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -626,7 +629,8 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         ],
         providers: [
             _services_rutas_service__WEBPACK_IMPORTED_MODULE_6__["RutasService"],
-            _services_auth_service__WEBPACK_IMPORTED_MODULE_7__["AuthService"]
+            _services_auth_service__WEBPACK_IMPORTED_MODULE_7__["AuthService"],
+            _services_google_analytics_service__WEBPACK_IMPORTED_MODULE_15__["GoogleAnalyticsService"]
         ],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]]
     })
@@ -1070,6 +1074,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_models_user__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/app/models/user */ "./src/app/models/user.ts");
 /* harmony import */ var _mapa_mapa_editar_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../mapa/mapa-editar.component */ "./src/app/components/mapa/mapa-editar.component.ts");
 /* harmony import */ var _angular_material_dialog__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/material/dialog */ "./node_modules/@angular/material/esm2015/dialog.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! sweetalert2 */ "../node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_11__);
+
 
 
 
@@ -1121,7 +1128,13 @@ let EditBusesComponent = class EditBusesComponent {
                 .subscribe(res => {
                 this.actualizarRutaEnBuses(form.value);
                 // this.resetForm(form);
-                M.toast({ html: 'Bus actualizado satisfactoriamente' });
+                // M.toast({html: 'Bus actualizado satisfactoriamente'});
+                sweetalert2__WEBPACK_IMPORTED_MODULE_11___default.a.fire({
+                    icon: 'success',
+                    title: 'Ruta Actualizada satisfactoriamente!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
                 this.getRutas();
             });
         }
@@ -1133,7 +1146,13 @@ let EditBusesComponent = class EditBusesComponent {
                 // console.log(form.value, 'XXXXXX');
                 // console.log('Paso 2.1');
                 // this.resetForm(form);
-                M.toast({ html: 'Guardado satisfactoriamente' });
+                // M.toast({html: 'Guardado satisfactoriamente'});
+                sweetalert2__WEBPACK_IMPORTED_MODULE_11___default.a.fire({
+                    icon: 'success',
+                    title: 'Ruta Registrada Satisfactoriamente!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
                 this.getRutas();
             });
         }
@@ -1154,7 +1173,6 @@ let EditBusesComponent = class EditBusesComponent {
             .subscribe(res => {
             this.rutaService.rutas = res;
             this.selectedRutas1 = res;
-            // console.log(res, 'yyyyyyyyyyy');
         });
     }
     editRuta(bus) {
@@ -1169,12 +1187,23 @@ let EditBusesComponent = class EditBusesComponent {
         if (this.selectedRuta1.NumBusesAsociados === 0 || this.selectedRuta1.NumBusesAsociados === null) {
             this.rutaService.deleteRuta(_id).subscribe(res => {
                 this.getRutas();
-                M.toast({ html: 'Eliminado satisfactoriamente' });
+                // M.toast({html: 'Eliminado satisfactoriamente'});
+                sweetalert2__WEBPACK_IMPORTED_MODULE_11___default.a.fire({
+                    icon: 'success',
+                    title: 'Ruta eliminada satisfactoriamente!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
             });
             this.selectedRuta1 = new src_app_models_ruta__WEBPACK_IMPORTED_MODULE_2__["Ruta"]();
         }
         else {
-            console.log('El bus tiene conductores asociados');
+            // console.log('El bus tiene conductores asociados');
+            sweetalert2__WEBPACK_IMPORTED_MODULE_11___default.a.fire({
+                icon: 'warning',
+                title: 'No puede ser eliminada!!',
+                text: 'Primero debe ser desviculado de sus buses asociados'
+            });
         }
     }
     resetForm(form) {
@@ -1197,6 +1226,12 @@ let EditBusesComponent = class EditBusesComponent {
         this.selectedRuta1.origen = form.value.origen;
         this.selectedRuta1.destino = form.value.destino;
         this.addRuta2(this.selectedRuta1);
+        sweetalert2__WEBPACK_IMPORTED_MODULE_11___default.a.fire({
+            icon: 'success',
+            title: 'Origen y Destino actualizados!',
+            showConfirmButton: false,
+            timer: 1500
+        });
     }
     // ********************************************************************************************************************************
     // ********************************************************************************************************************************
@@ -1213,13 +1248,16 @@ let EditBusesComponent = class EditBusesComponent {
         form.value.longitud = 0;
         form.value.sentido = 0;
         if (form.value._id) {
-            // form.value.posicion = {
-            //   lat: 1 , lng: 2, nombre: form.value.nombre, ruta: form.value.bio
-            // };
             this.busesService.putBus(form.value)
                 .subscribe(res => {
                 // this.resetForm1(form);
-                M.toast({ html: 'Bus actualizado satisfactoriamente' });
+                // M.toast({html: 'Bus actualizado satisfactoriamente'});
+                sweetalert2__WEBPACK_IMPORTED_MODULE_11___default.a.fire({
+                    icon: 'success',
+                    title: 'Bus actualizado satisfactoriamente!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
                 this.getBuses();
             });
         }
@@ -1227,7 +1265,13 @@ let EditBusesComponent = class EditBusesComponent {
             this.busesService.postBus(form.value)
                 .subscribe(res => {
                 // this.resetForm1(form);
-                M.toast({ html: 'Guardado satisfactoriamente' });
+                // M.toast({html: 'Guardado satisfactoriamente'});
+                sweetalert2__WEBPACK_IMPORTED_MODULE_11___default.a.fire({
+                    icon: 'success',
+                    title: 'Bus Registrado satisfactoriamente!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
                 this.getBuses();
             });
         }
@@ -1259,7 +1303,13 @@ let EditBusesComponent = class EditBusesComponent {
         this.busesService.deleteBus(_id)
             .subscribe(res => {
             this.getBuses();
-            M.toast({ html: 'Bus Eliminado satisfactoriamente' });
+            // M.toast({html: 'Bus Eliminado satisfactoriamente'});
+            sweetalert2__WEBPACK_IMPORTED_MODULE_11___default.a.fire({
+                icon: 'success',
+                title: 'Bus eliminado satisfactoriamente!',
+                showConfirmButton: false,
+                timer: 1500
+            });
         });
         this.selectedBus1 = new src_app_models_bus__WEBPACK_IMPORTED_MODULE_6__["Bus"]();
     }
@@ -1278,11 +1328,14 @@ let EditBusesComponent = class EditBusesComponent {
         if (form.value.ruta === '' || form.value.ruta === null) {
             this.selectedRuta1 = new src_app_models_ruta__WEBPACK_IMPORTED_MODULE_2__["Ruta"]();
         }
-        // this.selectedBus1.arrayBuses = '';
         if (this.selectedBus1.RutaAsociada._id === this.selectedRuta1._id) {
-            console.log('No hacer nada porque no se esta cambiando el bus');
-            // this.selectedBus1.NumBusesAsociados = 0;
-            // this.addBus2(this.selectedBus1);
+            // console.log('No hacer nada porque no se esta cambiando el bus');
+            sweetalert2__WEBPACK_IMPORTED_MODULE_11___default.a.fire({
+                icon: 'warning',
+                title: 'Se asignó la misma Ruta!!',
+                showConfirmButton: false,
+                timer: 1500
+            });
         }
         else {
             if (form.value.ruta !== '' && form.value.ruta !== null) {
@@ -1299,6 +1352,12 @@ let EditBusesComponent = class EditBusesComponent {
             this.selectedBus1.RutaAsociada = this.selectedRuta1;
             // console.log(this.selectedBus1 );
             this.addBus2(this.selectedBus1);
+            sweetalert2__WEBPACK_IMPORTED_MODULE_11___default.a.fire({
+                icon: 'success',
+                title: 'Bus Actualizado Satisfactoriamente!',
+                showConfirmButton: false,
+                timer: 1500
+            });
         }
     }
     // Permite asociar un Conductor a un bus
@@ -1309,11 +1368,23 @@ let EditBusesComponent = class EditBusesComponent {
             this.selectedConductor1 = new src_app_models_user__WEBPACK_IMPORTED_MODULE_8__["UserI"]();
         }
         if (this.selectedBus1.ConductorAsociado._id === this.selectedConductor1._id) {
-            console.log('No hacer nada porque no se esta cambiando el Conductor');
+            // console.log('No hacer nada porque no se esta cambiando el Conductor');
+            sweetalert2__WEBPACK_IMPORTED_MODULE_11___default.a.fire({
+                icon: 'warning',
+                title: 'Se asignó el mismo Conductor!!',
+                showConfirmButton: false,
+                timer: 1500
+            });
         }
         else {
             this.selectedBus1.ConductorAsociado = this.selectedConductor1;
             this.addBus2(this.selectedBus1);
+            sweetalert2__WEBPACK_IMPORTED_MODULE_11___default.a.fire({
+                icon: 'success',
+                title: 'El Conductor del Bus fue actualizado!',
+                showConfirmButton: false,
+                timer: 1500
+            });
         }
     }
     addBus2(bus) {
@@ -1375,7 +1446,13 @@ let EditBusesComponent = class EditBusesComponent {
                 .subscribe(res => {
                 this.actualizarConductorEnBuses(form.value);
                 // this.resetForm3(form);
-                M.toast({ html: 'Conductor actualizado satisfactoriamente' });
+                // M.toast({html: 'Conductor actualizado satisfactoriamente'});
+                sweetalert2__WEBPACK_IMPORTED_MODULE_11___default.a.fire({
+                    icon: 'success',
+                    title: 'Conductor actualizado satisfactoriamente!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
                 this.getConductores();
             });
         }
@@ -1426,12 +1503,23 @@ let EditBusesComponent = class EditBusesComponent {
             this.authService.deleteUser(_id)
                 .subscribe(res => {
                 this.getConductores();
-                M.toast({ html: 'Conductor Eliminado satisfactoriamente' });
+                // M.toast({html: 'Conductor Eliminado satisfactoriamente'});
+                sweetalert2__WEBPACK_IMPORTED_MODULE_11___default.a.fire({
+                    icon: 'success',
+                    title: 'Conductor eliminado satisfactoriamente!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
             });
             this.selectedConductor1 = new src_app_models_user__WEBPACK_IMPORTED_MODULE_8__["UserI"]();
         }
         else {
-            console.log('No se puede eliminar, primero debe desvicularlo del bus');
+            // console.log(', ');
+            sweetalert2__WEBPACK_IMPORTED_MODULE_11___default.a.fire({
+                icon: 'warning',
+                title: 'No puede ser eliminado!!',
+                text: 'Primero debe ser desviculado de su bus asociado'
+            });
         }
     }
     resetForm3(form) {
@@ -1594,11 +1682,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MapaComponent", function() { return MapaComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _services_google_analytics_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/google-analytics.service */ "./src/app/services/google-analytics.service.ts");
+
 
 
 let MapaComponent = class MapaComponent {
-    constructor() {
-        //  marcadores: Marcador[] = [];
+    constructor(googleAnalyticsServices) {
+        this.googleAnalyticsServices = googleAnalyticsServices;
         this.latUsuario = 7.13707729242462;
         this.lngUsuario = -73.11724761399356;
         this.isDirectionActive = false;
@@ -1608,49 +1698,25 @@ let MapaComponent = class MapaComponent {
                 this.lngUsuario = datos.coords.longitude;
             }));
         }
-        // console.log(this.latUsuario , this.lngUsuario, 'RRR');
-        // const nuevoMarcador = new Marcador(this.lat, this.lng);
-        // this.marcadores.push(nuevoMarcador);
-        //   if (navigator.geolocation) {
-        //     navigator.geolocation.watchPosition( async ( datos ) => {
-        //       // await console.log(datos.coords.latitude, 'asdasdasdasd3');
-        //       // await console.log(datos.coords.longitude, 'asdasdasdasd4');
-        //       this.lat1 = datos.coords.latitude;
-        //       this.lng1 = datos.coords.longitude;
-        //       console.log(this.lat1, ' ZZZZZZ ', this.lng1);
-        //     },
-        //      () => { console.log('No esta activado el gps'); });
-        // } else {
-        //   this.lat1 = 7.11392;
-        //   this.lng1 = -73.1198;
-        // }
-        // if (localStorage.getItem('marcadores')) {
-        //     this.marcadores = JSON.parse(localStorage.getItem('marcadores'));
-        // }
     }
     ngOnInit() {
     }
     getDirection(direccion) {
         this.isDirectionActive = true;
         direccion = direccion + ' Bucaramanga Colombia';
-        // this.origin = 'Bucaramanga Estacion San Mateo N-s'; // A
-        // this.destination = 'Bucaramanga Estacion Chorreras N-s'; // D
-        // this.waypoints = [
-        //  {location: { lat: 7.13392, lng: -73.1398 }}, // C
-        //  {location: { lat: 7.14392, lng: -73.1498 }} // B
-        // ];
         this.origin = { location: { lat: this.latUsuario, lng: this.lngUsuario } };
         this.destination = direccion;
-        // console.log(this.origin , this.destination, );
     }
     setIsDirection() {
         this.isDirectionActive = false;
     }
-    busquedaEventoAnalytics(busqueda) {
-        gtag('send', busqueda, 'A donde Van?', 'Busqueda de Rutas');
-        console.log('hola');
+    SendAddToCartEvent(busqueda) {
+        this.googleAnalyticsServices.eventEmitter(busqueda, busqueda, 'Busqueda', 'click', 10);
     }
 };
+MapaComponent.ctorParameters = () => [
+    { type: _services_google_analytics_service__WEBPACK_IMPORTED_MODULE_2__["GoogleAnalyticsService"] }
+];
 MapaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-mapa',
@@ -1738,25 +1804,25 @@ let ParadasComponent = class ParadasComponent {
         // this.cargarBaseDatos();
     }
     asignarRutaParada(form) {
-        console.log(form.value.rutap);
-        console.log(this.paradaServices.selectedParada.rutasAsociadas, '1x');
+        // console.log(form.value.rutap);
+        // console.log(this.paradaServices.selectedParada.rutasAsociadas, '1x');
         this.paradaServices.selectedParada.rutasAsociadas.push(form.value.rutap);
-        console.log(this.paradaServices.selectedParada.rutasAsociadas, '2x');
+        // console.log(this.paradaServices.selectedParada.rutasAsociadas, '2x');
         this.paradaServices.addParada2(this.paradaServices.selectedParada);
     }
     asignarRutaParada2(rutaNombre) {
-        console.log(rutaNombre);
-        console.log(this.paradaServices.selectedParada.rutasAsociadas, '1x');
+        // console.log(rutaNombre);
+        // console.log(this.paradaServices.selectedParada.rutasAsociadas, '1x');
         this.paradaServices.selectedParada.rutasAsociadas.push(rutaNombre);
-        console.log(this.paradaServices.selectedParada.rutasAsociadas, '2x');
+        // console.log(this.paradaServices.selectedParada.rutasAsociadas, '2x');
         this.paradaServices.addParada2(this.paradaServices.selectedParada);
         this.obtenerRutasSinParada();
     }
     removerRutaParada(NombreRuta) {
         const i = this.paradaServices.selectedParada.rutasAsociadas.indexOf(NombreRuta);
-        console.log(this.paradaServices.selectedParada.rutasAsociadas, '11');
+        // console.log(this.paradaServices.selectedParada.rutasAsociadas, '11');
         this.paradaServices.selectedParada.rutasAsociadas.splice(i, 1);
-        console.log(this.paradaServices.selectedParada.rutasAsociadas, '22');
+        // console.log(this.paradaServices.selectedParada.rutasAsociadas, '22');
         this.paradaServices.addParada2(this.paradaServices.selectedParada);
         this.obtenerRutasSinParada();
     }
@@ -1966,6 +2032,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../services/auth.service */ "./src/app/services/auth.service.ts");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! sweetalert2 */ "../node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_4__);
+
 
 
 
@@ -1982,13 +2051,24 @@ let LoginComponent = class LoginComponent {
     onLogin(form) {
         // console.log(form.valid);
         if (form.valid) {
-            console.log('Valido');
+            // console.log('Valido');
             // console.log('login1', form.value);
             this.authService.login(form.value).subscribe(res => {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire({
+                    icon: 'success',
+                    title: 'Sesión iniciada',
+                    showConfirmButton: false,
+                    timer: 1000
+                });
                 this.authService.administrador();
                 this.router.navigateByUrl('/inicio');
             }, error => {
-                console.log(error, 'Ultimo error');
+                // console.log(error, 'Ultimo error');
+                sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Email y/o Contrasena incorrecta!'
+                });
                 document.getElementById('errorEmail').style.display = 'inline';
                 setTimeout(() => {
                     this.errorEmail();
@@ -1996,8 +2076,12 @@ let LoginComponent = class LoginComponent {
             });
         }
         else {
-            console.log('No valido');
-            M.toast({ html: 'email no valido' });
+            // console.log('No valido');
+            sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Campo Email y/o Contrasena no valido!'
+            });
         }
     }
     // Oculta el mensaje que aparece al escribir una direccion de correo y/o contrasena equivocada
@@ -2035,6 +2119,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../services/auth.service */ "./src/app/services/auth.service.ts");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! sweetalert2 */ "../node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_4__);
+
 
 
 
@@ -2050,24 +2137,39 @@ let RegisterComponent = class RegisterComponent {
     }
     onRegister(form) {
         if (form.valid) {
-            console.log('Valido');
+            // console.log('Valido');
             form.value.estado = false;
             this.authService.register(form.value).subscribe(res => {
                 // this.router.navigateByUrl('/');
-                console.log('Registrado', form);
                 // form.controls.tipoUsuario.untouched = false;
+                sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire({
+                    icon: 'success',
+                    title: 'Usuario registrado exitosamente!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
                 form.reset();
                 form.submitted = false;
-                console.log(form.submitted, '123');
-                console.log('Registrado', form);
                 document.getElementById('UsuarioAgg').style.display = 'inline';
                 setTimeout(() => {
                     this.usuarioAgg();
                 }, 3000);
-            }, error => { console.log(error, 'error U.u'); });
+            }, error => {
+                // console.log(error, error.error);
+                sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: error.error
+                });
+            });
         }
         else {
-            console.log('No valido');
+            // console.log('No valido');
+            sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Campos para el registro no validos!'
+            });
         }
     }
     usuarioAgg() {
@@ -2372,6 +2474,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
 /* harmony import */ var _bus_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./bus.service */ "./src/app/services/bus.service.ts");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! sweetalert2 */ "../node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_7__);
+
 
 
 
@@ -2508,6 +2613,12 @@ let AuthService = class AuthService {
         localStorage.removeItem('EMAIL');
         localStorage.removeItem('ACCESS_TOKEN');
         localStorage.removeItem('EXPIRES_IN');
+        sweetalert2__WEBPACK_IMPORTED_MODULE_7___default.a.fire({
+            icon: 'success',
+            title: 'Sesión finalizada',
+            showConfirmButton: false,
+            timer: 1000
+        });
     }
     // Actualiza el estado del conductorAsociado a un bus a la hora de hacer login y logout
     actualizarConductorEnBuses(conductor, logout) {
@@ -2760,6 +2871,33 @@ BusService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/services/google-analytics.service.ts":
+/*!******************************************************!*\
+  !*** ./src/app/services/google-analytics.service.ts ***!
+  \******************************************************/
+/*! exports provided: GoogleAnalyticsService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GoogleAnalyticsService", function() { return GoogleAnalyticsService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+
+class GoogleAnalyticsService {
+    constructor() { }
+    eventEmitter(eventName, eventCategory, eventAction, eventLabel = null, eventValue = null) {
+        gtag('event', eventName, {
+            eventCategory,
+            eventLabel,
+            eventAction,
+            eventValue
+        });
+    }
+}
+
+
+/***/ }),
+
 /***/ "./src/app/services/parada.service.ts":
 /*!********************************************!*\
   !*** ./src/app/services/parada.service.ts ***!
@@ -2774,6 +2912,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
 /* harmony import */ var _models_parada__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../models/parada */ "./src/app/models/parada.ts");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! sweetalert2 */ "../node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_4__);
+
 
 
 
@@ -2902,14 +3043,26 @@ let ParadasService = class ParadasService {
         if (form.value._id) {
             this.putParada(form.value)
                 .subscribe(res => {
-                console.log('Parada actualizada satisfactoriamente');
+                // console.log('Parada actualizada satisfactoriamente');
+                sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire({
+                    icon: 'success',
+                    title: 'Parada actualizada exitosamente!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
                 this.getParadas();
             });
         }
         else {
             this.postParada(form.value)
                 .subscribe(res => {
-                console.log('Parada Guardada satisfactoriamente');
+                // console.log('Parada Guardada satisfactoriamente');
+                sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire({
+                    icon: 'success',
+                    title: 'Parada Registrada exitosamente!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
                 this.getParadas();
             });
         }
@@ -2928,7 +3081,13 @@ let ParadasService = class ParadasService {
         this.selectedParada = this.getParadaById(_id);
         this.deleteParada(_id).subscribe(res => {
             this.getParadas();
-            console.log('Eliminado satisfactoriamente');
+            // console.log('Eliminado satisfactoriamente');
+            sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire({
+                icon: 'success',
+                title: 'Parada eliminada exitosamente!',
+                showConfirmButton: false,
+                timer: 1500
+            });
         });
         this.selectedParada = new _models_parada__WEBPACK_IMPORTED_MODULE_3__["Parada"]();
     }

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-declare var gtag;
+import { GoogleAnalyticsService } from '../../services/google-analytics.service';
 
 @Component({
   selector: 'app-mapa',
@@ -9,18 +8,15 @@ declare var gtag;
 })
 export class MapaComponent implements OnInit {
 
-//  marcadores: Marcador[] = [];
 
- latUsuario = 7.13707729242462;
- lngUsuario = -73.11724761399356;
-//  public transitOptions: any = { modes: ['BUS'], };
+  latUsuario = 7.13707729242462;
+  lngUsuario = -73.11724761399356;
 
   public origin: any;
   public destination: any;
   public isDirectionActive = false;
 
-  constructor() {
-
+  constructor(public googleAnalyticsServices: GoogleAnalyticsService) {
 
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition( async ( datos ) => {
@@ -28,6 +24,47 @@ export class MapaComponent implements OnInit {
         this.lngUsuario = datos.coords.longitude;
       });
     }
+  }
+
+  ngOnInit() {
+  }
+
+  getDirection(direccion: string) {
+    this.isDirectionActive = true;
+    direccion = direccion + ' Bucaramanga Colombia';
+    this.origin = {location: { lat: this.latUsuario, lng: this.lngUsuario }};
+    this.destination = direccion;
+  }
+
+  setIsDirection() {
+    this.isDirectionActive = false;
+  }
+
+  SendAddToCartEvent(busqueda: string) {
+    this.googleAnalyticsServices.eventEmitter(busqueda, busqueda, 'Busqueda', 'click', 10);
+  }
+
+
+
+
+//  marcadores: Marcador[] = [];
+//  public transitOptions: any = { modes: ['BUS'], };
+
+
+  // getDirection(direccion: string) {
+  //   this.isDirectionActive = true;
+  //   direccion = direccion + ' Bucaramanga Colombia';
+  //   // this.origin = 'Bucaramanga Estacion San Mateo N-s'; // A
+  //   // this.destination = 'Bucaramanga Estacion Chorreras N-s'; // D
+  //   // this.waypoints = [
+  //   //  {location: { lat: 7.13392, lng: -73.1398 }}, // C
+  //   //  {location: { lat: 7.14392, lng: -73.1498 }} // B
+  //   // ];
+  //   this.origin = {location: { lat: this.latUsuario, lng: this.lngUsuario }};
+  //   this.destination = direccion;
+  //   // console.log(this.origin , this.destination, );
+  // }
+
     // console.log(this.latUsuario , this.lngUsuario, 'RRR');
     // const nuevoMarcador = new Marcador(this.lat, this.lng);
     // this.marcadores.push(nuevoMarcador);
@@ -48,33 +85,6 @@ export class MapaComponent implements OnInit {
     // if (localStorage.getItem('marcadores')) {
     //     this.marcadores = JSON.parse(localStorage.getItem('marcadores'));
     // }
-  }
-
-  ngOnInit() {
-  }
-
-  getDirection(direccion: string) {
-    this.isDirectionActive = true;
-    direccion = direccion + ' Bucaramanga Colombia';
-    // this.origin = 'Bucaramanga Estacion San Mateo N-s'; // A
-    // this.destination = 'Bucaramanga Estacion Chorreras N-s'; // D
-    // this.waypoints = [
-    //  {location: { lat: 7.13392, lng: -73.1398 }}, // C
-    //  {location: { lat: 7.14392, lng: -73.1498 }} // B
-    // ];
-    this.origin = {location: { lat: this.latUsuario, lng: this.lngUsuario }};
-    this.destination = direccion;
-    // console.log(this.origin , this.destination, );
-  }
-
-  setIsDirection() {
-    this.isDirectionActive = false;
-  }
-
-  busquedaEventoAnalytics(busqueda: string) {
-    gtag('send', busqueda, 'A donde Van?', 'Busqueda de Rutas' );
-    console.log('hola');
-  }
 
   // moverMapa(evento) {
   //   console.log('it changed');

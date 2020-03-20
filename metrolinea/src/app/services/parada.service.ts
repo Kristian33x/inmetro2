@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Parada } from '../models/parada';
 import { NgForm } from '@angular/forms';
-
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -151,13 +151,25 @@ export class ParadasService {
     if (form.value._id) {
         this.putParada(form.value)
         .subscribe(res => {
-          console.log('Parada actualizada satisfactoriamente');
+          // console.log('Parada actualizada satisfactoriamente');
+          Swal.fire({
+            icon: 'success',
+            title: 'Parada actualizada exitosamente!',
+            showConfirmButton: false,
+            timer: 1500
+          });
           this.getParadas();
       });
     } else {
         this.postParada(form.value)
         .subscribe(res => {
-          console.log('Parada Guardada satisfactoriamente');
+          // console.log('Parada Guardada satisfactoriamente');
+          Swal.fire({
+            icon: 'success',
+            title: 'Parada Registrada exitosamente!',
+            showConfirmButton: false,
+            timer: 1500
+          });
           this.getParadas();
       });
     }
@@ -182,7 +194,13 @@ export class ParadasService {
 
     this.deleteParada(_id).subscribe( res => {
       this.getParadas();
-      console.log('Eliminado satisfactoriamente');
+      // console.log('Eliminado satisfactoriamente');
+      Swal.fire({
+        icon: 'success',
+        title: 'Parada eliminada exitosamente!',
+        showConfirmButton: false,
+        timer: 1500
+      });
     });
     this.selectedParada = new Parada();
   }

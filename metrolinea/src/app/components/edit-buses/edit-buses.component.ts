@@ -9,6 +9,7 @@ import { AuthService } from '../../services/auth.service';
 import { UserI } from 'src/app/models/user';
 import { MapaEditarComponent } from '../mapa/mapa-editar.component';
 import { MatDialog } from '@angular/material/dialog';
+import Swal from 'sweetalert2';
 
 declare var M: any;
 
@@ -68,7 +69,13 @@ export class EditBusesComponent implements OnInit {
         .subscribe(res => {
           this.actualizarRutaEnBuses(form.value);
           // this.resetForm(form);
-          M.toast({html: 'Bus actualizado satisfactoriamente'});
+          // M.toast({html: 'Bus actualizado satisfactoriamente'});
+          Swal.fire({
+            icon: 'success',
+            title: 'Ruta Actualizada satisfactoriamente!',
+            showConfirmButton: false,
+            timer: 1500
+          });
           this.getRutas();
       });
     } else {
@@ -79,7 +86,13 @@ export class EditBusesComponent implements OnInit {
           // console.log(form.value, 'XXXXXX');
           // console.log('Paso 2.1');
           // this.resetForm(form);
-          M.toast({html: 'Guardado satisfactoriamente'});
+          // M.toast({html: 'Guardado satisfactoriamente'});
+          Swal.fire({
+            icon: 'success',
+            title: 'Ruta Registrada Satisfactoriamente!',
+            showConfirmButton: false,
+            timer: 1500
+          });
           this.getRutas();
   });
   }
@@ -104,7 +117,6 @@ addRuta2(ruta: Ruta) {
     .subscribe(res => {
       this.rutaService.rutas = res as Ruta[];
       this.selectedRutas1 = res as Ruta[];
-     // console.log(res, 'yyyyyyyyyyy');
     });
   }
 
@@ -122,10 +134,23 @@ addRuta2(ruta: Ruta) {
 
       this.rutaService.deleteRuta(_id).subscribe( res => {
         this.getRutas();
-        M.toast({html: 'Eliminado satisfactoriamente'});
+        // M.toast({html: 'Eliminado satisfactoriamente'});
+        Swal.fire({
+          icon: 'success',
+          title: 'Ruta eliminada satisfactoriamente!',
+          showConfirmButton: false,
+          timer: 1500
+        });
       });
       this.selectedRuta1 = new Ruta();
-    } else { console.log('El bus tiene conductores asociados'); }
+    } else {
+            // console.log('El bus tiene conductores asociados');
+            Swal.fire({
+              icon: 'warning',
+              title: 'No puede ser eliminada!!',
+              text: 'Primero debe ser desviculado de sus buses asociados'
+            });
+          }
   }
 
   resetForm(form?: NgForm) {
@@ -152,7 +177,12 @@ addRuta2(ruta: Ruta) {
     this.selectedRuta1.origen = form.value.origen;
     this.selectedRuta1.destino = form.value.destino;
     this.addRuta2(this.selectedRuta1);
-
+    Swal.fire({
+      icon: 'success',
+      title: 'Origen y Destino actualizados!',
+      showConfirmButton: false,
+      timer: 1500
+    });
   }
 
 
@@ -175,20 +205,29 @@ addRuta2(ruta: Ruta) {
     form.value.sentido = 0;
 
     if (form.value._id) {
-      // form.value.posicion = {
-      //   lat: 1 , lng: 2, nombre: form.value.nombre, ruta: form.value.bio
-      // };
       this.busesService.putBus(form.value)
       .subscribe(res => {
         // this.resetForm1(form);
-        M.toast({html: 'Bus actualizado satisfactoriamente'});
+        // M.toast({html: 'Bus actualizado satisfactoriamente'});
+        Swal.fire({
+          icon: 'success',
+          title: 'Bus actualizado satisfactoriamente!',
+          showConfirmButton: false,
+          timer: 1500
+        });
         this.getBuses();
       });
     } else {
       this.busesService.postBus(form.value)
       .subscribe(res => {
         // this.resetForm1(form);
-        M.toast({html: 'Guardado satisfactoriamente'});
+        // M.toast({html: 'Guardado satisfactoriamente'});
+        Swal.fire({
+          icon: 'success',
+          title: 'Bus Registrado satisfactoriamente!',
+          showConfirmButton: false,
+          timer: 1500
+        });
         this.getBuses();
     });
   }
@@ -223,7 +262,13 @@ addRuta2(ruta: Ruta) {
     this.busesService.deleteBus(_id)
     .subscribe(res => {
       this.getBuses();
-      M.toast({html: 'Bus Eliminado satisfactoriamente'});
+     // M.toast({html: 'Bus Eliminado satisfactoriamente'});
+      Swal.fire({
+        icon: 'success',
+        title: 'Bus eliminado satisfactoriamente!',
+        showConfirmButton: false,
+        timer: 1500
+      });
     });
     this.selectedBus1 = new Bus();
   }
@@ -244,11 +289,14 @@ addRuta2(ruta: Ruta) {
     this.selectedRuta1 = form.value.ruta;
     if (form.value.ruta === '' || form.value.ruta === null) { this.selectedRuta1 = new Ruta(); }
 
-    // this.selectedBus1.arrayBuses = '';
     if (this.selectedBus1.RutaAsociada._id === this.selectedRuta1._id) {
-      console.log('No hacer nada porque no se esta cambiando el bus');
-      // this.selectedBus1.NumBusesAsociados = 0;
-      // this.addBus2(this.selectedBus1);
+      // console.log('No hacer nada porque no se esta cambiando el bus');
+      Swal.fire({
+        icon: 'warning',
+        title: 'Se asignó la misma Ruta!!',
+        showConfirmButton: false,
+        timer: 1500
+      });
     } else {
       if (form.value.ruta !== '' && form.value.ruta !== null) {
         this.selectedRuta1.NumBusesAsociados += 1;
@@ -266,6 +314,12 @@ addRuta2(ruta: Ruta) {
       this.selectedBus1.RutaAsociada = this.selectedRuta1;
       // console.log(this.selectedBus1 );
       this.addBus2(this.selectedBus1);
+      Swal.fire({
+        icon: 'success',
+        title: 'Bus Actualizado Satisfactoriamente!',
+        showConfirmButton: false,
+        timer: 1500
+      });
             }
   }
 
@@ -276,10 +330,22 @@ addRuta2(ruta: Ruta) {
     if (form.value.conductor === '' || form.value.conductor === null) { this.selectedConductor1 = new UserI(); }
 
     if (this.selectedBus1.ConductorAsociado._id === this.selectedConductor1._id) {
-      console.log('No hacer nada porque no se esta cambiando el Conductor');
+      // console.log('No hacer nada porque no se esta cambiando el Conductor');
+      Swal.fire({
+        icon: 'warning',
+        title: 'Se asignó el mismo Conductor!!',
+        showConfirmButton: false,
+        timer: 1500
+      });
     } else {
       this.selectedBus1.ConductorAsociado = this.selectedConductor1;
       this.addBus2(this.selectedBus1);
+      Swal.fire({
+        icon: 'success',
+        title: 'El Conductor del Bus fue actualizado!',
+        showConfirmButton: false,
+        timer: 1500
+      });
             }
   }
 
@@ -350,7 +416,13 @@ addRuta2(ruta: Ruta) {
       .subscribe(res => {
       this.actualizarConductorEnBuses(form.value);
       // this.resetForm3(form);
-      M.toast({html: 'Conductor actualizado satisfactoriamente'});
+      // M.toast({html: 'Conductor actualizado satisfactoriamente'});
+      Swal.fire({
+        icon: 'success',
+        title: 'Conductor actualizado satisfactoriamente!',
+        showConfirmButton: false,
+        timer: 1500
+      });
       this.getConductores();
      });
    }
@@ -402,10 +474,23 @@ addRuta2(ruta: Ruta) {
       this.authService.deleteUser(_id)
       .subscribe(res => {
         this.getConductores();
-        M.toast({html: 'Conductor Eliminado satisfactoriamente'});
+        // M.toast({html: 'Conductor Eliminado satisfactoriamente'});
+        Swal.fire({
+          icon: 'success',
+          title: 'Conductor eliminado satisfactoriamente!',
+          showConfirmButton: false,
+          timer: 1500
+        });
       });
       this.selectedConductor1 = new UserI();
-    } else { console.log('No se puede eliminar, primero debe desvicularlo del bus'); }
+    } else {
+            // console.log(', ');
+            Swal.fire({
+              icon: 'warning',
+              title: 'No puede ser eliminado!!',
+              text: 'Primero debe ser desviculado de su bus asociado'
+            });
+          }
   }
 
   resetForm3(form?: NgForm) {

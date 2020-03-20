@@ -6,8 +6,8 @@
                 <p style="color: darkgreen;">Mapa</p>
                 <div class="input-group" ng-controller="ngifctrl">
                     <b>A donde vas?</b>&nbsp;
-                    <input (keydown.enter)="getDirection(buscarParada.value); busquedaEventoAnalytics(buscarParada.value);" type="text" id="texto" name="texto" class="form-control" placeholder="Ej: Estacion San Mateo, SENA, UIS" #buscarParada>&nbsp;
-                    <button (click)="getDirection(buscarParada.value); busquedaEventoAnalytics(buscarParada.value);" type="button" title="Buscar" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
+                    <input (keydown.enter)="getDirection(buscarParada.value); SendAddToCartEvent(buscarParada.value);" type="text" id="texto" name="texto" class="form-control" placeholder="Ej: Estacion San Mateo, SENA, UIS" #buscarParada>&nbsp;
+                    <button (click)="getDirection(buscarParada.value); SendAddToCartEvent(buscarParada.value);" type="button" title="Buscar" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
                 </div>
             </div>
         </div>
