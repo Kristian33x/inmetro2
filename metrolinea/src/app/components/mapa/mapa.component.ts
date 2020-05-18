@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { GoogleAnalyticsService } from '../../services/google-analytics.service';
 
+declare var gtag;
+
 @Component({
   selector: 'app-mapa',
   templateUrl: './mapa.component.html',
@@ -40,8 +42,14 @@ export class MapaComponent implements OnInit {
     this.isDirectionActive = false;
   }
 
+  SendAddToCartEvent1(busqueda: string) {
+    gtag('send', busqueda, 'A donde Van?', 'Busqueda de Rutas' );
+    console.log('hola');
+  }
+
   SendAddToCartEvent(busqueda: string) {
-    this.googleAnalyticsServices.eventEmitter(busqueda, busqueda, 'Busqueda', 'click', 10);
+    this.googleAnalyticsServices.eventEmitter('add_to_cart', busqueda, 'cart', 'click', 10);
+    // history.pushState(null, '', `inicio/busqueda?k=${busqueda}`);
   }
 
 

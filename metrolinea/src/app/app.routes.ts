@@ -22,6 +22,7 @@ const APP_ROUTES: Routes = [
 {path: 'bus/:termino', component: BusComponent},
 {path: 'search/:termino', component: SearchComponent},
 {path: '', pathMatch: 'full', redirectTo: '/inicio'},  // regresa a la home
+{path: '**', pathMatch: 'full', redirectTo: '/inicio'},  // regresa a la home
 
 ];
 

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-light ">
 
     <div class="col-1">
         <a class="navbar-brand" href="#">
@@ -18,31 +18,31 @@
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item " routerLinkActive="active" id="ocultar6">
                 <!-- <a class="nav-link">{{UsuarioActivo.tipoUsuario}} : {{ UsuarioActivo.nombre }}   .</a> -->
-                <a *ngIf="auth.getUserLogueado().tipoUsuario != '' " class="nav-link">{{auth.getUserLogueado().tipoUsuario}} : {{ auth.getUserLogueado().nombre }}   </a>
+                <a *ngIf="auth.getUserLogueado().tipoUsuario != '' " class="nav-link" style="color: darkgreen;">{{auth.getUserLogueado().tipoUsuario}} : {{ auth.getUserLogueado().nombre }}   </a>
             </li>
         </ul>
 
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link " [routerLink]="[ 'inicio'] "><i class="material-icons">home</i>Inicio </a>
+                <a class="nav-link " [routerLink]="[ 'inicio'] " style="color: darkgreen;"><i class="material-icons" style="color: seagreen;">home</i>Inicio </a>
             </li>
             <li class="nav-item " routerLinkActive="active">
-                <a class="nav-link " [routerLink]="[ 'rutas'] "><i class="material-icons">commute</i>Rutas</a>
+                <a class="nav-link " [routerLink]="[ 'rutas'] " style="color:darkgreen;"><i class="material-icons" style="color: yellowgreen;">commute</i>Rutas</a>
             </li>
             <li class="nav-item " routerLinkActive="active" id="ocultar1">
-                <a class="nav-link " [routerLink]="[ 'administrador'] "><i class="material-icons">build</i>Administrador</a>
+                <a class="nav-link " [routerLink]="[ 'administrador'] " style="color: darkgreen;"><i class="material-icons" style="color: gold;">build</i>Administrador</a>
             </li>
             <li class="nav-item " routerLinkActive="active" id="ocultar2">
-                <a class="nav-link " [routerLink]="[ 'registrar'] "><i class="material-icons">supervised_user_circle</i>Registrar</a>
+                <a class="nav-link " [routerLink]="[ 'registrar'] " style="color: darkgreen;"><i class="material-icons" style="color: dodgerblue;">supervised_user_circle</i>Registrar</a>
             </li>
             <li class="nav-item " routerLinkActive="active" id="ocultar7">
-                <a class="nav-link " [routerLink]="[ 'paradas'] "><i class="material-icons">pan_tool</i>Paradas</a>
+                <a class="nav-link " [routerLink]="[ 'paradas'] " style="color: darkgreen;"><i class="material-icons" style="color:crimson ;">pan_tool</i>Paradas</a>
             </li>
             <li class="nav-item " routerLinkActive="active" id="ocultar4">
-                <a class="nav-link " [routerLink]="[ 'login'] "><i class="material-icons">account_box</i>Inicio Sesion</a>
+                <a class="nav-link " [routerLink]="[ 'login'] " style="color:darkgreen;"><i class="material-icons" style="color: darkorange;">account_box</i>Inicio Sesion</a>
             </li>
             <li class="nav-item " routerLinkActive="active" id="ocultar5">
-                <a class="nav-link " [routerLink]="[ 'conductor'] "><i class="material-icons">directions_bus</i>Conductor</a>
+                <a class="nav-link " [routerLink]="[ 'conductor'] " style="color: darkgreen;"><i class="material-icons" style="color: lightskyblue;">directions_bus</i>Conductor</a>
             </li>
 
         </ul>
